@@ -320,12 +320,3 @@ Apesar das dificuldades, **Rodrigo e Julio** assumiram a responsabilidade de ent
 Este projeto foi desenvolvido para fins acadêmicos como parte do **Projeto Integrado II** do curso de Análise e Desenvolvimento de Sistemas da UFCA.
 
 ---
-
-## 📞 Contato
-
-- **Repositório**: [GitHub - Mochila Cheia](https://github.com/seu-usuario/mochila-cheia)
-- **E-mail do Projeto**: mochilacheia@exemplo.com
-
----
-
-> *"Educação é a arma mais poderosa que você pode usar para mudar o mundo."* - Nelson Mandela

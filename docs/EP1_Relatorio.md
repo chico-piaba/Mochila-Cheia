@@ -195,9 +195,7 @@ A seção **"Possíveis usos da nossa solução"** foi criada no README.md do re
 
 ## 2) Link do Vídeo Explicativo
 
-**Link do vídeo no Google Drive:**
 
-`[INSERIR LINK DO VÍDEO AQUI]`
 
 **Conteúdo do vídeo (até 5 minutos):**
 - Apresentação da equipe (Rodrigo e Julio)
@@ -212,7 +210,7 @@ A seção **"Possíveis usos da nossa solução"** foi criada no README.md do re
 
 **Link do repositório:**
 
-`[INSERIR LINK DO REPOSITÓRIO AQUI]`
+https://github.com/chico-piaba/Mochila-Cheia.git
 
 **Estrutura do repositório:**
 ```

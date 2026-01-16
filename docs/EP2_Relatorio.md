@@ -200,9 +200,6 @@ A seção **"O que é Projeto Físico de Banco de Dados"** foi adicionada ao REA
 
 ## 2) Link do Vídeo Explicativo
 
-**Link do vídeo no Google Drive:**
-
-`[INSERIR LINK DO VÍDEO AQUI]`
 
 **Conteúdo do vídeo (até 5 minutos):**
 - Apresentação do projeto físico
@@ -217,7 +214,7 @@ A seção **"O que é Projeto Físico de Banco de Dados"** foi adicionada ao REA
 
 **Link do repositório:**
 
-`[INSERIR LINK DO REPOSITÓRIO AQUI]`
+https://github.com/chico-piaba/Mochila-Cheia.git
 
 **Arquivos relevantes para EP2:**
 ```
