@@ -1,0 +1,21 @@
+# Mochila Cheia - Dependências Python
+# Versão mínima: Python 3.10+
+
+# Validação de dados
+dataclasses-json>=0.6.0
+
+# Utilitários para datas
+python-dateutil>=2.8.2
+
+# Hash de senhas (segurança)
+bcrypt>=4.0.0
+
+# Testes unitários
+pytest>=7.4.0
+
+# Banco de dados SQLite (já incluso no Python)
+# Para PostgreSQL em produção:
+# psycopg2-binary>=2.9.9
+
+# Enum aprimorado
+enum34>=1.1.10; python_version < "3.4"
