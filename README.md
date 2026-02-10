@@ -111,7 +111,7 @@ mochila-cheia/
 ### 1. Clone o repositório
 
 ```bash
-git clone https://github.com/seu-usuario/mochila-cheia.git
+git clone https://github.com/chico-piaba/mochila-cheia.git
 cd mochila-cheia
 ```
 
