@@ -18,6 +18,7 @@ O **Mochila Cheia** é uma plataforma digital (aplicativo web) que visa conectar
 - [Banco de Dados](#-banco-de-dados)
 - [Possíveis Usos da Nossa Solução](#-componente-extensionista-possíveis-usos-da-nossa-solução)
 - [O que é Projeto Físico de Banco de Dados](#-componente-extensionista-o-que-é-projeto-físico-de-banco-de-dados)
+- [Como Prototipar um Wireframe](#-componente-extensionista-como-prototipar-um-wireframe)
 - [Equipe](#-equipe)
 - [Licença](#-licença)
 
@@ -299,19 +300,46 @@ Assim, se o doador mudar de nome, atualizamos em um único lugar!
 > **Dica para estudantes**: Pratique criando pequenos bancos de dados para seus projetos pessoais. Comece simples e vá adicionando complexidade conforme aprende.
 
 ---
+## 🎨 [Componente Extensionista] Como Prototipar um Wireframe?
 
+Se você está começando a programar ou criar sistemas agora, pode ficar ansioso para já sair escolhendo cores, fontes e botões bonitos. Mas, antes de decorar a casa, precisamos levantar as paredes. É exatamente para isso que serve um **Wireframe**.
+
+Um wireframe é como o "esqueleto" ou a "planta baixa" "uma ideia abstrata" de um aplicativo ou site. É um desenho visual simples que mostra onde cada elemento (texto, botão, imagem) vai ficar na tela, sem se preocupar com a estética final. Isso se fundamenta mais ainda pois um projeto muito sofisticado nessa fase do projeto, até mesmo inibiria a formulação de novas ideias. 
+
+### Passo a Passo para Prototipar o seu Primeiro Wireframe:
+
+**1. Esqueça as Cores e Imagens (Por enquanto)**
+A regra de ouro do wireframe é usar tons de cinza, preto e branco . Use caixas com um "X" no meio para representar onde ficarão as imagens e blocos de linhas para representar textos. O objetivo aqui é focar na **estrutura e navegação**, não no design visual. Algo funcional para passar uma ideia abstrata que sofrerá melhorias. 
+
+**2. Comece no Papel (Baixa Fidelidade)**
+A ferramenta mais rápida do mundo é papel e caneta. Desenhe retângulos simulando a tela do celular ou do computador e comece a rabiscar. Onde fica o menu? Onde fica o botão principal? Errou? Amasse e faça outro em segundos. Uma boa ideia que algumas pessoas usam é até mesmo um quadro branco e pincel e caneta.
+
+**3. Vá para o Digital (Média Fidelidade)**
+Depois de validar a ideia no papel e passar até mesmo pela fase colaborativa, passe para o computador. Existem ferramentas gratuitas e excelentes para isso, como o **Figma**, **Balsamiq** ou até mesmo o **Excalidraw**. Nelas, você consegue alinhar os elementos perfeitamente e ter uma noção real do tamanho das coisas e até mesmo fazer uma complementação entre eles
+
+**4. Pense na Hierarquia Visual**
+O que é mais importante na sua tela? Esse elemento deve ser maior ou estar no topo. Se o objetivo do seu app é fazer doações (como no nosso projeto *Mochila Cheia*), o botão de "Doar Agora" deve ter destaque e ser a primeira coisa que o usuário vê.
+
+**5. Teste o Fluxo**
+O wireframe não é apenas uma tela isolada. Desenhe as telas seguintes e ligue-as com setas. "Se o usuário clicar aqui, ele vai para esta tela". Isso ajuda a encontrar becos sem saída ou etapas confusas antes mesmo de escrever a primeira linha de código.
+
+**Por que isso importa?**
+Fazer wireframes economiza tempo e dinheiro. É muito mais rápido (e barato) apagar um quadrado no Figma ou no papel do que ter que reescrever horas de código porque o botão ficou no lugar errado e o usuário não conseguiu usar o sistema. 
+
+---
 ## 👥 Equipe
 
 | Nome | Função | Contribuição |
 |------|--------|--------------|
 | **Rodrigo Lima Diôgo** | Desenvolvedor Principal | Arquitetura, código das classes, banco de dados, documentação |
 | **Júlio Cesar Batista da Silva** | Desenvolvedor | Revisão de código, testes, documentação |
+| **Francisco Robson** | Desenvolvedor / IHC | Componente Extensionista, Documentação, Wireframes |
 
 ### Nota sobre a Equipe
 
 O projeto inicialmente contava com 6 membros, mas enfrentou desafios significativos devido a **desistências e evasão** ao longo do semestre. Os membros Leidson, Mikael, Nathalia e Pedro Davi não puderam continuar participando ativamente.
 
-Apesar das dificuldades, **Rodrigo e Julio** assumiram a responsabilidade de entregar o projeto completo, demonstrando comprometimento e resiliência diante dos obstáculos.
+Apesar das dificuldades, **Rodrigo, Julio Robson** assumiram a responsabilidade de entregar o projeto completo, demonstrando comprometimento e resiliência diante dos obstáculos.
 
 ---
 
