@@ -40,5 +40,11 @@ build/
 # Logs
 *.log
 
+# Documentação interna (não exposta no repositório)
+notcommit/
+
 # Google Docs links (arquivos .gdoc sao apenas links)
 *.gdoc
+
+# Not committed files
+notcommit/
