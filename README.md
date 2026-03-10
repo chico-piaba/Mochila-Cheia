@@ -16,6 +16,7 @@ O **Mochila Cheia** é uma plataforma digital (aplicativo web) que visa conectar
 - [Como Executar](#-como-executar)
 - [Classes do Sistema](#-classes-do-sistema)
 - [Banco de Dados](#-banco-de-dados)
+- [Wireframe e Sitemap](#-wireframe-e-sitemap-do-mvp)
 - [Possíveis Usos da Nossa Solução](#-componente-extensionista-possíveis-usos-da-nossa-solução)
 - [O que é Projeto Físico de Banco de Dados](#-componente-extensionista-o-que-é-projeto-físico-de-banco-de-dados)
 - [Como Prototipar um Wireframe](#-componente-extensionista-como-prototipar-um-wireframe)
@@ -100,7 +101,13 @@ mochila-cheia/
 │   └── seed.sql              # Dados de exemplo
 ├── docs/
 │   ├── EP1_Relatorio.md      # Relatório EP1 (POO)
-│   └── EP2_Relatorio.md      # Relatório EP2 (Banco)
+│   ├── EP2_Relatorio.md      # Relatório EP2 (Banco)
+│   ├── EP3_Relatorio.md      # Relatório EP3 (IHC)
+│   ├── EP3_Sitemap.md        # Sitemap do MVP
+│   ├── diagramas/            # Diagramas do projeto
+│   │   ├── DiagramaCasoDeUso.md
+│   │   └── derMC.drawio
+│   └── docs2025/             # Documentos das sprints anteriores
 └── tests/
     └── test_models.py        # Testes unitários
 ```
@@ -228,6 +235,33 @@ USUARIO (1) ──────────────── (N) ITEM
 
 ---
 
+## 🖼️ Wireframe e Sitemap do MVP
+
+O wireframe e o sitemap foram desenvolvidos no EP3 com foco em **IHC (Interação Humano-Computador)**, aplicando princípios de usabilidade (Heurísticas de Nielsen) e acessibilidade (WCAG 2.1).
+
+### Sitemap — Visão Geral da Navegação
+
+A plataforma possui 3 fluxos de navegação, um para cada perfil de usuário:
+
+| Perfil | Telas Principais | Objetivo |
+|--------|-----------------|----------|
+| **Doador** | Home, Cadastrar Item, Meus Itens, Solicitações Recebidas, Mensagens | Publicar itens e gerenciar solicitações de doação |
+| **Receptor** | Home (Busca), Detalhes do Item, Minhas Solicitações, Pontos de Coleta, Mensagens | Encontrar e solicitar materiais escolares |
+| **Moderador** | Painel, Fila de Moderação, Revisar Item | Garantir a qualidade dos itens publicados |
+
+> 📄 Sitemap completo com diagramas: [`docs/EP3_Sitemap.md`](docs/EP3_Sitemap.md)
+
+### Princípios de Design Aplicados
+
+| Área | Referência | Exemplos no Projeto |
+|------|-----------|---------------------|
+| **Usabilidade** | 10 Heurísticas de Nielsen | Badges de status, navegação por bottom tab, validação de formulários, confirmação de ações |
+| **Acessibilidade** | WCAG 2.1 (Níveis A e AA) | Contraste 4.5:1, textos alternativos, alvos de toque 48x48dp, hierarquia de títulos |
+
+> 📄 Justificativas detalhadas: [`docs/EP3_Relatorio.md`](docs/EP3_Relatorio.md)
+
+---
+
 ## 🌍 [Componente Extensionista] Possíveis Usos da Nossa Solução
 
 A plataforma **Mochila Cheia** foi idealizada para a doação de material escolar, mas seu modelo de intermediação logística pode ser expandido para resolver outros problemas reais, beneficiando diversas comunidades e negócios.
@@ -327,6 +361,7 @@ O wireframe não é apenas uma tela isolada. Desenhe as telas seguintes e ligue-
 Fazer wireframes economiza tempo e dinheiro. É muito mais rápido (e barato) apagar um quadrado no Figma ou no papel do que ter que reescrever horas de código porque o botão ficou no lugar errado e o usuário não conseguiu usar o sistema. 
 
 ---
+
 ## 👥 Equipe
 
 | Nome | Função | Contribuição |
@@ -339,7 +374,7 @@ Fazer wireframes economiza tempo e dinheiro. É muito mais rápido (e barato) ap
 
 O projeto inicialmente contava com 6 membros, mas enfrentou desafios significativos devido a **desistências e evasão** ao longo do semestre. Os membros Leidson, Mikael, Nathalia e Pedro Davi não puderam continuar participando ativamente.
 
-Apesar das dificuldades, **Rodrigo, Julio Robson** assumiram a responsabilidade de entregar o projeto completo, demonstrando comprometimento e resiliência diante dos obstáculos.
+Apesar das dificuldades, **Rodrigo, Júlio e Robson** assumiram a responsabilidade de entregar o projeto completo, demonstrando comprometimento e resiliência diante dos obstáculos.
 
 ---
 
