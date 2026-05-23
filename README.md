@@ -48,18 +48,18 @@ Uma plataforma que conecta:
 ---
 ## 🌟 Importância da Experiência do Usuário (UX)
 
-Um bom design de interface vai muito além da estética; ele tem o poder de democratizar o acesso à tecnologia e impactar positivamente a vida das pessoas como um todo. No mundo real, sistemas com uma UX bem planejada reduzem a carga cognitiva do usuário(redução de stress mental), evitam frustrações e tornam a realização de tarefas complexas algo intuitivo e acessível para todos, independentemente do seu nível de letramento digital(seja inciciante ou avançado). No contexto do **Mochila Cheia**, uma UX acolhedora e acessível é fundamental para garantir que famílias em situação de vulnerabilidade consigam solicitar materiais sem barreiras tecnológicas, enquanto incentiva doadores a concluírem o processo de doação de forma rápida e segura. Um sistema que busca a todo modo não parecer algo complicado.
+Um bom design de interface vai muito além da estética; ele tem o poder de democratizar o acesso à tecnologia e impactar positivamente a vida das pessoas como um todo. No mundo real, sistemas com uma UX bem planejada reduzem a carga cognitiva do usuário (redução de stress mental), evitam frustrações e tornam a realização de tarefas complexas algo intuitivo e acessível para todos, independentemente do seu nível de letramento digital (seja iniciante ou avançado). No contexto do **Mochila Cheia**, uma UX acolhedora e acessível é fundamental para garantir que famílias em situação de vulnerabilidade consigam solicitar materiais sem barreiras tecnológicas, enquanto incentiva doadores a concluírem o processo de doação de forma rápida e segura. Um sistema que busca a todo modo não parecer algo complicado.
 
 ## 📌 Contextualização do Projeto
 
 * **Qual é o problema que a solução resolve?**
-A plataforma resolve a dificuldade de famílias de baixa renda em arcar com os altos custos de materiais escolares (que impactam 85% dos orçamentos familiares e vem aumentado ano após ano), combatendo o descarte desnecessário de materiais em bom estado e ajudando a mitigar a evasão escolar por falta de recursos básicos, além da questão ambiental que mesmo pequena e extremamente importante que haja.
+A plataforma resolve a dificuldade de famílias de baixa renda em arcar com os altos custos de materiais escolares (que impactam 85% dos orçamentos familiares e vêm aumentando ano após ano), combatendo o descarte desnecessário de materiais em bom estado e ajudando a mitigar a evasão escolar por falta de recursos básicos, além da questão ambiental que, mesmo pequena, é extremamente importante.
 
 * **Qual é o objetivo do sistema?**
-Criar uma ponte logística eficiente, segura e confiável entre pessoas que possuem materiais escolares para doar e os estudantes que necessitam desses itens, utilizando pontos de coleta parceiros para facilitar o processo. Buscando unir a disponiblidade de uns e a necessidade de outros.
+Criar uma ponte logística eficiente, segura e confiável entre pessoas que possuem materiais escolares para doar e os estudantes que necessitam desses itens, utilizando pontos de coleta parceiros para facilitar o processo. Buscando unir a disponibilidade de uns e a necessidade de outros.
 
 * **Como o sistema funciona (visão geral)?**
-O sistema conecta três perfis: Doadores (que cadastram itens disponíveis), Receptores (que buscam e solicitam itens) e Moderadores. Através de uma busca inteligente e um chat integrado, as partes combinam a entrega utilizando pontos de coleta parceiros, tranmitindo confiança ao processo como um todo.
+O sistema conecta três perfis: Doadores (que cadastram itens disponíveis), Receptores (que buscam e solicitam itens) e Moderadores. Através de uma busca inteligente e um chat integrado, as partes combinam a entrega utilizando pontos de coleta parceiros, transmitindo confiança ao processo como um todo.
 
 * **Quais tecnologias foram utilizadas?**
 Para a prototipação e design de interfaces (foco desta etapa), utilizamos o **Figma**. O back-end e a estrutura lógica utilizam Python 3.10+, SQLite/PostgreSQL e controle de versão via Git/GitHub.
