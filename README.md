@@ -388,7 +388,6 @@ Fazer wireframes economiza tempo e dinheiro. É muito mais rápido (e barato) ap
 
 ## 👥 Equipe
 
-
 | Nome | Função |
 |------|--------|
 | **Rodrigo Lima Diôgo** | Gestão, Comunicação e Arquitetura |
@@ -404,6 +403,6 @@ Para a fase atual de desenvolvimento (Projeto Integrado III), a equipe foi reest
 
 ## 📄 Licença
 
-Este projeto foi desenvolvido para fins acadêmicos como parte do **Projeto Integrado II** do curso de Análise e Desenvolvimento de Sistemas da UFCA.
+Este projeto foi desenvolvido para fins acadêmicos como parte do **Projeto Integrado III** do curso de Análise e Desenvolvimento de Sistemas da UFCA.
 
 ---
