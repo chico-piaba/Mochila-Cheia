@@ -70,6 +70,7 @@ O protótipo de alta fidelidade pode ser acessado e navegado diretamente atravé
 * **Quais decisões foram tomadas ao longo do desenvolvimento?**
 Durante o design, priorizamos a acessibilidade (contraste 4.5:1 da WCAG 2.1) e a usabilidade (aplicando as Heurísticas de Nielsen). Optamos por uma navegação via *bottom tab* para facilitar o uso em dispositivos móveis, criamos *badges* de status para dar visibilidade clara sobre a situação das doações e focamos em formulários com validação imediata para prevenir erros do usuário.
 
+
 ## ✨ Funcionalidades Principais (MVP)
 
 | Funcionalidade | Descrição |
