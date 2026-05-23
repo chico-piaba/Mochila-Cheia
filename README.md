@@ -2,7 +2,7 @@
 
 O **Mochila Cheia** é uma plataforma digital (aplicativo web) que visa conectar doadores de materiais escolares a estudantes que necessitam desses itens. A solução busca combater o desperdício, promover a sustentabilidade e gerar impacto social positivo, facilitando o acesso a recursos educacionais para famílias de baixa renda.
 
-> **Projeto Integrado II** - Análise e Desenvolvimento de Sistemas (ADS)  
+> **Projeto Integrado III** - Análise e Desenvolvimento de Sistemas (ADS)  
 > Universidade Federal do Cariri (UFCA) - Centro de Educação a Distância (CEAD)
 
 ---
