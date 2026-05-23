@@ -340,6 +340,30 @@ Se você está começando a programar ou criar sistemas agora, pode ficar ansios
 
 Um wireframe é como o "esqueleto" ou a "planta baixa" "uma ideia abstrata" de um aplicativo ou site. É um desenho visual simples que mostra onde cada elemento (texto, botão, imagem) vai ficar na tela, sem se preocupar com a estética final. Isso se fundamenta mais ainda pois um projeto muito sofisticado nessa fase do projeto, até mesmo inibiria a formulação de novas ideias. 
 
+## 🌟 Importância da Experiência do Usuário (UX)
+
+Um bom design de interface vai muito além da estética; ele tem o poder de democratizar o acesso à tecnologia e impactar positivamente a vida das pessoas como um todo. No mundo real, sistemas com uma UX bem planejada reduzem a carga cognitiva do usuário(redução de stress mental), evitam frustrações e tornam a realização de tarefas complexas algo intuitivo e acessível para todos, independentemente do seu nível de letramento digital(seja inciciante ou avançado). No contexto do **Mochila Cheia**, uma UX acolhedora e acessível é fundamental para garantir que famílias em situação de vulnerabilidade consigam solicitar materiais sem barreiras tecnológicas, enquanto incentiva doadores a concluírem o processo de doação de forma rápida e segura. Um distema que busca a todo modo não parecer algo complicado.
+
+## 📌 Contextualização do Projeto
+
+* **Qual é o problema que a solução resolve?**
+A plataforma resolve a dificuldade de famílias de baixa renda em arcar com os altos custos de materiais escolares (que impactam 85% dos orçamentos familiares e veem aumentado ano após ano), combatendo o descarte desnecessário de materiais em bom estado e ajudando a mitigar a evasão escolar por falta de recursos básicos, além da questão ambiental que mesmo pequena e extremamente importante que haja.
+
+* **Qual é o objetivo do sistema?**
+Criar uma ponte logística eficiente, segura e confiável entre pessoas que possuem materiais escolares para doar e os estudantes que necessitam desses itens, utilizando pontos de coleta parceiros para facilitar o processo. Buscando unir a disponiblidade de uns e a necessidade de outros.
+
+* **Como o sistema funciona (visão geral)?**
+O sistema conecta três perfis: Doadores (que cadastram itens disponíveis), Receptores (que buscam e solicitam itens) e Moderadores. Através de uma busca inteligente e um chat integrado, as partes combinam a entrega utilizando pontos de coleta parceiros, tranmitindo confiança ao processo como um todo.
+
+* **Quais tecnologias foram utilizadas?**
+Para a prototipação e design de interfaces (foco desta etapa), utilizamos o **Figma**. O back-end e a estrutura lógica utilizam Python 3.10+, SQLite/PostgreSQL e controle de versão via Git/GitHub.
+
+* **Como executar ou utilizar a aplicação?**
+O protótipo de alta fidelidade pode ser acessado e navegado diretamente através do link público do Figma: [Acessar Protótipo no Figma](https://www.figma.com/design/VTX9EUtbKb7ZPAQW5SR7Ha/Mochila-Cheia---Wireframes?node-id=0-1&t=ZPmXkBwTpCOOfYV0-1). Para executar o código do backend localmente, basta clonar o repositório, instalar as dependências via `requirements.txt` e executar `python main.py` na pasta `src`.
+
+* **Quais decisões foram tomadas ao longo do desenvolvimento?**
+Durante o design, priorizamos a acessibilidade (contraste 4.5:1 da WCAG 2.1) e a usabilidade (aplicando as Heurísticas de Nielsen). Optamos por uma navegação via *bottom tab* para facilitar o uso em dispositivos móveis, criamos *badges* de status para dar visibilidade clara sobre a situação das doações e focamos em formulários com validação imediata para prevenir erros do usuário.
+
 ### Passo a Passo para Prototipar o seu Primeiro Wireframe:
 
 **1. Esqueça as Cores e Imagens (Por enquanto)**
