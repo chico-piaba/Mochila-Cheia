@@ -388,19 +388,19 @@ Fazer wireframes economiza tempo e dinheiro. É muito mais rápido (e barato) ap
 
 ## 👥 Equipe
 
-| Nome | Função | Contribuição |
-|------|--------|--------------|
-| **Rodrigo Lima Diôgo** | Desenvolvedor Principal | Arquitetura, código das classes, banco de dados, documentação |
-| **Júlio Cesar Batista da Silva** | Desenvolvedor | Revisão de código, testes, documentação |
-| **Francisco Robson** | Desenvolvedor / IHC | Componente Extensionista, Documentação, Wireframes |
 
-### Nota sobre a Equipe
+| Nome | Função |
+|------|--------|
+| **Rodrigo Lima Diôgo** | Gestão, Comunicação e Arquitetura |
+| **Júlio César Batista da Silva** | Backend e Análise de Fluxo |
+| **Francisco Robson Paulino Cruz** | IHC/UX |
+| **Maria da Conceição Freitas Lopes** | Documentação e IHC/UX |
+| **Gabriela Araújo Lourenço** | Backend e Análise de Fluxo |
+| **Lucas do Nascimento Souza** | IHC/UX |
 
-O projeto inicialmente contava com 6 membros, mas enfrentou desafios significativos devido a **desistências e evasão** ao longo do semestre. Os membros Leidson, Mikael, Nathalia e Pedro Davi não puderam continuar participando ativamente.
+### Nota sobre a Evolução da Equipe
 
-Apesar das dificuldades, **Rodrigo, Júlio e Robson** assumiram a responsabilidade de entregar o projeto completo, demonstrando comprometimento e resiliência diante dos obstáculos.
-
----
+Para a fase atual de desenvolvimento (Projeto Integrado III), a equipe foi reestruturada e expandida para 6 membros. Com a integração de novos colegas, o time conseguiu dividir as frentes de trabalho de forma mais eficiente, separando as demandas entre Arquitetura/Backend e IHC/UX. Essa nova formação trouxe mais fôlego para o projeto, garantindo a entrega do protótipo de alta fidelidade e da documentação com maior qualidade.
 
 ## 📄 Licença
 
