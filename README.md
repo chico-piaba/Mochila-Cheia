@@ -6,12 +6,12 @@ O **Mochila Cheia** é uma plataforma digital (aplicativo web) que visa conectar
 > Universidade Federal do Cariri (UFCA) - Centro de Educação a Distância (CEAD)
 
 ---
-- [Importância da Experiência do Usuário (UX)](#-importância-da-experiência-do-usuário-ux)
-- [Contextualização do Projeto](#-contextualização-do-projeto)
 
 ## 📋 Índice
 
 - [Objetivo](#-objetivo)
+- [Importância da Experiência do Usuário (UX)](#-importância-da-experiência-do-usuário-ux)
+- [Contextualização do Projeto](#-contextualização-do-projeto)
 - [Funcionalidades Principais](#-funcionalidades-principais-mvp)
 - [Tecnologias Utilizadas](#-tecnologias-utilizadas)
 - [Estrutura do Projeto](#-estrutura-do-projeto)
