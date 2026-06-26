@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block titulo %}Editar item — Mochila Cheia{% endblock %}
+{% block conteudo %}
+<div class="relative flex h-auto min-h-screen w-full max-w-[480px] mx-auto flex-col bg-background-light dark:bg-background-dark overflow-x-hidden pb-24">
+<!-- Header -->
+<div class="flex items-center bg-background-light dark:bg-background-dark p-4 sticky top-0 z-10 border-b border-primary/10">
+<a href="{{ url_for('itens.meus') }}" class="text-primary flex size-10 shrink-0 items-center justify-start cursor-pointer">
+<span class="material-symbols-outlined">arrow_back</span>
+</a>
+<h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-10">Editar Item</h2>
+</div>
+<!-- Content -->
+<div class="flex flex-col gap-6 p-4">
+<!-- Foto Section -->
+<section class="flex flex-col gap-3">
+<h3 class="text-slate-900 dark:text-slate-100 text-base font-bold leading-tight">Foto do item</h3>
+<div class="relative group">
+<div class="w-full bg-center bg-no-repeat bg-cover flex flex-col justify-end overflow-hidden rounded-xl min-h-[240px] shadow-sm border border-primary/10" data-alt="Relógio de pulso minimalista cinza em fundo neutro" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBfjo6ArExLq8tno4Irmz_AdNuJa0yq_XqaZm0aPaASj8QuM7a20j1OtcgqYv-Lk4uqsvGiCmPKSCsQZqVACXf1ib5ISF2n6wrnab9ezn0hX3115-ggovBRssvZFrAbP7PY1cFY16VNt28SygmdxfyxLnjrsj2SkzHJXyOxO7hUyt3lsWc39cWeuU58biYWFv6Ff6egdN9BoBK9kCgajsihh-C6xzCdDMV1u_xchjVf8IxRwkVPsK4ZpkJJZRaY3-Nxs3Sh9kcKNnIo");'>
+</div>
+<button class="absolute bottom-4 right-4 flex items-center gap-2 px-4 py-2 bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm rounded-full text-primary text-sm font-bold shadow-lg">
+<span class="material-symbols-outlined text-sm">photo_camera</span>
+                        Trocar foto
+                    </button>
+</div>
+</section>
+<!-- Form Fields -->
+<form class="flex flex-col gap-5">
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Título do item</label>
+<input class="w-full h-12 px-4 rounded-lg border-primary/20 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 focus:border-primary focus:ring-primary" type="text" value="Relógio Minimalista"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Descrição</label>
+<textarea class="w-full p-4 rounded-lg border-primary/20 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 focus:border-primary focus:ring-primary" rows="4">Relógio de pulso em excelente estado. Design nórdico, pulseira de couro cinza. Pouco tempo de uso, bateria nova.</textarea>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Categoria</label>
+<select class="w-full h-12 px-4 rounded-lg border-primary/20 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 focus:border-primary focus:ring-primary">
+<option>Acessórios</option>
+<option>Eletrônicos</option>
+<option>Roupas</option>
+<option>Móveis</option>
+</select>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Estado de conservação</label>
+<div class="flex gap-2">
+<button class="flex-1 py-2 px-3 rounded-full border border-primary/20 text-xs font-medium bg-white dark:bg-slate-900" type="button">Novo</button>
+<button class="flex-1 py-2 px-3 rounded-full border-2 border-primary bg-primary/10 text-primary text-xs font-bold" type="button">Seminovo</button>
+<button class="flex-1 py-2 px-3 rounded-full border border-primary/20 text-xs font-medium bg-white dark:bg-slate-900" type="button">Usado</button>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Ponto de coleta</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">location_on</span>
+<input class="w-full h-12 pl-10 pr-4 rounded-lg border-primary/20 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 focus:border-primary focus:ring-primary" type="text" value="Ponto Central - Av. das Flores, 123"/>
+</div>
+</div>
+</form>
+<!-- Action Buttons -->
+<div class="flex flex-col gap-3 pt-4">
+<button class="w-full h-12 bg-primary text-white rounded-xl font-bold shadow-lg shadow-primary/20 flex items-center justify-center">
+                    Salvar Alterações
+                </button>
+<a href="{{ url_for('itens.meus') }}" class="w-full h-12 bg-transparent text-slate-600 dark:text-slate-400 rounded-xl font-bold flex items-center justify-center border border-slate-200 dark:border-slate-800">
+                    Cancelar
+                </a>
+</div>
+</div>
+</div>
+{% endblock %}

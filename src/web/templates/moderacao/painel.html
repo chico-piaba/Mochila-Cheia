@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% block titulo %}Painel do moderador — Mochila Cheia{% endblock %}
+{% block conteudo %}
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden max-w-md mx-auto shadow-2xl bg-background-light dark:bg-background-dark">
+{# Header #}
+<header class="flex items-center p-4 pb-2 justify-between sticky top-0 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md z-10">
+<div class="flex size-10 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
+<span class="material-symbols-outlined">shield_person</span>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-tight flex-1 ml-3">Moderador</h2>
+<div class="flex items-center gap-2">
+<button class="flex size-10 items-center justify-center rounded-full bg-slate-200/50 dark:bg-slate-800/50 text-slate-700 dark:text-slate-300">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button class="flex size-10 items-center justify-center rounded-full bg-slate-200/50 dark:bg-slate-800/50 text-slate-700 dark:text-slate-300">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+</header>
+{# User Greeting Section #}
+<section class="flex p-4 @container">
+<div class="flex w-full flex-col gap-4">
+<div class="flex gap-4 items-center">
+<div class="bg-primary/20 aspect-square rounded-full flex items-center justify-center min-h-20 w-20 border-2 border-primary/30 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Avatar circular do usuário moderador sorrindo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVV9Naj2qpaAa8ODHkOXMGtCbtpWUcPh-D3DpgQz9H55YkbFEUw3zohzh28lbheJiceTr_WVjO8eGHWLB4Xl2KL3uvFiX31a7DzwaC1dmOD44h-Q_dO5pkYoj4VG4X026XFJKLNwTH778LLwVizsDPqg4MP0lh9PgZnlR_8HiDqVP3R-QUYQh_Asx__p7oDlovbq8nMu4Vq6Q04yjCRuRwZ2-zFdNMtGrTpW1cJyrfG-u8vRlAm3Xpn_w14ZBJGQuVFqCgl7E77F51"/>
+</div>
+<div class="flex flex-col justify-center">
+<h1 class="text-slate-900 dark:text-slate-100 text-2xl font-bold leading-tight">Olá, Alex!</h1>
+<div class="flex items-center gap-2 mt-1">
+<span class="bg-primary text-white text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">Moderador</span>
+<span class="text-slate-500 dark:text-slate-400 text-sm font-medium">Nível 2</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+{# Main Action Card #}
+<section class="p-4">
+<div class="flex flex-col items-stretch justify-start rounded-xl shadow-lg border border-primary/10 bg-white dark:bg-slate-900 overflow-hidden">
+<div class="w-full h-32 bg-primary/10 flex items-center justify-center relative overflow-hidden">
+<div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary via-transparent to-transparent"></div>
+<span class="material-symbols-outlined text-primary text-5xl opacity-40">assignment_late</span>
+</div>
+<div class="flex w-full flex-col items-stretch justify-center gap-3 p-5">
+<div>
+<p class="text-slate-900 dark:text-slate-100 text-xl font-bold leading-tight">14 itens aguardando revisão</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm mt-1">Sua fila de moderação cresceu desde o último acesso. Verifique agora!</p>
+</div>
+<a href="{{ url_for('moderacao.fila') }}" class="flex w-full cursor-pointer items-center justify-center rounded-lg h-12 px-6 bg-primary text-white text-base font-bold transition-transform active:scale-[0.98]">
+<span class="material-symbols-outlined mr-2">verified_user</span>
+<span>Revisar Agora</span>
+</a>
+</div>
+</div>
+</section>
+{# Stats Section #}
+<section class="px-4 py-2">
+<h3 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight mb-4">Estatísticas de Hoje</h3>
+<div class="grid grid-cols-2 gap-3">
+{# Aprovados #}
+<div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-2 mb-2">
+<div class="size-8 rounded-lg bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center text-emerald-600 dark:text-emerald-400">
+<span class="material-symbols-outlined text-lg">check_circle</span>
+</div>
+</div>
+<p class="text-2xl font-bold text-slate-900 dark:text-slate-100">42</p>
+<p class="text-xs text-slate-500 dark:text-slate-400 font-medium uppercase tracking-wider">Aprovados hoje</p>
+</div>
+{# Recusados #}
+<div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-2 mb-2">
+<div class="size-8 rounded-lg bg-rose-100 dark:bg-rose-900/30 flex items-center justify-center text-rose-600 dark:text-rose-400">
+<span class="material-symbols-outlined text-lg">cancel</span>
+</div>
+</div>
+<p class="text-2xl font-bold text-slate-900 dark:text-slate-100">08</p>
+<p class="text-xs text-slate-500 dark:text-slate-400 font-medium uppercase tracking-wider">Recusados hoje</p>
+</div>
+{# Total Revisados #}
+<div class="col-span-2 bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 flex items-center justify-between">
+<div>
+<p class="text-xs text-slate-500 dark:text-slate-400 font-medium uppercase tracking-wider mb-1">Total revisados</p>
+<p class="text-2xl font-bold text-slate-900 dark:text-slate-100">50 <span class="text-sm font-normal text-slate-400">/ 64</span></p>
+</div>
+<div class="relative size-12">
+<svg class="size-full -rotate-90" viewbox="0 0 36 36">
+<circle class="stroke-slate-200 dark:stroke-slate-800" cx="18" cy="18" fill="none" r="16" stroke-width="3"></circle>
+<circle class="stroke-primary" cx="18" cy="18" fill="none" r="16" stroke-dasharray="78, 100" stroke-linecap="round" stroke-width="3"></circle>
+</svg>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="text-[10px] font-bold">78%</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<div class="h-24"></div> {# Spacer for fixed nav #}
+</div>
+{% endblock %}

@@ -1,0 +1,141 @@
+{% extends "base.html" %}
+{% block titulo %}Detalhe do ponto — Mochila Cheia{% endblock %}
+{% block conteudo %}
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden max-w-md mx-auto bg-white dark:bg-slate-900 shadow-xl">
+{# Header #}
+<div class="flex items-center p-4 justify-between sticky top-0 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md z-10 border-b border-primary/10">
+<a href="{{ url_for('pontos.listar') }}" class="text-primary flex size-10 items-center justify-center rounded-full hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined">arrow_back</span>
+</a>
+<h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-tight flex-1 px-2">Detalhes do Ponto</h2>
+<div class="flex gap-2">
+<button class="text-primary flex size-10 items-center justify-center rounded-full hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined">share</span>
+</button>
+<button class="text-primary flex size-10 items-center justify-center rounded-full hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined">favorite</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col flex-1 pb-24">
+{# Hero Section / Map #}
+<div class="px-4 pt-6 pb-4">
+<h1 class="text-slate-900 dark:text-slate-100 text-3xl font-extrabold leading-tight tracking-tight mb-4">
+                    Ponto Central <span class="text-primary">Mochila Cheia</span>
+</h1>
+<div class="relative group">
+<div class="w-full aspect-video bg-primary/10 rounded-xl overflow-hidden border border-primary/20 relative">
+<img class="w-full h-full object-cover grayscale opacity-80" data-alt="Mapa mostrando a localização do ponto de coleta em São Paulo" data-location="São Paulo, Brazil" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgc6JyN0f_FmXY8hYUPcY5evaQFAckLI_q-H8PGQGSE_Y6-ZKs6MadW7CNh32bPAP6FAfdWjEE3IVFwlNum5pjq7nIznfBywSmfvv35ahymt_RBKw13B1df121r61Pm1I4JHCxPVWpqiZljGCCTrEgK05YYIWi2MgExv1XMGwhMqC-dH_4F9PMsdeDLro4GFBNhk9AEKAE_rbpPWSs-643cMrsNmQw1xu863fZhvxerVQa-M95ICxE-DGLDSGICED9w1CH3-6lIkiv"/>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="bg-primary text-white p-2 rounded-full shadow-lg">
+<span class="material-symbols-outlined text-3xl">location_on</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+{# Contact & Info #}
+<div class="px-4 py-4 space-y-6">
+<div class="space-y-4">
+<h3 class="text-primary text-sm font-bold uppercase tracking-widest">Informações Gerais</h3>
+<div class="flex gap-4 items-start">
+<div class="size-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined">map</span>
+</div>
+<div>
+<p class="text-xs text-slate-500 dark:text-slate-400 font-medium">Endereço Completo</p>
+<p class="text-sm font-semibold">Rua das Flores, 123 - Centro, São Paulo - SP</p>
+</div>
+</div>
+<div class="flex gap-4 items-start">
+<div class="size-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined">schedule</span>
+</div>
+<div>
+<p class="text-xs text-slate-500 dark:text-slate-400 font-medium">Horário de Funcionamento</p>
+<p class="text-sm font-semibold">Segunda a Sexta: 08:00 - 18:00<br/>Sábados: 09:00 - 13:00</p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="flex gap-4 items-start">
+<div class="size-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined">person</span>
+</div>
+<div>
+<p class="text-xs text-slate-500 dark:text-slate-400 font-medium">Responsável</p>
+<p class="text-sm font-semibold">Ana Silva</p>
+</div>
+</div>
+<a class="flex gap-4 items-start group" href="tel:+5511999999999">
+<div class="size-10 rounded-lg bg-primary/20 group-hover:bg-primary transition-colors flex items-center justify-center text-primary group-hover:text-white shrink-0">
+<span class="material-symbols-outlined">call</span>
+</div>
+<div>
+<p class="text-xs text-slate-500 dark:text-slate-400 font-medium">Telefone</p>
+<p class="text-sm font-semibold text-primary underline underline-offset-2">(11) 99999-9999</p>
+</div>
+</a>
+</div>
+<div class="flex gap-4 items-start">
+<div class="size-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined">mail</span>
+</div>
+<div>
+<p class="text-xs text-slate-500 dark:text-slate-400 font-medium">E-mail</p>
+<p class="text-sm font-semibold">contato@mochilacheia.com.br</p>
+</div>
+</div>
+</div>
+{# Items Grid Section #}
+<div class="space-y-4 pt-4">
+<div class="flex items-center justify-between">
+<h3 class="text-primary text-sm font-bold uppercase tracking-widest">Itens Disponíveis</h3>
+<span class="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full font-bold">12 Itens</span>
+</div>
+<div class="grid grid-cols-3 gap-3">
+{# Item Card 1 #}
+<div class="bg-slate-50 dark:bg-slate-800 p-2 rounded-lg border border-slate-200 dark:border-slate-700 flex flex-col items-center text-center gap-2">
+<div class="size-12 rounded-full bg-white dark:bg-slate-700 flex items-center justify-center text-primary shadow-sm">
+<span class="material-symbols-outlined">menu_book</span>
+</div>
+<span class="text-[10px] font-bold leading-tight">Cadernos Universitários</span>
+</div>
+{# Item Card 2 #}
+<div class="bg-slate-50 dark:bg-slate-800 p-2 rounded-lg border border-slate-200 dark:border-slate-700 flex flex-col items-center text-center gap-2">
+<div class="size-12 rounded-full bg-white dark:bg-slate-700 flex items-center justify-center text-primary shadow-sm">
+<span class="material-symbols-outlined">edit</span>
+</div>
+<span class="text-[10px] font-bold leading-tight">Lápis &amp; Canetas</span>
+</div>
+{# Item Card 3 #}
+<div class="bg-slate-50 dark:bg-slate-800 p-2 rounded-lg border border-slate-200 dark:border-slate-700 flex flex-col items-center text-center gap-2">
+<div class="size-12 rounded-full bg-white dark:bg-slate-700 flex items-center justify-center text-primary shadow-sm">
+<span class="material-symbols-outlined">backpack</span>
+</div>
+<span class="text-[10px] font-bold leading-tight">Mochilas Escolares</span>
+</div>
+{# Item Card 4 #}
+<div class="bg-slate-50 dark:bg-slate-800 p-2 rounded-lg border border-slate-200 dark:border-slate-700 flex flex-col items-center text-center gap-2">
+<div class="size-12 rounded-full bg-white dark:bg-slate-700 flex items-center justify-center text-primary shadow-sm">
+<span class="material-symbols-outlined">straighten</span>
+</div>
+<span class="text-[10px] font-bold leading-tight">Réguas &amp; Kits</span>
+</div>
+{# Item Card 5 #}
+<div class="bg-slate-50 dark:bg-slate-800 p-2 rounded-lg border border-slate-200 dark:border-slate-700 flex flex-col items-center text-center gap-2">
+<div class="size-12 rounded-full bg-white dark:bg-slate-700 flex items-center justify-center text-primary shadow-sm">
+<span class="material-symbols-outlined">calculate</span>
+</div>
+<span class="text-[10px] font-bold leading-tight">Calculadoras</span>
+</div>
+{# Item Card 6 (View All) #}
+<div class="bg-primary/5 p-2 rounded-lg border border-primary/20 flex flex-col items-center justify-center text-center gap-1 cursor-pointer hover:bg-primary/10">
+<span class="material-symbols-outlined text-primary">add_circle</span>
+<span class="text-[10px] font-extrabold text-primary leading-tight">Ver Mais</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+{% endblock %}

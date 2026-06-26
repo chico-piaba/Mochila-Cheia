@@ -125,7 +125,7 @@ flowchart LR
 | 4 | **Home — Doador** | Doador | Dashboard com resumo da atividade | Cards de resumo (itens ativos, solicitações pendentes), acesso rápido a "Cadastrar Item" |
 | 5 | **Home — Receptor** | Receptor | Feed de itens disponíveis | Grid/lista de itens, barra de busca, filtros por categoria e localização |
 | 6 | **Painel — Moderador** | Moderador | Dashboard de moderação | Contador de itens pendentes, acesso à fila de moderação |
-| 7 | **Cadastrar Item** | Doador | Formulário de cadastro de item | Campos: título, descrição, categoria (select), estado de conservação, foto, ponto de coleta (opcional) |
+| 7 | **Cadastrar Item** | Doador | Formulário de cadastro de item | Campos: título, descrição, categoria (select), estado de conservação, foto, pono de coleta (opcional) |
 | 8 | **Meus Itens** | Doador | Lista de itens cadastrados pelo doador | Listagem com filtro por status (pendente, disponível, reservado, doado), ações por item |
 | 9 | **Detalhes do Item** | Doador / Receptor | Visualização completa de um item | Foto, título, descrição, categoria, estado, doador, ponto de coleta, botão "Solicitar" (receptor) ou "Editar" (doador) |
 | 10 | **Editar Item** | Doador | Edição dos dados de um item cadastrado | Mesmos campos do cadastro, pré-preenchidos |

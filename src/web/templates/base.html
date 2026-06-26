@@ -2,40 +2,80 @@
 <!--
   Layout base (View) - Mochila Cheia
   ----------------------------------
-  Esqueleto de apresentação compartilhado por todas as telas. Define a
-  estrutura semântica (header, main, bottom tab bar) seguindo o sitemap e o
-  wireframe do EP3 (navegação por bottom tab bar, foco mobile).
+  Design system derivado do protótipo de alta fidelidade (Figma/Stitch):
+  Tailwind CSS (CDN) + fonte Inter + Material Symbols, cor primária #7b00ff,
+  suporte a dark mode e bottom tab bar. TODAS as telas estendem esta base.
 
-  Responsável pelo esqueleto: Rodrigo
-  Estilo/identidade visual a partir do Figma: Robson e Lucas (IHC/UX)
+  Variáveis passadas pela rota (controller):
+    bloco "titulo"   -> título da aba do navegador
+    bloco "conteudo" -> conteúdo principal da tela
+    nav_ativa        -> item ativo da bottom bar:
+                        'home' | 'solicitacoes' | 'pontos' | 'mensagens' | 'perfil'
+    sem_nav=True     -> esconde a bottom bar (login, cadastro, splash)
+
+  Esqueleto/integração: Rodrigo · Identidade visual: Figma (Robson e Lucas)
 -->
-<html lang="pt-br">
+<html lang="pt-BR" class="">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% block titulo %}Mochila Cheia{% endblock %}</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "primary": "#7b00ff",
+          "background-light": "#f7f5f8",
+          "background-dark": "#190f23",
+          "success": "#22c55e",
+          "danger": "#ef4444",
+        },
+        fontFamily: { "display": ["Inter"] },
+        borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+      },
+    },
+  }
+</script>
+<title>{% block titulo %}Mochila Cheia{% endblock %}</title>
+<style>
+  body { min-height: 100dvh; }
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+</style>
 </head>
-<body>
-  <header class="topo" role="banner">
-    <a class="topo__logo" href="{{ url_for('home.index') }}">🎒 Mochila Cheia</a>
-    <nav class="topo__acoes" aria-label="Ações de conta">
-      <a href="{{ url_for('auth.login') }}">Entrar</a>
-      <a href="{{ url_for('auth.cadastro') }}">Cadastrar</a>
-    </nav>
-  </header>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen flex flex-col {% if not sem_nav %}pb-24{% endif %}">
 
-  <main class="conteudo" role="main">
-    {% block conteudo %}{% endblock %}
-  </main>
+{% block conteudo %}{% endblock %}
 
-  <!-- Bottom tab bar: navegação principal (padrão definido no EP3/IHC) -->
-  <nav class="abas" aria-label="Navegação principal">
-    <a href="{{ url_for('home.index') }}">🏠<span>Início</span></a>
-    <a href="{{ url_for('itens.listar') }}">🔎<span>Buscar</span></a>
-    <a href="{{ url_for('itens.publicar') }}">➕<span>Doar</span></a>
-    <a href="{{ url_for('mensagens.conversas') }}">💬<span>Chat</span></a>
-    <a href="{{ url_for('notificacoes.listar') }}">🔔<span>Alertas</span></a>
-  </nav>
+{% if not sem_nav %}
+<!-- Bottom Navigation Bar (compartilhada) -->
+<nav class="fixed bottom-0 left-0 right-0 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 px-6 pb-6 pt-3 z-50">
+  <div class="flex justify-between items-center max-w-md mx-auto">
+    <a class="flex flex-col items-center gap-1 {% if nav_ativa == 'home' %}text-primary{% else %}text-slate-400 hover:text-primary transition-colors{% endif %}" href="{{ url_for('home.index') }}">
+      <span class="material-symbols-outlined text-[28px]">home</span>
+      <span class="text-[10px] font-bold">Home</span>
+    </a>
+    <a class="flex flex-col items-center gap-1 {% if nav_ativa == 'solicitacoes' %}text-primary{% else %}text-slate-400 hover:text-primary transition-colors{% endif %}" href="{{ url_for('solicitacoes.minhas') }}">
+      <span class="material-symbols-outlined text-[28px]">assignment_turned_in</span>
+      <span class="text-[10px] font-medium">Solicitações</span>
+    </a>
+    <a class="flex flex-col items-center gap-1 {% if nav_ativa == 'pontos' %}text-primary{% else %}text-slate-400 hover:text-primary transition-colors{% endif %}" href="{{ url_for('pontos.listar') }}">
+      <span class="material-symbols-outlined text-[28px]">stars</span>
+      <span class="text-[10px] font-medium">Pontos</span>
+    </a>
+    <a class="flex flex-col items-center gap-1 {% if nav_ativa == 'mensagens' %}text-primary{% else %}text-slate-400 hover:text-primary transition-colors{% endif %}" href="{{ url_for('mensagens.conversas') }}">
+      <span class="material-symbols-outlined text-[28px]">chat_bubble</span>
+      <span class="text-[10px] font-medium">Mensagens</span>
+    </a>
+    <a class="flex flex-col items-center gap-1 {% if nav_ativa == 'perfil' %}text-primary{% else %}text-slate-400 hover:text-primary transition-colors{% endif %}" href="{{ url_for('auth.perfil') }}">
+      <span class="material-symbols-outlined text-[28px]">account_circle</span>
+      <span class="text-[10px] font-medium">Perfil</span>
+    </a>
+  </div>
+</nav>
+{% endif %}
 </body>
 </html>

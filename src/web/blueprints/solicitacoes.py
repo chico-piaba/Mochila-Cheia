@@ -1,17 +1,11 @@
 """
 Módulo de Solicitações (Controller) - Mochila Cheia
 
-Fluxo de doação: o receptor solicita um item; o doador aceita/recusa; ao
-concluir, a doação é finalizada. Usa src.models.Solicitacao, que coordena a
-mudança de status do Item (reservar/finalizar).
+Telas do fluxo de doação (design do Figma): minhas solicitações e confirmação
+de solicitação de um item.
 
->>> A IMPLEMENTAR — Responsável: Júlio (Backend e Análise de Fluxo)
-
-Rotas planejadas:
-    POST  /solicitacoes/criar/<id_item>   -> receptor solicita um item
-    GET   /solicitacoes/minhas            -> solicitações do usuário logado
-    POST  /solicitacoes/<id>/aceitar      -> doador aceita (reserva o item)
-    POST  /solicitacoes/<id>/finalizar    -> conclui a doação
+>>> A LIGAR AO BACKEND — Responsável: Júlio (Backend e Análise de Fluxo)
+    Usar a classe Solicitacao (aceitar/finalizar coordenam o status do Item).
 """
 
 from flask import Blueprint, render_template
@@ -21,9 +15,11 @@ solicitacoes_bp = Blueprint("solicitacoes", __name__)
 
 @solicitacoes_bp.route("/minhas")
 def minhas():
-    """STUB: solicitações do usuário. Implementar fluxo (Júlio)."""
-    return render_template(
-        "placeholder.html",
-        modulo="Solicitações",
-        responsavel="Júlio (Backend e Análise de Fluxo)",
-    )
+    """Minhas solicitações (Figma). TODO Júlio: solicitações do usuário logado."""
+    return render_template("solicitacoes/minhas.html", nav_ativa="solicitacoes")
+
+
+@solicitacoes_bp.route("/confirmar")
+def confirmar():
+    """Confirmação de solicitação (Figma). TODO Júlio: criar Solicitacao no POST."""
+    return render_template("solicitacoes/confirmar.html", nav_ativa="solicitacoes")

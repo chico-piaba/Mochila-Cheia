@@ -1,17 +1,11 @@
 """
 Módulo de Moderação (Controller) - Mochila Cheia
 
-Painel do moderador: fila de itens pendentes para aprovar ou recusar antes de
-ficarem disponíveis. Usa os métodos aprovar()/recusar() de src.models.Item.
+Telas do moderador (design do Figma): painel, fila de moderação e revisão de
+um item.
 
->>> A IMPLEMENTAR — Responsável: Júlio (Backend e Análise de Fluxo)
-
-Rotas planejadas:
-    GET   /moderacao/             -> fila de itens pendentes (apenas moderador)
-    POST  /moderacao/<id>/aprovar -> aprova o item (fica disponível)
-    POST  /moderacao/<id>/recusar -> recusa o item (com motivo)
-
-Atenção: proteger as rotas para o perfil 'moderador' (verificar a sessão).
+>>> A LIGAR AO BACKEND — Responsável: Júlio (Backend e Análise de Fluxo)
+    Usar Item.aprovar()/recusar(). Proteger as rotas para o perfil 'moderador'.
 """
 
 from flask import Blueprint, render_template
@@ -21,9 +15,17 @@ moderacao_bp = Blueprint("moderacao", __name__)
 
 @moderacao_bp.route("/")
 def fila():
-    """STUB: fila de moderação. Implementar aprovar/recusar (Júlio)."""
-    return render_template(
-        "placeholder.html",
-        modulo="Moderação — Fila de Itens",
-        responsavel="Júlio (Backend e Análise de Fluxo)",
-    )
+    """Fila de moderação (Figma). TODO Júlio: itens pendentes reais."""
+    return render_template("moderacao/fila.html", nav_ativa="home")
+
+
+@moderacao_bp.route("/painel")
+def painel():
+    """Painel do moderador (Figma). TODO Júlio: métricas reais."""
+    return render_template("moderacao/painel.html", nav_ativa="home")
+
+
+@moderacao_bp.route("/<int:id_item>/revisar")
+def revisar(id_item):
+    """Revisar item (Figma). TODO Júlio: aprovar/recusar no POST."""
+    return render_template("moderacao/revisar.html", id_item=id_item, nav_ativa="home")

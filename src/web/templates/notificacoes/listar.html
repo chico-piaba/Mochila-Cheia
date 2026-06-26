@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+{% block titulo %}Notificações — Mochila Cheia{% endblock %}
+{% block conteudo %}
+<div class="relative flex h-auto min-h-screen w-full max-w-md mx-auto flex-col bg-white dark:bg-slate-900 shadow-xl overflow-x-hidden">
+<header class="flex items-center p-4 border-b border-slate-100 dark:border-slate-800 justify-between sticky top-0 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md z-10">
+<div class="text-slate-900 dark:text-slate-100 flex size-10 shrink-0 items-center justify-center rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer">
+<span class="material-symbols-outlined">arrow_back</span>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-tight flex-1 text-center">Notificações</h2>
+<div class="flex size-10 items-center justify-end">
+<button class="flex items-center justify-center rounded-full text-primary hover:bg-primary/10 p-2 transition-colors">
+<span class="material-symbols-outlined">done_all</span>
+</button>
+</div>
+</header>
+<div class="px-4 py-2">
+<div class="flex border-b border-slate-100 dark:border-slate-800 gap-8">
+<a class="flex flex-col items-center justify-center border-b-2 border-primary text-primary pb-3 pt-2" href="#">
+<p class="text-sm font-bold">Todas</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-2 border-transparent text-slate-500 dark:text-slate-400 pb-3 pt-2" href="#">
+<p class="text-sm font-medium">Não lidas</p>
+</a>
+</div>
+</div>
+<main class="flex-1 flex flex-col">
+<a href="#" class="flex gap-4 bg-primary/5 dark:bg-primary/10 px-4 py-4 border-b border-slate-50 dark:border-slate-800/50">
+<div class="flex items-start gap-4 flex-1">
+<div class="flex items-center justify-center rounded-lg bg-primary text-white shrink-0 size-12">
+<span class="material-symbols-outlined">check_circle</span>
+</div>
+<div class="flex flex-1 flex-col justify-center">
+<div class="flex justify-between items-start">
+<p class="text-slate-900 dark:text-slate-100 text-base font-bold leading-tight">Aula Confirmada</p>
+<span class="text-[10px] font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Agora</span>
+</div>
+<p class="text-slate-600 dark:text-slate-400 text-sm mt-1">Sua aula de Matemática com Prof. Marcos foi confirmada para amanhã.</p>
+<p class="text-slate-400 dark:text-slate-500 text-xs mt-2">Hoje, 10:30</p>
+</div>
+</div>
+<div class="shrink-0 pt-1">
+<div class="size-2.5 rounded-full bg-primary"></div>
+</div>
+</a>
+<a href="#" class="flex gap-4 bg-primary/5 dark:bg-primary/10 px-4 py-4 border-b border-slate-50 dark:border-slate-800/50">
+<div class="flex items-start gap-4 flex-1">
+<div class="flex items-center justify-center rounded-lg bg-blue-500 text-white shrink-0 size-12">
+<span class="material-symbols-outlined">chat</span>
+</div>
+<div class="flex flex-1 flex-col justify-center">
+<div class="flex justify-between items-start">
+<p class="text-slate-900 dark:text-slate-100 text-base font-bold leading-tight">Nova Mensagem</p>
+<span class="text-[10px] font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">5 min</span>
+</div>
+<p class="text-slate-600 dark:text-slate-400 text-sm mt-1">Você recebeu um novo arquivo de estudos para a prova de História.</p>
+<p class="text-slate-400 dark:text-slate-500 text-xs mt-2">Hoje, 10:25</p>
+</div>
+</div>
+<div class="shrink-0 pt-1">
+<div class="size-2.5 rounded-full bg-primary"></div>
+</div>
+</a>
+<a href="#" class="flex gap-4 bg-white dark:bg-slate-900 px-4 py-4 border-b border-slate-50 dark:border-slate-800/50">
+<div class="flex items-start gap-4 flex-1">
+<div class="flex items-center justify-center rounded-lg bg-amber-500 text-white shrink-0 size-12">
+<span class="material-symbols-outlined">notifications</span>
+</div>
+<div class="flex flex-1 flex-col justify-center">
+<div class="flex justify-between items-start">
+<p class="text-slate-900 dark:text-slate-100 text-base font-bold leading-tight">Lembrete de Estudo</p>
+<span class="text-[10px] font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">1h</span>
+</div>
+<p class="text-slate-600 dark:text-slate-400 text-sm mt-1">Não esqueça de revisar os exercícios de Física agendados para hoje.</p>
+<p class="text-slate-400 dark:text-slate-500 text-xs mt-2">Hoje, 09:15</p>
+</div>
+</div>
+</a>
+<a href="#" class="flex gap-4 bg-white dark:bg-slate-900 px-4 py-4 border-b border-slate-50 dark:border-slate-800/50">
+<div class="flex items-start gap-4 flex-1">
+<div class="flex items-center justify-center rounded-lg bg-red-500 text-white shrink-0 size-12">
+<span class="material-symbols-outlined">cancel</span>
+</div>
+<div class="flex flex-1 flex-col justify-center">
+<div class="flex justify-between items-start">
+<p class="text-slate-900 dark:text-slate-100 text-base font-bold leading-tight">Aula Cancelada</p>
+<span class="text-[10px] font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Ontem</span>
+</div>
+<p class="text-slate-600 dark:text-slate-400 text-sm mt-1">A aula de Química foi cancelada pelo instrutor. Verifique novos horários.</p>
+<p class="text-slate-400 dark:text-slate-500 text-xs mt-2">Ontem, 18:40</p>
+</div>
+</div>
+</a>
+<a href="#" class="flex gap-4 bg-white dark:bg-slate-900 px-4 py-4 border-b border-slate-50 dark:border-slate-800/50">
+<div class="flex items-start gap-4 flex-1">
+<div class="flex items-center justify-center rounded-lg bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300 shrink-0 size-12">
+<span class="material-symbols-outlined">person</span>
+</div>
+<div class="flex flex-1 flex-col justify-center">
+<div class="flex justify-between items-start">
+<p class="text-slate-900 dark:text-slate-100 text-base font-bold leading-tight">Perfil Atualizado</p>
+<span class="text-[10px] font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Ontem</span>
+</div>
+<p class="text-slate-600 dark:text-slate-400 text-sm mt-1">Suas informações básicas de cadastro foram atualizadas com sucesso.</p>
+<p class="text-slate-400 dark:text-slate-500 text-xs mt-2">Ontem, 14:20</p>
+</div>
+</div>
+</a>
+</main>
+</div>
+{% endblock %}

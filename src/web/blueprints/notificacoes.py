@@ -1,14 +1,10 @@
 """
 Módulo de Notificações (Controller) - Mochila Cheia
 
-Alertas do sistema para o usuário (item aprovado, nova solicitação, doação
-finalizada). Lê/escreve na tabela NOTIFICACAO.
+Tela de alertas do sistema (design do Figma).
 
->>> A IMPLEMENTAR — Responsável: Lucas (IHC/UX) com apoio do Backend (Júlio)
-
-Rotas planejadas:
-    GET   /notificacoes/            -> lista de notificações do usuário
-    POST  /notificacoes/<id>/lida   -> marca notificação como lida
+>>> A LIGAR AO BACKEND — Responsável: Lucas (IHC/UX) + Júlio (Backend)
+    Ler/escrever na tabela NOTIFICACAO (marcar como lida, etc.).
 """
 
 from flask import Blueprint, render_template
@@ -18,9 +14,5 @@ notificacoes_bp = Blueprint("notificacoes", __name__)
 
 @notificacoes_bp.route("/")
 def listar():
-    """STUB: lista de notificações. Implementar alertas (Lucas/Júlio)."""
-    return render_template(
-        "placeholder.html",
-        modulo="Notificações",
-        responsavel="Lucas (IHC/UX) + Júlio (Backend)",
-    )
+    """Lista de notificações (Figma). TODO: notificações do usuário logado."""
+    return render_template("notificacoes/listar.html", nav_ativa="home")

@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% block titulo %}Minhas solicitações — Mochila Cheia{% endblock %}
+{% block conteudo %}
+{# Header Section #}
+<header class="sticky top-0 z-10 bg-background-light dark:bg-background-dark border-b border-primary/10 px-4 py-4">
+<div class="flex items-center justify-between max-w-md mx-auto">
+<button class="p-2 hover:bg-primary/10 rounded-full transition-colors">
+<span class="material-symbols-outlined text-slate-900 dark:text-slate-100">arrow_back</span>
+</button>
+<h1 class="text-xl font-bold text-slate-900 dark:text-slate-100">Minhas Solicitações</h1>
+<div class="w-10"></div> {# Spacer for centering #}
+</div>
+</header>
+<main class="max-w-md mx-auto pb-24">
+{# Horizontal Filter #}
+<div class="flex gap-3 p-4 overflow-x-auto no-scrollbar">
+<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-primary px-6 text-white text-sm font-semibold shadow-sm">
+                Pendentes
+            </button>
+<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-primary/10 px-6 text-primary text-sm font-medium hover:bg-primary/20 transition-colors">
+                Aceitas
+            </button>
+<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-primary/10 px-6 text-primary text-sm font-medium hover:bg-primary/20 transition-colors">
+                Finalizadas
+            </button>
+</div>
+{# Request List #}
+<div class="px-4 space-y-4">
+{# Card 1: Pending #}
+<div class="bg-white dark:bg-slate-800/50 p-4 rounded-xl border border-primary/5 shadow-sm">
+<div class="flex gap-4">
+<div class="size-20 rounded-lg bg-slate-200 dark:bg-slate-700 flex-shrink-0 bg-cover bg-center" data-alt="Kit de material escolar básico organizado" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAo7ZOyxONIdFoJk3OwTzxC84UrlCQ1GpjV6YgvPqFw0KRrSFXzSELY_vSCouPobuOZXtdHMXW6kEyMjRWBzXRkfKG6ctxJ4KE2YymK4oDqnTPV_YWJCW-wYMLiEaBgcpAjOgV4ZCqUvD_8w6GkyZ8-peJ7FjP9g4usI-l0PmQXSMNOZ9W45dmvLw7NwqVh6FMqUn6oIJMyUZHPYn5Mlqf1aL6i91rSSlXrux52PfqdNm-qPB1iagaCHlM2qolAxIRenxa7kRcw0NXU')"></div>
+<div class="flex flex-col justify-between flex-1">
+<div>
+<div class="flex justify-between items-start">
+<h3 class="font-bold text-base leading-tight">Kit Material Escolar Fundamental</h3>
+<span class="bg-amber-100 text-amber-700 text-[10px] font-bold uppercase px-2 py-1 rounded-full">Pendente</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-xs mt-1">Solicitado em 15 Out 2023</p>
+</div>
+<div class="mt-2 flex items-center text-primary text-sm font-medium">
+<span class="material-symbols-outlined text-sm mr-1">schedule</span>
+                            Aguardando doador
+                        </div>
+</div>
+</div>
+</div>
+{# Card 2: Accepted (With Chat Button) #}
+<div class="bg-white dark:bg-slate-800/50 p-4 rounded-xl border border-primary/5 shadow-sm">
+<div class="flex gap-4">
+<div class="size-20 rounded-lg bg-slate-200 dark:bg-slate-700 flex-shrink-0 bg-cover bg-center" data-alt="Mochila azul juvenil resistente" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBHrm-Iotq8cN_jr1ZrgnEJjHlHBUnLdZIZyrw3iiL8RNCIsXM6uKBAO9XSJbhk3NXKz4lTOass-WsCI0D94aTJvMb-Qs6lmq9SWBGcDjxa48fXhDjAA-XKfLnxTVWCquNbfiA1TlQjqOeU-aGeIfYi9o4OAmiSAbUIHjc5wCLzgLm0seSdSbv1Um7cpzg7TtyxlTvmgQ4Bxc-R9BSQzC8VxXOXWL5kDpHtC2u70tykrQwtVX9hLA8t-L2wPW7hkkTsft4UYyxkkFfK')"></div>
+<div class="flex flex-col justify-between flex-1">
+<div>
+<div class="flex justify-between items-start">
+<h3 class="font-bold text-base leading-tight">Mochila Juvenil Azul</h3>
+<span class="bg-green-100 text-green-700 text-[10px] font-bold uppercase px-2 py-1 rounded-full">Aceita</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-xs mt-1">Solicitado em 12 Out 2023</p>
+</div>
+<div class="mt-3">
+<a href="{{ url_for('mensagens.conversas') }}" class="w-full flex items-center justify-center gap-2 bg-primary py-2 px-4 rounded-lg text-white text-sm font-semibold hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-sm">chat</span>
+                                Abrir Chat
+                            </a>
+</div>
+</div>
+</div>
+</div>
+{# Card 3: Pending #}
+<div class="bg-white dark:bg-slate-800/50 p-4 rounded-xl border border-primary/5 shadow-sm">
+<div class="flex gap-4">
+<div class="size-20 rounded-lg bg-slate-200 dark:bg-slate-700 flex-shrink-0 bg-cover bg-center" data-alt="Conjunto de lápis de cor coloridos" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCOLSCoDTTnIYtDpF9VqaNobSBGzJppNFrJy30T4y9C82Wk7G4QQoFElZFR2856gfiyLzu1fZvSovJUsW691SLP5HOXxVOulvf7fmiM5awGnClM0HDEt2Kc6gaCg6jZcel_VR5JarWeeXdRnsECP_xLt3bj2bA0nOEoWlDfAoCjmqsb_P9lJcReexz4ZW7E3E20p4rr3f_u_NTJ1-hVFQI-qnUEL_4DcH-2pvgMsulfgY0YQHy1AjLy_ordgTx3rlxIVmdvIK0NdzVD')"></div>
+<div class="flex flex-col justify-between flex-1">
+<div>
+<div class="flex justify-between items-start">
+<h3 class="font-bold text-base leading-tight">Conjunto de Lápis de Cor (24 cores)</h3>
+<span class="bg-amber-100 text-amber-700 text-[10px] font-bold uppercase px-2 py-1 rounded-full">Pendente</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-xs mt-1">Solicitado em 10 Out 2023</p>
+</div>
+<div class="mt-2 flex items-center text-primary text-sm font-medium">
+<span class="material-symbols-outlined text-sm mr-1">schedule</span>
+                            Aguardando doador
+                        </div>
+</div>
+</div>
+</div>
+</div>
+</main>
+{% endblock %}

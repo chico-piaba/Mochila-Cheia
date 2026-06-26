@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% block titulo %}Mensagens — Mochila Cheia{% endblock %}
+{% block conteudo %}
+<div class="flex flex-col min-h-screen max-w-md mx-auto bg-background-light dark:bg-background-dark shadow-xl">
+{# Header #}
+<header class="flex items-center justify-between px-6 pt-8 pb-4 bg-background-light dark:bg-background-dark sticky top-0 z-10">
+<h1 class="text-2xl font-bold tracking-tight">Mensagens</h1>
+<div class="flex gap-3">
+<button class="flex items-center justify-center size-10 rounded-full bg-primary/10 text-primary">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button class="flex items-center justify-center size-10 rounded-full bg-primary/10 text-primary">
+<span class="material-symbols-outlined">edit_square</span>
+</button>
+</div>
+</header>
+{# Search / Filter (Optional Wireframe detail) #}
+<div class="px-6 mb-4">
+<div class="flex items-center gap-2 bg-slate-200/50 dark:bg-slate-800/50 px-4 py-2 rounded-lg">
+<span class="material-symbols-outlined text-slate-500 text-sm">filter_list</span>
+<span class="text-sm text-slate-500 font-medium">Filtrar conversas</span>
+</div>
+</div>
+{# Messages List #}
+<main class="flex-1 overflow-y-auto pb-24">
+{# Conversation Item: Unread #}
+<a href="#" class="flex items-center gap-4 px-6 py-4 hover:bg-primary/5 transition-colors cursor-pointer border-b border-slate-200/50 dark:border-slate-800/50">
+<div class="relative">
+<div class="size-14 rounded-full bg-slate-300 dark:bg-slate-700 bg-cover bg-center" data-alt="Portrait of Carlos Silva traveler" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCmlRAzUxKfetD47j_f1QTXZ1edgiThEUyolE4bDF7hhz_cYeuGBFHs5BuNxMC8gVNF-j6YhKggjQzAUQMWJaEBTWWBP2-Ocsm6GGsAyptIYhAuo6wmib8qmSAmga-E8M-z9kLfrI9uTb9No-LTl2W9elxgsWYXRuTHZpSYr4AALBMItZ2cSbpAHoXaDueC8mOHejnM8WryED7FS2TpxnGeEKTHLtIK3HFQ9ufEim940khKI564OoZqnGuuZbgwXHA04_8xC_793bfW')"></div>
+<div class="absolute bottom-0 right-0 size-3.5 bg-primary border-2 border-background-light dark:border-background-dark rounded-full"></div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-baseline mb-0.5">
+<h3 class="font-bold text-base truncate">Carlos Silva</h3>
+<span class="text-xs font-semibold text-primary">14:30</span>
+</div>
+<div class="flex justify-between items-center gap-2">
+<p class="text-sm text-slate-900 dark:text-slate-100 font-medium truncate">E aí, o que achou do roteiro da trilha?</p>
+<div class="size-2.5 bg-primary rounded-full shrink-0"></div>
+</div>
+</div>
+</a>
+{# Conversation Item: Read #}
+<a href="#" class="flex items-center gap-4 px-6 py-4 hover:bg-primary/5 transition-colors cursor-pointer border-b border-slate-200/50 dark:border-slate-800/50">
+<div class="size-14 rounded-full bg-slate-300 dark:bg-slate-700 bg-cover bg-center" data-alt="Portrait of Ana Souza traveler" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBGzqyXk6k4kgON6tlFd27J72rHZtS8ovX_evQQ2Si_Cy5Tnpiv8MuNm_z8VSZnCwIg3k1tSAqhq2JLWziGj6pdIEuXexrK3HoAsFPYVj7taPXdLIIEQGYZgX8Jma5VkQjzZdJXjz5a4d8daMR5GrsGqXkX80kRPcUEkwSraDtP9SM7PhB-nB-9_BjpfnKgJNnbWVSO-XsOgCRBFpTV9Y3GKISfgJj6y2EIQ5hyq_qNSZN-I5W97arhQX0m3ZrX29U6yjgKAuxGVv_M')"></div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-baseline mb-0.5">
+<h3 class="font-semibold text-base truncate text-slate-700 dark:text-slate-300">Ana Souza</h3>
+<span class="text-xs text-slate-500">Ontem</span>
+</div>
+<p class="text-sm text-slate-500 truncate">Pode deixar, eu levo as frutas e a água.</p>
+</div>
+</a>
+{# Group Conversation Item #}
+<a href="#" class="flex items-center gap-4 px-6 py-4 hover:bg-primary/5 transition-colors cursor-pointer border-b border-slate-200/50 dark:border-slate-800/50">
+<div class="size-14 rounded-full bg-primary/20 flex items-center justify-center overflow-hidden">
+<span class="material-symbols-outlined text-primary text-3xl">groups</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-baseline mb-0.5">
+<h3 class="font-semibold text-base truncate text-slate-700 dark:text-slate-300">Grupo Trilha das Águas</h3>
+<span class="text-xs text-slate-500">Segunda</span>
+</div>
+<p class="text-sm text-slate-500 truncate"><span class="font-medium text-slate-600 dark:text-slate-400">João:</span> Alguém tem uma lanterna extra para emprestar?</p>
+</div>
+</a>
+{# Conversation Item: Read #}
+<a href="#" class="flex items-center gap-4 px-6 py-4 hover:bg-primary/5 transition-colors cursor-pointer border-b border-slate-200/50 dark:border-slate-800/50">
+<div class="size-14 rounded-full bg-slate-300 dark:bg-slate-700 bg-cover bg-center" data-alt="Portrait of Ricardo Oliveira" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAvSSLAnt6Ur39e5s9jRKMQKcGZxRiUTTLlHVLZAlh3YuYB-DzzV4yNjNApPFixAdmFAHYuLOrAIrJTrqgezfnRobcZnZ2xG5vcZOUFR3Vh6fDFUinJLrNI5bpH0z506vnWeUqVbJA3zObuFRfZkpVJ-MDk2Cwa8j3sftHX_F41-LM2IsOH-HBlmh4jczJbgKI-xdo-lpkHUMKlvZ60cVgmAKYC08WIxZE9dt4NWJ25ij2iLqYvYLx9-7O-VLY0qX9Y8D6Z6m0ky_2A')"></div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-baseline mb-0.5">
+<h3 class="font-semibold text-base truncate text-slate-700 dark:text-slate-300">Ricardo Oliveira</h3>
+<span class="text-xs text-slate-500">05/10/23</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm text-slate-400">done_all</span>
+<p class="text-sm text-slate-500 truncate">Fechado, nos vemos no ponto de encontro.</p>
+</div>
+</div>
+</a>
+{# Conversation Item: Read #}
+<a href="#" class="flex items-center gap-4 px-6 py-4 hover:bg-primary/5 transition-colors cursor-pointer border-b border-slate-200/50 dark:border-slate-800/50">
+<div class="size-14 rounded-full bg-slate-300 dark:bg-slate-700 bg-cover bg-center" data-alt="Portrait of Mariana Costa" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCmoH-PHADSOqRMM9wG6wLnkI8fKHOs4COCK-rMvPx7Q3iHn535enyeWhqWuzplavBSTIDKy1vioOEiL0qP-YzXTG4gP2WnENAxMKlWbsEO7BenMKId4KdIe2cw9Jq9bWDL8Dq-gVy4Zh51bsc8SfTCI1jKCHAFrf8k6SwXJ_UO89qfHWzy_w0AUwLT_LXgoRBXS7PS-sLaqn2x3wFP80DH8FYV6rNDmC_ONXL74cfo8bNXcKy7u7OKzXgCw0p4oT-PxNzn3QvSJ6-7')"></div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-baseline mb-0.5">
+<h3 class="font-semibold text-base truncate text-slate-700 dark:text-slate-300">Mariana Costa</h3>
+<span class="text-xs text-slate-500">01/10/23</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm text-slate-400">mic</span>
+<p class="text-sm text-slate-500 truncate">Mensagem de voz (0:45)</p>
+</div>
+</div>
+</a>
+</main>
+</div>
+{% endblock %}

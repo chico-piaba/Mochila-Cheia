@@ -1,39 +1,80 @@
 {% extends "base.html" %}
 {#
-  Home (View) - Mochila Cheia
-  Exemplo funcional: recebe `resumo` (números do sistema) e `itens`
-  (disponíveis) do controller home.index e os apresenta.
+  Home / Busca do receptor (View) — EXEMPLO VIVO da arquitetura.
+  Design do Figma (home_receptor_busca) com os itens reais vindos do banco
+  (home.index -> EstatisticasRepository -> SQLite).
+  Os chips de categoria e a busca são estáticos por ora — TODO Júlio: ligar filtros.
 #}
-{% block titulo %}Início — Mochila Cheia{% endblock %}
+{% block titulo %}Buscar itens — Mochila Cheia{% endblock %}
 
 {% block conteudo %}
-<section class="boas-vindas">
-  <h1>Conectando quem doa a quem precisa</h1>
-  <p>Material escolar em bom estado encontrando um novo dono. 🎒</p>
-</section>
+<!-- Header -->
+<header class="flex items-center justify-between px-4 pt-6 pb-2">
+  <div class="flex items-center gap-2">
+    <span class="material-symbols-outlined text-primary text-3xl">backpack</span>
+    <h1 class="text-xl font-bold tracking-tight">Mochila Cheia</h1>
+  </div>
+  <a href="{{ url_for('notificacoes.listar') }}" class="flex items-center justify-center p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors">
+    <span class="material-symbols-outlined">notifications</span>
+  </a>
+</header>
 
-<section class="estatisticas" aria-label="Números do sistema">
-  <div class="card-stat"><strong>{{ resumo.itens_disponiveis }}</strong><span>Itens disponíveis</span></div>
-  <div class="card-stat"><strong>{{ resumo.doacoes_concluidas }}</strong><span>Doações concluídas</span></div>
-  <div class="card-stat"><strong>{{ resumo.total_doadores }}</strong><span>Doadores</span></div>
-  <div class="card-stat"><strong>{{ resumo.pontos_ativos }}</strong><span>Pontos de coleta</span></div>
-</section>
+<!-- Search Bar -->
+<form class="px-4 py-3" action="{{ url_for('itens.listar') }}" method="get">
+  <label class="relative flex items-center w-full">
+    <span class="material-symbols-outlined absolute left-4 text-slate-400">search</span>
+    <input name="q" class="w-full h-12 pl-12 pr-4 bg-white dark:bg-slate-800 border-none rounded-xl focus:ring-2 focus:ring-primary shadow-sm text-base" placeholder="Buscar itens escolares..." type="text"/>
+  </label>
+</form>
 
-<section class="lista-itens" aria-label="Itens disponíveis">
-  <h2>Disponíveis agora</h2>
+<!-- Category Chips (estáticos — TODO Júlio: filtrar) -->
+<div class="flex gap-2 px-4 pb-4 overflow-x-auto" style="scrollbar-width:none">
+  <button class="flex shrink-0 items-center justify-center px-5 py-2 rounded-full bg-primary text-white text-sm font-semibold">Todos</button>
+  {% for cat in ['Mochilas', 'Livros', 'Cadernos', 'Escrita', 'Uniformes'] %}
+  <button class="flex shrink-0 items-center justify-center px-5 py-2 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 text-sm font-medium hover:border-primary transition-colors">{{ cat }}</button>
+  {% endfor %}
+</div>
+
+<!-- Items Grid -->
+<main class="flex-1 overflow-y-auto px-4">
+  <div class="flex items-center justify-between mb-4">
+    <h2 class="text-lg font-bold">Disponíveis perto de você</h2>
+    <span class="text-primary text-sm font-semibold">{{ itens|length }} itens</span>
+  </div>
+
   {% if itens %}
-  <ul class="grade-itens">
+  <div class="grid grid-cols-2 gap-4">
     {% for item in itens %}
-    <li class="card-item">
-      <h3>{{ item.titulo }}</h3>
-      <p class="card-item__cat">{{ item.categoria }} · {{ item.estado_conservacao }}</p>
-      <p class="card-item__desc">{{ item.descricao }}</p>
-      <p class="card-item__meta">Doador: {{ item.doador_nome }}{% if item.localizacao %} · {{ item.localizacao }}{% endif %}</p>
-    </li>
+    <a href="{{ url_for('itens.detalhe', id_item=item.id_item) }}" class="flex flex-col bg-white dark:bg-slate-800 rounded-xl overflow-hidden border border-slate-100 dark:border-slate-700 shadow-sm hover:shadow-md transition-shadow">
+      <div class="aspect-square w-full bg-slate-200 dark:bg-slate-700 relative flex items-center justify-center">
+        {% if item.foto_url %}
+        <img alt="{{ item.titulo }}" class="w-full h-full object-cover" src="{{ item.foto_url }}"/>
+        {% else %}
+        <span class="material-symbols-outlined text-5xl text-slate-400">image</span>
+        {% endif %}
+        <span class="absolute top-2 right-2 bg-white/90 dark:bg-black/70 px-2 py-1 rounded-lg text-[10px] font-bold uppercase tracking-wider text-primary">
+          {{ {'novo':'Novo','pouco_usado':'Seminovo','usado':'Usado','necessita_reparo':'Reparo'}.get(item.estado_conservacao, item.estado_conservacao) }}
+        </span>
+      </div>
+      <div class="p-3">
+        <p class="text-[10px] font-bold text-primary uppercase mb-1">{{ item.categoria }}</p>
+        <h3 class="font-bold text-sm leading-tight mb-1 line-clamp-1">{{ item.titulo }}</h3>
+        <div class="flex items-center gap-1 text-slate-500 dark:text-slate-400 mb-2">
+          <span class="material-symbols-outlined text-xs">location_on</span>
+          <span class="text-[10px] line-clamp-1">{{ item.localizacao or 'Local a combinar' }}</span>
+        </div>
+        <div class="flex items-center justify-between mt-1">
+          <span class="text-[10px] bg-slate-100 dark:bg-slate-700 px-2 py-1 rounded">{{ item.doador_nome }}</span>
+        </div>
+      </div>
+    </a>
     {% endfor %}
-  </ul>
+  </div>
   {% else %}
-  <p class="vazio">Nenhum item disponível no momento. Rode <code>flask --app run init-db</code> para carregar os dados de exemplo.</p>
+  <div class="text-center text-slate-500 py-16">
+    <span class="material-symbols-outlined text-5xl mb-2">inventory_2</span>
+    <p>Nenhum item disponível. Rode <code>flask --app run init-db</code> para carregar os dados de exemplo.</p>
+  </div>
   {% endif %}
-</section>
+</main>
 {% endblock %}

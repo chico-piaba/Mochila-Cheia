@@ -1,14 +1,13 @@
 """
 Módulo Home (Controller) - Mochila Cheia
 
-Página inicial do MVP. Serve como EXEMPLO COMPLETO do fluxo de uma requisição
-atravessando todas as camadas da arquitetura:
+Página inicial / busca do receptor. É o EXEMPLO VIVO da arquitetura: busca os
+itens disponíveis no banco (via repositório) e renderiza com o design do Figma.
 
-    Navegador  ->  rota Flask (controller)  ->  Repository  ->  SQLite  ->  template (view)
+    Navegador -> home.index -> EstatisticasRepository -> SQLite -> index.html
 
-A equipe pode usar este módulo como referência ao implementar os demais.
-
-Responsável: Rodrigo (Gestão, Comunicação e Arquitetura)
+Responsável: Rodrigo (núcleo + dados reais)
+A fazer (Júlio): ligar a barra de busca/filtros a ItemRepository.
 """
 
 from flask import Blueprint, render_template
@@ -20,13 +19,23 @@ home_bp = Blueprint("home", __name__)
 
 @home_bp.route("/")
 def index():
-    """
-    Painel inicial: mostra os números do sistema e os itens disponíveis.
-
-    Demonstra a separação de responsabilidades — o controller apenas
-    coordena: pede os dados ao repositório e entrega ao template.
-    """
+    """Home/busca (receptor) com itens reais do banco."""
     repo = EstatisticasRepository()
-    resumo = repo.resumo()
-    itens = repo.itens_disponiveis(limite=12)
-    return render_template("index.html", resumo=resumo, itens=itens)
+    return render_template(
+        "index.html",
+        resumo=repo.resumo(),
+        itens=repo.itens_disponiveis(limite=12),
+        nav_ativa="home",
+    )
+
+
+@home_bp.route("/doador")
+def doador():
+    """Home do doador (dashboard). TODO Júlio: ligar a dados reais do doador logado."""
+    return render_template("home_doador.html", nav_ativa="home")
+
+
+@home_bp.route("/splash")
+def splash():
+    """Tela de abertura (splash). Estática."""
+    return render_template("splash.html", sem_nav=True)

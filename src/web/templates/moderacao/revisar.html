@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% block titulo %}Revisar item — Mochila Cheia{% endblock %}
+{% block conteudo %}
+<div class="relative flex min-h-screen w-full flex-col max-w-md mx-auto bg-white dark:bg-slate-900 shadow-xl overflow-x-hidden">
+<header class="sticky top-0 z-10 flex items-center bg-white/80 dark:bg-slate-900/80 backdrop-blur-md p-4 border-b border-primary/10">
+<a href="{{ url_for('moderacao.fila') }}" class="text-primary hover:bg-primary/10 p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined">arrow_back</span>
+</a>
+<h2 class="text-lg font-bold leading-tight tracking-tight flex-1 ml-2">Revisar Item</h2>
+<div class="flex gap-2">
+<span class="bg-primary/10 text-primary text-xs font-bold px-2 py-1 rounded">ID: #8821</span>
+</div>
+</header>
+<main class="flex-1 overflow-y-auto pb-32">
+<div class="p-4">
+<div class="w-full aspect-square bg-slate-200 dark:bg-slate-800 rounded-xl overflow-hidden mb-6">
+<div class="w-full h-full bg-center bg-no-repeat bg-cover" data-alt="Mochila escolar azul usada em bom estado" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAsrL8zYbBC2LEKh4HixT7SGQGFjTeoi-e5O5yOegrlRos3LCYAHStAvWVdWTszyvRK2AJYKnhxjR6osXqQtq8OdKQVcrBJzplkqxYBHl8Gy5DXu-2zXLmvJbfrumiFtnWG8cM4lmmK62Yh1BMt2wG9iY4KK58KMgG1ecxGju_pQxntZ61sVGRc5eyDplQ0kOOMYVkFSu_KCDvzVRv-k71C6F_kfmjOdvZUvEgM9X0Es9AuCu8gUrVEiWuAa-Y_c3zuhqImyODfGTnN");'>
+</div>
+</div>
+<div class="space-y-4">
+<section>
+<h1 class="text-2xl font-bold mb-2">Mochila Escolar Kipling Azul</h1>
+<p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                            Mochila original em bom estado de conservação. Possui apenas um pequeno desgaste no zíper frontal, mas funciona perfeitamente. Ideal para crianças do ensino fundamental.
+                        </p>
+</section>
+<div class="grid grid-cols-2 gap-4 py-4 border-y border-primary/10">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">category</span>
+<div>
+<p class="text-[10px] uppercase font-bold text-slate-400">Categoria</p>
+<p class="text-sm font-semibold">Material Escolar</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">verified_user</span>
+<div>
+<p class="text-[10px] uppercase font-bold text-slate-400">Estado</p>
+<p class="text-sm font-semibold">Bom estado</p>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between p-3 bg-primary/5 rounded-lg">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-primary/20 flex items-center justify-center overflow-hidden">
+<div class="w-full h-full bg-center bg-cover" data-alt="Avatar do usuário doador" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAwIA1GVFNoZcZHb4ya0iZxaTnlxKQ1VgPu1J1SYiNkMW3X8pTtOYicvO6xqiImvN46zI3W4wySIkCbfdKh5TLE0Uy93QU37hzemKVIro4iD0Ky4jHgWMPkDq-wIQrYDz_v4uXpd0GzU6Q1uDTsV0nZWdUuhGITiBqkXaR_QjruTtrVTWldTA6ncd9666FwOv0zPP3sx6ThJLLOAkSXjDKNTSRE-HrLAhwrn5M-PMsvqk_ORewdLcxMWnqFuRM9FXrdP985O60VvMYA");'></div>
+</div>
+<div>
+<p class="text-[10px] uppercase font-bold text-slate-400 leading-none mb-1">Doador</p>
+<p class="font-bold text-sm">Ricardo Mendes</p>
+</div>
+</div>
+<button class="text-primary text-xs font-semibold hover:underline">Ver Perfil</button>
+</div>
+<section class="mt-8 pt-6 border-t border-primary/20">
+<h3 class="text-lg font-bold mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">gavel</span>
+                            Decisão do Moderador
+                        </h3>
+<div class="space-y-4">
+<div>
+<label class="text-xs font-bold text-slate-500 uppercase mb-2 block">Justificativa (Opcional)</label>
+<textarea class="w-full rounded-lg border-primary/20 bg-slate-50 dark:bg-slate-800 text-sm focus:ring-primary focus:border-primary" placeholder="Caso recuse, informe o motivo ao doador..." rows="3"></textarea>
+</div>
+<div class="flex gap-4">
+<button class="flex-1 bg-danger text-white font-bold py-4 rounded-xl flex flex-col items-center justify-center gap-1 hover:brightness-110 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-2xl">close</span>
+<span>Recusar</span>
+</button>
+<button class="flex-1 bg-success text-white font-bold py-4 rounded-xl flex flex-col items-center justify-center gap-1 hover:brightness-110 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-2xl">check_circle</span>
+<span>Aprovar</span>
+</button>
+</div>
+</div>
+</section>
+</div>
+</div>
+</main>
+</div>
+{% endblock %}

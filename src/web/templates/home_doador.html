@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+{% block titulo %}Início (Doador) — Mochila Cheia{% endblock %}
+{% block conteudo %}
+<div class="relative flex min-h-screen w-full flex-col max-w-md mx-auto bg-background-light dark:bg-background-dark shadow-xl overflow-x-hidden pb-24">
+{# Header Section #}
+<header class="flex items-center p-6 pb-2 justify-between">
+<div class="flex items-center gap-3">
+<div class="bg-primary/10 p-2 rounded-lg text-primary">
+<span class="material-symbols-outlined text-3xl">backpack</span>
+</div>
+<div>
+<p class="text-sm text-slate-500 dark:text-slate-400">Bem-vindo(a)</p>
+<h1 class="text-xl font-bold leading-tight tracking-tight">Olá, Maria!</h1>
+</div>
+</div>
+<div class="flex items-center justify-end">
+<a href="{{ url_for('notificacoes.listar') }}" class="relative flex items-center justify-center rounded-full p-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm">
+<span class="material-symbols-outlined text-slate-600 dark:text-slate-300">notifications</span>
+<span class="absolute top-2 right-2 flex h-2 w-2 rounded-full bg-red-500"></span>
+</a>
+</div>
+</header>
+{# Summary Cards Horizontal #}
+<div class="flex gap-3 p-6 overflow-x-auto no-scrollbar">
+<div class="flex min-w-[120px] flex-1 gap-2 rounded-xl border border-primary/20 bg-white dark:bg-slate-800 p-4 flex-col shadow-sm">
+<span class="material-symbols-outlined text-primary text-2xl">inventory_2</span>
+<div class="flex flex-col">
+<h2 class="text-xs font-medium text-slate-500 dark:text-slate-400">Itens Ativos</h2>
+<p class="text-lg font-bold text-primary">12</p>
+</div>
+</div>
+<div class="flex min-w-[120px] flex-1 gap-2 rounded-xl border border-primary/20 bg-white dark:bg-slate-800 p-4 flex-col shadow-sm">
+<span class="material-symbols-outlined text-primary text-2xl">pending_actions</span>
+<div class="flex flex-col">
+<h2 class="text-xs font-medium text-slate-500 dark:text-slate-400">Pendentes</h2>
+<p class="text-lg font-bold text-primary">05</p>
+</div>
+</div>
+<div class="flex min-w-[120px] flex-1 gap-2 rounded-xl border border-primary/20 bg-white dark:bg-slate-800 p-4 flex-col shadow-sm">
+<span class="material-symbols-outlined text-primary text-2xl">task_alt</span>
+<div class="flex flex-col">
+<h2 class="text-xs font-medium text-slate-500 dark:text-slate-400">Concluídas</h2>
+<p class="text-lg font-bold text-primary">48</p>
+</div>
+</div>
+</div>
+{# Call to Action #}
+<div class="px-6 py-2">
+<a href="{{ url_for('itens.publicar') }}" class="w-full flex items-center justify-center gap-2 rounded-xl h-14 bg-primary text-white text-base font-bold shadow-lg shadow-primary/20 hover:brightness-110 active:scale-[0.98] transition-all">
+<span class="material-symbols-outlined">add_circle</span>
+<span>Cadastrar Novo Item</span>
+</a>
+</div>
+{# Recent Activity Section #}
+<div class="mt-6">
+<div class="flex items-center justify-between px-6 mb-4">
+<h3 class="text-lg font-bold tracking-tight">Atividade Recente</h3>
+<a href="{{ url_for('itens.meus') }}" class="text-sm font-medium text-primary">Ver todos</a>
+</div>
+<div class="px-6 flex flex-col gap-4">
+{# Activity Item 1 #}
+<div class="flex items-center gap-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/50 p-3 shadow-sm">
+<div class="h-16 w-16 rounded-lg overflow-hidden flex-shrink-0 bg-slate-100">
+<img class="h-full w-full object-cover" data-alt="Brinquedos infantis coloridos organizados" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDq0z5Ct9YTchG51Mwj_xbkDAoTRewq_psfpYyF-VNwillTezL8aBJFO4w33lR0P5OK2II7bCcWIabR02Kg020ZwDCrnfcqy5yoxUiNxCw0PtaDGeDYCc25-bXVAG-IqBvri7rM3caC9ZDDnvocMlLMNqr29qyclXc119WBDB2AXCuTj7ceIIpRAsnLjEJw20HICxpWZ4asGpTKmygFPFAPjhcpkK8_g9xPS0oZQ_q8-Fz22Vbk8cR337_3R4xmmAy2b0oyCBwGBH6T"/>
+</div>
+<div class="flex flex-col flex-1 gap-1">
+<h4 class="text-sm font-bold truncate">Kit Brinquedos Educativos</h4>
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded-full bg-green-100 dark:bg-green-900/30 text-[10px] font-bold text-green-700 dark:text-green-400 uppercase tracking-wider">Ativo</span>
+<span class="text-[10px] text-slate-400">Há 2 horas</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-slate-400">chevron_right</span>
+</div>
+{# Activity Item 2 #}
+<div class="flex items-center gap-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/50 p-3 shadow-sm">
+<div class="h-16 w-16 rounded-lg overflow-hidden flex-shrink-0 bg-slate-100">
+<img class="h-full w-full object-cover" data-alt="Mochila escolar azul para crianças" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBysA-ZEcBo4aXDF19zxf0HCN86emspqcjXrJ4wA95gJZaItIdMGg7usIlhgTinuaM4eDFkLJmqV7lJ2xTurnH_mtAopg8RZpPvQbEe_aqvkGeRW9fjxOWFJwhvpjuItsv-GqRZSNPTwRUJeD-WC2Pkx63hRKSEtBq4UtRhGTgVA7yBOmxG8VD2n19aVy0dHpWCxe4qTwjVquhVoZeeItbqAKusdmowkGD8hxVimXhy6SqdRD41NMNhxVTglKk7zeX6g7gZZpxASE8t"/>
+</div>
+<div class="flex flex-col flex-1 gap-1">
+<h4 class="text-sm font-bold truncate">Mochila Escolar Infantil</h4>
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-[10px] font-bold text-blue-700 dark:text-blue-400 uppercase tracking-wider">Pendente</span>
+<span class="text-[10px] text-slate-400">Há 1 dia</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-slate-400">chevron_right</span>
+</div>
+{# Activity Item 3 #}
+<div class="flex items-center gap-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/50 p-3 shadow-sm opacity-80">
+<div class="h-16 w-16 rounded-lg overflow-hidden flex-shrink-0 bg-slate-100">
+<img class="h-full w-full object-cover" data-alt="Roupas infantis dobradas e limpas" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnmgCgb2pe9cxAxhxhbhS3Ip2cjTGjx5jEcu4CUkVPrjy6g-8rl0JWYr5LYqW8qtG1A2wBZ3ZfD9lEcoRPpZR0Cwdjx4Zr-M3HnDdTkda5P9IGda76ZTDkZs0IBVvWEKhrcMRXS5L6-tbB2oNCotxxG1yyv7Xg1ljOxrIOTm9UDZW-NoxxDD6XkHYMfnZBrNp9t74W55IyzoY2_dcfERHPXjx2Gah70FlTfUHDyV1RovLLizyPLEBFCZjN-IWGB5sFvQFMTrnYoAyf"/>
+</div>
+<div class="flex flex-col flex-1 gap-1">
+<h4 class="text-sm font-bold truncate">Lote de Roupas Inverno</h4>
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-700 text-[10px] font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wider">Concluído</span>
+<span class="text-[10px] text-slate-400">Há 3 dias</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-slate-400">chevron_right</span>
+</div>
+</div>
+</div>
+</div>
+<style>
+        /* Custom scrollbar hiding for clean UI */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+{% endblock %}

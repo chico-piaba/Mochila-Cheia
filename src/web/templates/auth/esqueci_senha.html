@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block titulo %}Recuperar senha — Mochila Cheia{% endblock %}
+{% block conteudo %}
+<div class="w-full max-w-md bg-white dark:bg-slate-900 shadow-xl rounded-xl overflow-hidden">
+<div class="p-8 flex flex-col items-center">
+<div class="mb-8 flex justify-center">
+<div class="size-16 bg-primary/10 rounded-full flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-4xl">lock_reset</span>
+</div>
+</div>
+<div class="text-center mb-8">
+<h1 class="text-slate-900 dark:text-slate-100 text-2xl font-bold leading-tight mb-2">Esqueci minha senha</h1>
+<p class="text-slate-600 dark:text-slate-400 text-base font-normal">Digite seu e-mail para receber as instruções de recuperação</p>
+</div>
+<form class="w-full space-y-6">
+<div class="space-y-2">
+<label class="block text-slate-700 dark:text-slate-300 text-sm font-semibold ml-1">
+                        E-mail
+                    </label>
+<div class="relative flex items-center group">
+<div class="absolute left-4 text-primary group-focus-within:text-primary">
+<span class="material-symbols-outlined">mail</span>
+</div>
+<input class="w-full pl-12 pr-4 py-4 rounded-xl border border-primary/20 bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder:text-slate-400" placeholder="exemplo@email.com" type="email"/>
+</div>
+</div>
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 rounded-xl shadow-lg shadow-primary/20 transition-all active:scale-[0.98]" type="submit">
+                    Enviar link de recuperação
+                </button>
+</form>
+<div class="mt-8 pt-6 border-t border-slate-100 dark:border-slate-800 w-full text-center">
+<a class="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium transition-colors" href="{{ url_for('auth.login') }}">
+<span class="material-symbols-outlined text-sm">arrow_back</span>
+                    Voltar para o login
+                </a>
+</div>
+</div>
+</div>
+<div class="mt-8">
+<div class="h-32 w-32 bg-primary/5 blur-3xl rounded-full absolute -z-10 top-10 left-10"></div>
+<div class="h-48 w-48 bg-primary/10 blur-3xl rounded-full absolute -z-10 bottom-10 right-10"></div>
+</div>
+{% endblock %}
