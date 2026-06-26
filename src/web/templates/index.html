@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{#
+  Home (View) - Mochila Cheia
+  Exemplo funcional: recebe `resumo` (números do sistema) e `itens`
+  (disponíveis) do controller home.index e os apresenta.
+#}
+{% block titulo %}Início — Mochila Cheia{% endblock %}
+
+{% block conteudo %}
+<section class="boas-vindas">
+  <h1>Conectando quem doa a quem precisa</h1>
+  <p>Material escolar em bom estado encontrando um novo dono. 🎒</p>
+</section>
+
+<section class="estatisticas" aria-label="Números do sistema">
+  <div class="card-stat"><strong>{{ resumo.itens_disponiveis }}</strong><span>Itens disponíveis</span></div>
+  <div class="card-stat"><strong>{{ resumo.doacoes_concluidas }}</strong><span>Doações concluídas</span></div>
+  <div class="card-stat"><strong>{{ resumo.total_doadores }}</strong><span>Doadores</span></div>
+  <div class="card-stat"><strong>{{ resumo.pontos_ativos }}</strong><span>Pontos de coleta</span></div>
+</section>
+
+<section class="lista-itens" aria-label="Itens disponíveis">
+  <h2>Disponíveis agora</h2>
+  {% if itens %}
+  <ul class="grade-itens">
+    {% for item in itens %}
+    <li class="card-item">
+      <h3>{{ item.titulo }}</h3>
+      <p class="card-item__cat">{{ item.categoria }} · {{ item.estado_conservacao }}</p>
+      <p class="card-item__desc">{{ item.descricao }}</p>
+      <p class="card-item__meta">Doador: {{ item.doador_nome }}{% if item.localizacao %} · {{ item.localizacao }}{% endif %}</p>
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p class="vazio">Nenhum item disponível no momento. Rode <code>flask --app run init-db</code> para carregar os dados de exemplo.</p>
+  {% endif %}
+</section>
+{% endblock %}

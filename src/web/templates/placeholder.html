@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{#
+  Placeholder (View) - Mochila Cheia
+  Tela genérica para módulos ainda em desenvolvimento. Torna visível, na
+  própria interface, qual módulo falta e quem é o responsável — útil para a
+  divisão de tarefas em grupo.
+#}
+{% block titulo %}{{ modulo }} — em desenvolvimento{% endblock %}
+
+{% block conteudo %}
+<section class="placeholder">
+  <h1>🚧 {{ modulo }}</h1>
+  <p>Este módulo faz parte do MVP e está em desenvolvimento.</p>
+  <p class="placeholder__resp">Responsável: <strong>{{ responsavel }}</strong></p>
+  <a class="btn" href="{{ url_for('home.index') }}">← Voltar ao início</a>
+</section>
+{% endblock %}

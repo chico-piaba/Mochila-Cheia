@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<!--
+  Layout base (View) - Mochila Cheia
+  ----------------------------------
+  Esqueleto de apresentação compartilhado por todas as telas. Define a
+  estrutura semântica (header, main, bottom tab bar) seguindo o sitemap e o
+  wireframe do EP3 (navegação por bottom tab bar, foco mobile).
+
+  Responsável pelo esqueleto: Rodrigo
+  Estilo/identidade visual a partir do Figma: Robson e Lucas (IHC/UX)
+-->
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block titulo %}Mochila Cheia{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <header class="topo" role="banner">
+    <a class="topo__logo" href="{{ url_for('home.index') }}">🎒 Mochila Cheia</a>
+    <nav class="topo__acoes" aria-label="Ações de conta">
+      <a href="{{ url_for('auth.login') }}">Entrar</a>
+      <a href="{{ url_for('auth.cadastro') }}">Cadastrar</a>
+    </nav>
+  </header>
+
+  <main class="conteudo" role="main">
+    {% block conteudo %}{% endblock %}
+  </main>
+
+  <!-- Bottom tab bar: navegação principal (padrão definido no EP3/IHC) -->
+  <nav class="abas" aria-label="Navegação principal">
+    <a href="{{ url_for('home.index') }}">🏠<span>Início</span></a>
+    <a href="{{ url_for('itens.listar') }}">🔎<span>Buscar</span></a>
+    <a href="{{ url_for('itens.publicar') }}">➕<span>Doar</span></a>
+    <a href="{{ url_for('mensagens.conversas') }}">💬<span>Chat</span></a>
+    <a href="{{ url_for('notificacoes.listar') }}">🔔<span>Alertas</span></a>
+  </nav>
+</body>
+</html>

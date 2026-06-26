@@ -1,6 +1,9 @@
 # Mochila Cheia - Dependências Python
 # Versão mínima: Python 3.10+
 
+# Framework web do MVP (camada de apresentação + controle)
+Flask>=3.0.0
+
 # Validação de dados
 dataclasses-json>=0.6.0
 

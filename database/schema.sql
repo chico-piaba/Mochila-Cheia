@@ -13,6 +13,11 @@
 -- ============================================================
 -- Ordem de DROP respeita as dependências (foreign keys)
 
+-- Remove as views antes das tabelas para permitir recriação idempotente
+DROP VIEW IF EXISTS vw_estatisticas;
+DROP VIEW IF EXISTS vw_solicitacoes_pendentes;
+DROP VIEW IF EXISTS vw_itens_disponiveis;
+
 DROP TABLE IF EXISTS MENSAGEM;
 DROP TABLE IF EXISTS NOTIFICACAO;
 DROP TABLE IF EXISTS SOLICITACAO;
