@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block titulo %}Buscar Itens - Mochila Cheia{% endblock %}
+
+{% block conteudo %}
+<div class="vitrine-container">
+    
+    <div class="busca-header">
+        <input type="search" class="input-busca" placeholder="Buscar itens escolares..." aria-label="Buscar itens escolares">
+        
+        <div class="filtros-scroll">
+            <button class="btn-filtro ativo">Todos</button>
+            <button class="btn-filtro">Mochilas</button>
+            <button class="btn-filtro">Livros</button>
+            <button class="btn-filtro">Cadernos</button>
+            <button class="btn-filtro">Estojos</button>
+        </div>
+    </div>
+
+    <h2 class="vitrine-titulo">Disponíveis perto de você</h2>
+
+    <div class="grade-itens">
+        {% if itens %}
+            {% for item in itens %}
+            <div class="card-item">
+                <div class="card-img-placeholder" aria-label="Imagem ilustrativa do item {{ item.titulo }}">
+                   <span class="badge-novo">{{ item.estado }}</span>
+                </div>
+                <div class="card-info">
+                    <span class="card-categoria">{{ item.categoria }}</span>
+                    <h3 class="card-titulo">{{ item.titulo }}</h3>
+                    <p class="card-doador"><span class="icone-user">👤</span> Doador Parceiro</p>
+                </div>
+                <a href="#" class="btn-solicitar">Ver Detalhes</a>
+            </div>
+            {% endfor %}
+        {% else %}
+            <p class="estado-vazio">Nenhum item disponível no momento. Volte mais tarde!</p>
+        {% endif %}
+    </div>
+
+</div>
+{% endblock %}
