@@ -387,6 +387,18 @@ O wireframe não é apenas uma tela isolada. Desenhe as telas seguintes e ligue-
 **Por que isso importa?**
 Fazer wireframes economiza tempo e dinheiro. É muito mais rápido (e barato) apagar um quadrado no Figma ou no papel do que ter que reescrever horas de código porque o botão ficou no lugar errado e o usuário não conseguiu usar o sistema. 
 
+## 🏗️ [Componente Extensionista] O que é Arquitetura de Software?
+
+Para explicar o que é arquitetura de software, gosto de pensar na construção de uma casa. Antes de levantar as paredes ou escolher a cores da tinta, um engenheiro/mestre de obra precisa desenhar a planta. Ele define onde passa a rede elétrica, o encanamento e como os cômodos se conectam para que a casa não desabe no futuro. 
+
+Na programação, a **Arquitetura de Software** é exatamente essa "planta baixa" do sistema. É o planejamento estrutural de como as diferentes partes do código vão se organizar e conversar entre si. 
+
+No caso do nosso projeto, o **Mochila Cheia**, optamos por uma arquitetura dividida em camadas. Por que isso é importante no mundo real? 
+1. **Organização e Foco:** Separamos as telas que o usuário vê (Apresentação - HTML/CSS) das regras de negócio (Controle/Domínio - Python) e do banco de dados (Persistência - SQLite).
+2. **Trabalho em Equipe:** Com o sistema modularizado, pude focar em traduzir os protótipos do Figma para código e aplicar as "heurísticas" de acessibilidade sem o risco de quebrar a lógica de banco de dados ou as rotas que os outros desenvolvedores da equipe estavam estruturando.
+3. **Manutenção:** Se amanhã precisarmos trocar o layout do site inteiro, mexemos apenas na camada visual, sem afetar o "motor" do sistema.
+
+Em resumo, uma boa arquitetura garante que o sistema não apenas funcione no primeiro dia, mas que consiga crescer e receber novas funcionalidades de forma organizada, segura e sustentável no longo prazo.
 ---
 
 ## 👥 Equipe
