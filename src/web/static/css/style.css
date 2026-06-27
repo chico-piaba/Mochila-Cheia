@@ -385,3 +385,61 @@
     font-size: 1.1rem;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
+
+/* =========================================
+   TELA DE PUBLICAR ITEM (DOAÇÃO)
+   ========================================= */
+.publicar-container {
+    padding: 16px;
+    max-width: 480px;
+    margin: 0 auto;
+    padding-bottom: 120px; /* Espaço para a bottom tab bar */
+}
+
+.publicar-header {
+    margin-top: 16px;
+    margin-bottom: 32px;
+}
+
+.publicar-titulo {
+    font-size: 1.8rem;
+    color: #1F2937;
+    margin-bottom: 8px;
+}
+
+.publicar-subtitulo {
+    font-size: 0.95rem;
+    color: #6B7280;
+}
+
+/* Adicionando Select e Textarea nas regras de acessibilidade do input-group */
+.input-group select,
+.input-group textarea {
+    width: 100%;
+    min-height: 48px; /* Alvo de toque mínimo */
+    padding: 12px 16px;
+    border: 1px solid #D1D5DB;
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+    background-color: white;
+    color: #374151;
+    font-family: inherit;
+}
+
+/* O textarea precisa de um redimensionamento apenas vertical para não quebrar o layout */
+.input-group textarea {
+    resize: vertical;
+    min-height: 120px; 
+}
+
+.input-group select:focus,
+.input-group textarea:focus {
+    border-color: #6C63FF;
+    box-shadow: 0 0 0 2px rgba(108, 99, 255, 0.2);
+}
+
+.mt-16 {
+    margin-top: 16px;
+}

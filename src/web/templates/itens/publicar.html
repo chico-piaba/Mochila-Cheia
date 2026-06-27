@@ -1,97 +1,51 @@
 {% extends "base.html" %}
-{% block titulo %}Cadastrar item — Mochila Cheia{% endblock %}
+
+{% block titulo %}Doar Material - Mochila Cheia{% endblock %}
+
 {% block conteudo %}
-<!-- Top Navigation -->
-<header class="sticky top-0 z-10 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-primary/10">
-<div class="flex items-center p-4 max-w-lg mx-auto">
-<a href="{{ url_for('itens.meus') }}" class="text-primary p-2 hover:bg-primary/10 rounded-full transition-colors">
-<span class="material-symbols-outlined">arrow_back</span>
-</a>
-<h1 class="text-xl font-bold ml-2">Novo Item</h1>
+<div class="publicar-container">
+    <a href="/" class="link-voltar" aria-label="Voltar para a home">← Voltar</a>
+    
+    <div class="publicar-header">
+        <h1 class="publicar-titulo">Doar Material</h1>
+        <p class="publicar-subtitulo">Preencha os dados do item que você deseja repassar.</p>
+    </div>
+
+    <form method="POST" action="/itens/publicar" class="form-publicar" enctype="multipart/form-data">
+        
+        <div class="input-group">
+            <label for="titulo">O que você está doando?</label>
+            <input type="text" id="titulo" name="titulo" placeholder="Ex: Mochila escolar azul reforçada" required aria-required="true">
+        </div>
+
+        <div class="input-group">
+            <label for="categoria">Categoria</label>
+            <select id="categoria" name="categoria" required aria-required="true">
+                <option value="" disabled selected>Selecione uma categoria</option>
+                <option value="Mochilas">Mochilas</option>
+                <option value="Livros">Livros Didáticos</option>
+                <option value="Cadernos">Cadernos</option>
+                <option value="Escrita">Materiais de Escrita (Lápis, Canetas)</option>
+                <option value="Uniformes">Uniformes</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label for="estado">Estado de conservação</label>
+            <select id="estado" name="estado" required aria-required="true">
+                <option value="" disabled selected>Como está o material?</option>
+                <option value="Novo">Novo (Nunca usado)</option>
+                <option value="Seminovo">Seminovo (Pouquíssimo uso)</option>
+                <option value="Usado">Usado (Com marcas de uso, mas funcional)</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label for="descricao">Descrição (Detalhes importantes)</label>
+            <textarea id="descricao" name="descricao" rows="4" placeholder="Descreva detalhes como tamanho, marca, se possui alguma avaria leve, etc." required aria-required="true"></textarea>
+        </div>
+
+        <button type="submit" class="btn-primario btn-bloco mt-16">Publicar Doação</button>
+    </form>
 </div>
-</header>
-<main class="max-w-lg mx-auto pb-24">
-<!-- Photo Upload Area -->
-<section class="p-4">
-<div class="flex flex-col items-center gap-4 rounded-xl border-2 border-dashed border-primary/30 bg-primary/5 px-6 py-10 transition-colors hover:border-primary/50">
-<div class="bg-primary/10 p-4 rounded-full">
-<span class="material-symbols-outlined text-primary text-4xl">add_a_photo</span>
-</div>
-<div class="text-center">
-<p class="text-slate-900 dark:text-slate-100 text-lg font-bold">Adicionar Foto</p>
-<p class="text-slate-600 dark:text-slate-400 text-sm">Toque para fazer upload da imagem do item</p>
-</div>
-<button class="flex min-w-[120px] cursor-pointer items-center justify-center rounded-xl h-11 px-6 bg-primary text-white text-sm font-bold shadow-lg shadow-primary/20 hover:bg-primary/90">
-                    Selecionar
-                </button>
-</div>
-</section>
-<!-- Form Fields -->
-<section class="flex flex-col gap-6 px-4 py-4">
-<!-- Título -->
-<div class="flex flex-col">
-<label class="text-slate-900 dark:text-slate-100 text-sm font-semibold mb-2">Título do item</label>
-<input class="w-full rounded-xl border-primary/20 bg-white dark:bg-slate-800 focus:border-primary focus:ring-primary text-slate-900 dark:text-slate-100 h-14 px-4 placeholder:text-slate-400" placeholder="Ex: Mochila Escolar Azul" type="text"/>
-</div>
-<!-- Descrição -->
-<div class="flex flex-col">
-<label class="text-slate-900 dark:text-slate-100 text-sm font-semibold mb-2">Descrição</label>
-<textarea class="w-full rounded-xl border-primary/20 bg-white dark:bg-slate-800 focus:border-primary focus:ring-primary text-slate-900 dark:text-slate-100 min-h-[120px] p-4 placeholder:text-slate-400" placeholder="Descreva o estado do item, tamanho, cor e outras informações relevantes..."></textarea>
-</div>
-<!-- Categoria Dropdown -->
-<div class="flex flex-col">
-<label class="text-slate-900 dark:text-slate-100 text-sm font-semibold mb-2">Categoria</label>
-<div class="relative">
-<select class="w-full appearance-none rounded-xl border-primary/20 bg-white dark:bg-slate-800 focus:border-primary focus:ring-primary text-slate-900 dark:text-slate-100 h-14 px-4 pr-10">
-<option disabled="" selected="" value="">Selecione uma categoria</option>
-<option value="materiais">Materiais Escolares</option>
-<option value="uniformes">Uniformes</option>
-<option value="livros">Livros e Apostilas</option>
-<option value="outros">Outros</option>
-</select>
-<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-primary">expand_more</span>
-</div>
-</div>
-<!-- Estado de Conservação Chips -->
-<div class="flex flex-col">
-<label class="text-slate-900 dark:text-slate-100 text-sm font-semibold mb-2">Estado de conservação</label>
-<div class="flex flex-wrap gap-2">
-<button class="px-4 py-2 rounded-full border border-primary bg-primary text-white text-sm font-medium">Novo</button>
-<button class="px-4 py-2 rounded-full border border-primary/20 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-sm font-medium hover:border-primary/50">Semi-novo</button>
-<button class="px-4 py-2 rounded-full border border-primary/20 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-sm font-medium hover:border-primary/50">Usado</button>
-<button class="px-4 py-2 rounded-full border border-primary/20 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-sm font-medium hover:border-primary/50">Desgastado</button>
-</div>
-</div>
-<!-- Ponto de Coleta Dropdown -->
-<div class="flex flex-col">
-<label class="text-slate-900 dark:text-slate-100 text-sm font-semibold mb-2">Ponto de coleta sugerido</label>
-<div class="relative">
-<select class="w-full appearance-none rounded-xl border-primary/20 bg-white dark:bg-slate-800 focus:border-primary focus:ring-primary text-slate-900 dark:text-slate-100 h-14 px-4 pr-10">
-<option disabled="" selected="" value="">Onde você entregará o item?</option>
-<option value="escola_central">Escola Central (Portão A)</option>
-<option value="biblioteca_municipal">Biblioteca Municipal</option>
-<option value="centro_comunitario">Centro Comunitário Vila Nova</option>
-<option value="combinar">A combinar via chat</option>
-</select>
-<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-primary">location_on</span>
-</div>
-</div>
-<!-- Disclaimer -->
-<div class="flex items-start gap-3 p-4 bg-slate-100 dark:bg-slate-800/50 rounded-lg mt-2">
-<span class="material-symbols-outlined text-slate-400 text-sm mt-0.5">info</span>
-<p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed italic">
-                    Nota: Todas as publicações passam por uma breve revisão automática para garantir a segurança e conformidade com os termos de uso da comunidade Mochila Cheia.
-                </p>
-</div>
-</section>
-<!-- Submit Action -->
-<div class="p-4 mt-4">
-<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 rounded-xl shadow-lg shadow-primary/30 flex items-center justify-center gap-2 transition-transform active:scale-[0.98]">
-                Publicar Item
-                <span class="material-symbols-outlined">send</span>
-</button>
-</div>
-</main>
-<!-- Bottom Padding for safe area mobile -->
-<div class="h-8"></div>
 {% endblock %}
