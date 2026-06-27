@@ -1,0 +1,150 @@
+/* =========================================
+   TELA DE AUTENTICAÇÃO E CADASTRO (IHC/UX)
+   ========================================= */
+.auth-container {
+    padding: 24px;
+    max-width: 480px;
+    margin: 0 auto;
+    padding-bottom: 100px; /* Espaço para a bottom tab bar */
+}
+
+.auth-header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.auth-titulo {
+    font-size: 1.5rem;
+    color: #1F2937;
+    margin-bottom: 8px;
+}
+
+.auth-subtitulo {
+    font-size: 0.9rem;
+    color: #6B7280;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 8px;
+}
+
+/* Área de toque acessível: min-height 48px */
+.input-group input {
+    width: 100%;
+    min-height: 48px;
+    padding: 12px 16px;
+    border: 1px solid #D1D5DB;
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.input-group input:focus {
+    border-color: #6C63FF;
+    box-shadow: 0 0 0 2px rgba(108, 99, 255, 0.2);
+}
+
+.dica-senha {
+    display: block;
+    font-size: 0.8rem;
+    color: #6B7280;
+    margin-top: 6px;
+}
+
+/* Customização dos botões de rádio para visual de 'Card' */
+.tipo-usuario-group {
+    margin-bottom: 32px;
+}
+
+.label-tipo {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 12px;
+}
+
+.radio-cards {
+    display: flex;
+    gap: 16px;
+}
+
+.radio-cards input[type="radio"] {
+    display: none; /* Esconde a bolinha padrão do rádio */
+}
+
+/* Área de toque acessível: min-height 48px */
+.radio-card {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 80px;
+    border: 2px solid #E5E7EB;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    background-color: white;
+    text-align: center;
+    font-weight: 600;
+    color: #4B5563;
+}
+
+.radio-card .icone {
+    font-size: 1.5rem;
+    margin-bottom: 4px;
+}
+
+.radio-cards input[type="radio"]:checked + .radio-card {
+    border-color: #6C63FF;
+    background-color: #F3F0FF;
+    color: #6C63FF;
+}
+
+/* Área de toque acessível: min-height 48px e alto contraste */
+.btn-primario {
+    background-color: #6C63FF;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    min-height: 48px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-primario:hover {
+    background-color: #5A52D5;
+}
+
+.btn-bloco {
+    width: 100%;
+    display: block;
+}
+
+.auth-footer {
+    text-align: center;
+    margin-top: 24px;
+    font-size: 0.95rem;
+    color: #4B5563;
+}
+
+.link-destaque {
+    color: #6C63FF;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.link-destaque:hover {
+    text-decoration: underline;
+}
