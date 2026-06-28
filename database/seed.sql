@@ -28,37 +28,37 @@ INSERT INTO CATEGORIA (nome, descricao, ativa) VALUES
 INSERT INTO USUARIO (nome, email, senha_hash, telefone, endereco, tipo_usuario, ativo) VALUES
 -- Doadores
 ('Maria Silva Santos', 'maria.silva@email.com', 
- 'ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f', 
+ '55a5e9e78207b4df8699d60886fa070079463547b095d1a05bc719bb4e6cd251', 
  '(85) 99999-1111', 'Fortaleza, CE - Aldeota', 'doador', TRUE),
 
 ('Carlos Eduardo Lima', 'carlos.lima@email.com', 
- 'ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f', 
+ '55a5e9e78207b4df8699d60886fa070079463547b095d1a05bc719bb4e6cd251', 
  '(85) 99999-2222', 'Fortaleza, CE - Meireles', 'doador', TRUE),
 
 ('Ana Paula Ferreira', 'ana.ferreira@email.com', 
- 'ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f', 
+ '55a5e9e78207b4df8699d60886fa070079463547b095d1a05bc719bb4e6cd251', 
  '(85) 99999-3333', 'Fortaleza, CE - Papicu', 'doador', TRUE),
 
 -- Receptores
 ('João Pedro Oliveira', 'joao.pedro@email.com', 
- 'ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f', 
+ '55a5e9e78207b4df8699d60886fa070079463547b095d1a05bc719bb4e6cd251', 
  '(85) 99999-4444', 'Fortaleza, CE - Messejana', 'receptor', TRUE),
 
 ('Francisca Souza', 'francisca.souza@email.com', 
- 'ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f', 
+ '55a5e9e78207b4df8699d60886fa070079463547b095d1a05bc719bb4e6cd251', 
  '(85) 99999-5555', 'Fortaleza, CE - Barra do Ceará', 'receptor', TRUE),
 
 ('Pedro Henrique Costa', 'pedro.costa@email.com', 
- 'ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f', 
+ '55a5e9e78207b4df8699d60886fa070079463547b095d1a05bc719bb4e6cd251', 
  '(85) 99999-6666', 'Fortaleza, CE - Jangurussu', 'receptor', TRUE),
 
 -- Moderadores
 ('Admin Mochila Cheia', 'admin@mochilacheia.com', 
- 'ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f', 
+ '55a5e9e78207b4df8699d60886fa070079463547b095d1a05bc719bb4e6cd251', 
  '(85) 3333-0000', 'Fortaleza, CE - Centro', 'moderador', TRUE),
 
 ('Moderador Ana', 'ana.mod@mochilacheia.com', 
- 'ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f', 
+ '55a5e9e78207b4df8699d60886fa070079463547b095d1a05bc719bb4e6cd251', 
  NULL, 'Fortaleza, CE - Centro', 'moderador', TRUE);
 
 -- ============================================================
