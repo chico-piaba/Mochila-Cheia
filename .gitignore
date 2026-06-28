@@ -19,6 +19,9 @@ env/
 *.sqlite
 *.sqlite3
 
+# Ferramentas locais de desenvolvimento
+.pi/
+
 # Environment variables
 .env
 .env.local

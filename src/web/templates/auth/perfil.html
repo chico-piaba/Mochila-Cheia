@@ -21,10 +21,10 @@
 </div>
 </div>
 <div class="flex flex-col items-center justify-center">
-<p class="text-slate-900 dark:text-slate-100 text-2xl font-bold leading-tight tracking-tight text-center">João Silva</p>
-<p class="text-primary text-base font-medium leading-normal text-center">joao.silva@email.com</p>
-<div class="mt-2 px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-semibold border border-primary/20">
-                            Doador Bronze
+<p class="text-slate-900 dark:text-slate-100 text-2xl font-bold leading-tight tracking-tight text-center">{{ usuario.nome }}</p>
+<p class="text-primary text-base font-medium leading-normal text-center">{{ usuario.email }}</p>
+<div class="mt-2 px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-semibold border border-primary/20 capitalize">
+                            {{ usuario.tipo_usuario }}
                         </div>
 </div>
 </div>
@@ -51,15 +51,15 @@
 <div class="flex flex-col gap-4 px-4 py-3">
 <label class="flex flex-col w-full">
 <p class="text-slate-700 dark:text-slate-300 text-sm font-semibold pb-1.5 ml-1">Nome Completo</p>
-<input class="form-input flex w-full rounded-xl text-slate-900 dark:text-slate-100 focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-primary/20 bg-white dark:bg-slate-800 h-12 px-4 text-base font-normal" type="text" value="João Silva"/>
+<input class="form-input flex w-full rounded-xl text-slate-900 dark:text-slate-100 focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-primary/20 bg-white dark:bg-slate-800 h-12 px-4 text-base font-normal" type="text" value="{{ usuario.nome }}"/>
 </label>
 <label class="flex flex-col w-full">
 <p class="text-slate-700 dark:text-slate-300 text-sm font-semibold pb-1.5 ml-1">Telefone</p>
-<input class="form-input flex w-full rounded-xl text-slate-900 dark:text-slate-100 focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-primary/20 bg-white dark:bg-slate-800 h-12 px-4 text-base font-normal" type="tel" value="(11) 98765-4321"/>
+<input class="form-input flex w-full rounded-xl text-slate-900 dark:text-slate-100 focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-primary/20 bg-white dark:bg-slate-800 h-12 px-4 text-base font-normal" type="tel" value="{{ usuario.telefone or '' }}"/>
 </label>
 <label class="flex flex-col w-full">
 <p class="text-slate-700 dark:text-slate-300 text-sm font-semibold pb-1.5 ml-1">Cidade / Estado</p>
-<input class="form-input flex w-full rounded-xl text-slate-900 dark:text-slate-100 focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-primary/20 bg-white dark:bg-slate-800 h-12 px-4 text-base font-normal" type="text" value="São Paulo - SP"/>
+<input class="form-input flex w-full rounded-xl text-slate-900 dark:text-slate-100 focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-primary/20 bg-white dark:bg-slate-800 h-12 px-4 text-base font-normal" type="text" value="{{ usuario.endereco or '' }}"/>
 </label>
 </div>
 {# Actions #}

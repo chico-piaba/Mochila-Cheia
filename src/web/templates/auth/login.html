@@ -10,35 +10,34 @@
 <h1 class="text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-100">Mochila Cheia</h1>
 </div>
 {# Form Section #}
-<div class="w-full space-y-5">
+<form method="POST" action="{{ url_for('auth.login') }}" class="w-full space-y-5">
 {# Email Input #}
 <div class="flex flex-col gap-2">
-<label class="text-sm font-semibold text-slate-700 dark:text-slate-300 ml-1">E-mail</label>
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300 ml-1" for="email">E-mail</label>
 <div class="relative flex items-center">
 <span class="material-symbols-outlined absolute left-4 text-slate-400">mail</span>
-<input class="w-full h-14 pl-12 pr-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all placeholder:text-slate-400" placeholder="seu@email.com" type="email"/>
+<input id="email" name="email" value="{{ email or '' }}" required class="w-full h-14 pl-12 pr-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all placeholder:text-slate-400" placeholder="seu@email.com" type="email"/>
 </div>
 </div>
 {# Password Input #}
 <div class="flex flex-col gap-2">
 <div class="flex justify-between items-center ml-1">
-<label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Senha</label>
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300" for="senha">Senha</label>
 </div>
 <div class="relative flex items-center">
 <span class="material-symbols-outlined absolute left-4 text-slate-400">lock</span>
-<input class="w-full h-14 pl-12 pr-12 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all placeholder:text-slate-400" placeholder="••••••••" type="password"/>
-<button class="absolute right-4 text-slate-400 hover:text-primary transition-colors">
-<span class="material-symbols-outlined">visibility</span>
-</button>
+<input id="senha" name="senha" required class="w-full h-14 pl-12 pr-12 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all placeholder:text-slate-400" placeholder="••••••••" type="password"/>
 </div>
 <div class="flex justify-end">
 <a class="text-sm font-medium text-primary hover:underline" href="{{ url_for('auth.esqueci_senha') }}">Esqueci minha senha</a>
 </div>
 </div>
 {# Primary Action #}
-<a href="{{ url_for('home.index') }}" class="w-full h-14 bg-primary text-white font-bold rounded-xl shadow-lg shadow-primary/20 hover:bg-primary/90 transition-all active:scale-[0.98] mt-4 flex items-center justify-center">
+<button type="submit" class="w-full h-14 bg-primary text-white font-bold rounded-xl shadow-lg shadow-primary/20 hover:bg-primary/90 transition-all active:scale-[0.98] mt-4 flex items-center justify-center">
                 Entrar
-            </a>
+            </button>
+</form>
+<div class="w-full space-y-5">
 {# Divider #}
 <div class="flex items-center gap-4 py-4">
 <div class="h-px flex-1 bg-slate-200 dark:bg-slate-700"></div>

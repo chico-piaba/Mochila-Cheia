@@ -8,7 +8,7 @@
 </a>
 <h2 class="text-lg font-bold leading-tight tracking-tight flex-1 ml-2">Revisar Item</h2>
 <div class="flex gap-2">
-<span class="bg-primary/10 text-primary text-xs font-bold px-2 py-1 rounded">ID: #8821</span>
+<span class="bg-primary/10 text-primary text-xs font-bold px-2 py-1 rounded">ID: #{{ item.id_item }}</span>
 </div>
 </header>
 <main class="flex-1 overflow-y-auto pb-32">
@@ -19,9 +19,9 @@
 </div>
 <div class="space-y-4">
 <section>
-<h1 class="text-2xl font-bold mb-2">Mochila Escolar Kipling Azul</h1>
+<h1 class="text-2xl font-bold mb-2">{{ item.titulo }}</h1>
 <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
-                            Mochila original em bom estado de conservação. Possui apenas um pequeno desgaste no zíper frontal, mas funciona perfeitamente. Ideal para crianças do ensino fundamental.
+                            {{ item.descricao }}
                         </p>
 </section>
 <div class="grid grid-cols-2 gap-4 py-4 border-y border-primary/10">
@@ -29,14 +29,14 @@
 <span class="material-symbols-outlined text-primary">category</span>
 <div>
 <p class="text-[10px] uppercase font-bold text-slate-400">Categoria</p>
-<p class="text-sm font-semibold">Material Escolar</p>
+<p class="text-sm font-semibold">{{ item.categoria }}</p>
 </div>
 </div>
 <div class="flex items-center gap-2">
 <span class="material-symbols-outlined text-primary">verified_user</span>
 <div>
 <p class="text-[10px] uppercase font-bold text-slate-400">Estado</p>
-<p class="text-sm font-semibold">Bom estado</p>
+<p class="text-sm font-semibold">{{ item.estado }}</p>
 </div>
 </div>
 </div>
@@ -47,7 +47,7 @@
 </div>
 <div>
 <p class="text-[10px] uppercase font-bold text-slate-400 leading-none mb-1">Doador</p>
-<p class="font-bold text-sm">Ricardo Mendes</p>
+<p class="font-bold text-sm">{{ item.doador_nome }}</p>
 </div>
 </div>
 <button class="text-primary text-xs font-semibold hover:underline">Ver Perfil</button>
@@ -63,14 +63,18 @@
 <textarea class="w-full rounded-lg border-primary/20 bg-slate-50 dark:bg-slate-800 text-sm focus:ring-primary focus:border-primary" placeholder="Caso recuse, informe o motivo ao doador..." rows="3"></textarea>
 </div>
 <div class="flex gap-4">
-<button class="flex-1 bg-danger text-white font-bold py-4 rounded-xl flex flex-col items-center justify-center gap-1 hover:brightness-110 active:scale-95 transition-all">
+<form method="POST" action="{{ url_for('moderacao.recusar', id_item=item.id_item) }}" class="flex-1">
+<button type="submit" class="w-full bg-danger text-white font-bold py-4 rounded-xl flex flex-col items-center justify-center gap-1 hover:brightness-110 active:scale-95 transition-all">
 <span class="material-symbols-outlined text-2xl">close</span>
 <span>Recusar</span>
 </button>
-<button class="flex-1 bg-success text-white font-bold py-4 rounded-xl flex flex-col items-center justify-center gap-1 hover:brightness-110 active:scale-95 transition-all">
+</form>
+<form method="POST" action="{{ url_for('moderacao.aprovar', id_item=item.id_item) }}" class="flex-1">
+<button type="submit" class="w-full bg-success text-white font-bold py-4 rounded-xl flex flex-col items-center justify-center gap-1 hover:brightness-110 active:scale-95 transition-all">
 <span class="material-symbols-outlined text-2xl">check_circle</span>
 <span>Aprovar</span>
 </button>
+</form>
 </div>
 </div>
 </section>

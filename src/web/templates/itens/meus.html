@@ -32,91 +32,30 @@
 </div>
 <!-- Main Content: Vertical List of Items -->
 <main class="flex-1 p-4 space-y-4 max-w-md mx-auto w-full mb-24">
-<!-- Item Card: Disponível -->
-<a href="#" class="bg-white dark:bg-slate-800/50 rounded-xl p-3 border border-primary/5 shadow-sm flex gap-4">
-<div class="w-24 h-24 rounded-lg bg-center bg-cover flex-shrink-0" data-alt="Cadeira de escritório ergonômica preta" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuARvOFfnJU-EBcOH8dYiiLeORgTZoO40XfGXIBdh66mlDGZ-deeZ6COm0vpRB2QtIMErMIeFzEtdTdjwSyrk63PO1qgvo0v_KkNdZ6KHpEqrloqo9Vt_jyhtQwCc4zRAmWuoj8Uk-BTWnJs2Q0jtyK-m4hB36iY_K3pepU1382r9bKkbl1sl8tjU2au_0_f_oU-fVoY_V9WUHyeFnj_9--2bFXGG_zN69qThESwXAIjOWAd0fbslGty4OyHnFu3Kaj0h4BtAxvfwL6f')"></div>
+{% set rotulo_status = {'pendente_moderacao':'Pendente','disponivel':'Disponível','reservado':'Reservado','doado':'Doado','recusado':'Recusado','inativo':'Inativo'} %}
+{% set cor_status = {'pendente_moderacao':'bg-yellow-100 text-yellow-700','disponivel':'bg-green-100 text-green-700','reservado':'bg-blue-100 text-blue-700','doado':'bg-slate-200 text-slate-500','recusado':'bg-red-100 text-red-700','inativo':'bg-slate-200 text-slate-500'} %}
+{% for item in itens %}
+<a href="{{ url_for('itens.detalhe_doador', id_item=item.id_item) }}" class="bg-white dark:bg-slate-800/50 rounded-xl p-3 border border-primary/5 shadow-sm flex gap-4">
+<div class="w-24 h-24 rounded-lg bg-slate-200 dark:bg-slate-700 flex-shrink-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-400">image</span>
+</div>
 <div class="flex flex-col justify-between py-0.5 flex-1">
 <div>
-<div class="flex justify-between items-start">
-<h3 class="font-bold text-base leading-tight">Cadeira de Escritório</h3>
-<span class="bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-[10px] font-bold uppercase px-2 py-0.5 rounded-full">Disponível</span>
+<div class="flex justify-between items-start gap-2">
+<h3 class="font-bold text-base leading-tight">{{ item.titulo }}</h3>
+<span class="{{ cor_status.get(item.status, 'bg-slate-200 text-slate-500') }} text-[10px] font-bold uppercase px-2 py-0.5 rounded-full shrink-0">{{ rotulo_status.get(item.status, item.status) }}</span>
 </div>
-<p class="text-xs text-slate-500 dark:text-slate-400 mt-1 uppercase font-medium">Móveis</p>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-1 uppercase font-medium">{{ item.categoria }}</p>
 </div>
-<div class="flex items-center text-[11px] text-slate-400">
-<span class="material-symbols-outlined text-xs mr-1">calendar_today</span>
-                    Cadastrado em 12/10/2023
-                </div>
 </div>
 </a>
-<!-- Item Card: Pendente -->
-<a href="#" class="bg-white dark:bg-slate-800/50 rounded-xl p-3 border border-primary/5 shadow-sm flex gap-4">
-<div class="w-24 h-24 rounded-lg bg-center bg-cover flex-shrink-0" data-alt="Livro antigo de capa dura" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCbvJ-i89MUDk3Yt5K3Qot92gBA6JuL-0ScYs5f1lFgPPBA1EbR9ccrH0CtiPlYlzqOUQX8p2qWfx4f0uhjuKeeKgY8dib0NCIH1EUmdhkEKR7SQpDq-QNtGS428Kce1YIPK-npfsQmp5tH0eIGqrzJ1gxjp7gGXJP-TVEVJPpwdd41eD6E1p3y8ZY0nTL2IxHVpMDxpzHtHG8X9MAAUqM53qweC-RwKvxVS6lOb-69uzd4aHL2lbNOGp7fOl8l2SI8ycn0Kwzjm0DU')"></div>
-<div class="flex flex-col justify-between py-0.5 flex-1">
-<div>
-<div class="flex justify-between items-start">
-<h3 class="font-bold text-base leading-tight">Livro de Cálculo I</h3>
-<span class="bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-400 text-[10px] font-bold uppercase px-2 py-0.5 rounded-full">Pendente</span>
+{% else %}
+<div class="text-center text-slate-500 py-16">
+<span class="material-symbols-outlined text-5xl mb-2">inventory_2</span>
+<p>Você ainda não publicou nenhum item.</p>
+<a href="{{ url_for('itens.publicar') }}" class="text-primary font-semibold">Doar meu primeiro item</a>
 </div>
-<p class="text-xs text-slate-500 dark:text-slate-400 mt-1 uppercase font-medium">Educação</p>
-</div>
-<div class="flex items-center text-[11px] text-slate-400">
-<span class="material-symbols-outlined text-xs mr-1">calendar_today</span>
-                    Cadastrado em 10/10/2023
-                </div>
-</div>
-</a>
-<!-- Item Card: Reservado -->
-<a href="#" class="bg-white dark:bg-slate-800/50 rounded-xl p-3 border border-primary/5 shadow-sm flex gap-4">
-<div class="w-24 h-24 rounded-lg bg-center bg-cover flex-shrink-0" data-alt="Relógio inteligente moderno" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAdCr9N1yl2gpn3OlcWujBYZ6_kWsc7d62JdGlEo6UfqJoItZ43RtlGIRMGoigmY-jLORPFlrWeeqqgPGJBrh50wwfUICTe7wTe6C1f00fjtRbagffntTjLAZhykyo5Hc_H8F2up9H0cW7OPWpOwyBKU8NM-A59GC4Cdi5tN7wTOjFQ2eRU2XIZZFJPq3ZyJhHqxlK5F55wT5701FNMiYLXbGQThjAJazYJPoV-0NFVgE6TLgXEW01ES1rDaTpRvdptIVIB_yNjr5Sd')"></div>
-<div class="flex flex-col justify-between py-0.5 flex-1">
-<div>
-<div class="flex justify-between items-start">
-<h3 class="font-bold text-base leading-tight">Smartwatch Usado</h3>
-<span class="bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 text-[10px] font-bold uppercase px-2 py-0.5 rounded-full">Reservado</span>
-</div>
-<p class="text-xs text-slate-500 dark:text-slate-400 mt-1 uppercase font-medium">Eletrônicos</p>
-</div>
-<div class="flex items-center text-[11px] text-slate-400">
-<span class="material-symbols-outlined text-xs mr-1">calendar_today</span>
-                    Cadastrado em 08/10/2023
-                </div>
-</div>
-</a>
-<!-- Item Card: Doado -->
-<a href="#" class="bg-white/60 dark:bg-slate-800/20 rounded-xl p-3 border border-primary/5 shadow-sm flex gap-4 opacity-80">
-<div class="w-24 h-24 rounded-lg bg-center bg-cover flex-shrink-0 grayscale" data-alt="Casaco de inverno azul" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBvQblVRTVkEZnJOdxuNqi5KANg9cJprxfzVDBIMCmUYUd5q4I7u1JGeO1Jx0jexGdrnE2ZL2krKwg2scCKfc7dpXTyKRN4xvzUONqIzKblrvrUIlWMesEDgbvy69cFa14epiR47XH1AKKbtBrrLSpPblttHqV8eAwmDKR_C8oysf88md9UfkXlI6nwqwNN7eQRjMG88NoEscaI416VbrQmhEsseSJ3fUb9CeQLe-biU2SEt1I-Tun9L4R4CO66AR2ZzLt6YBdw0Pmp')"></div>
-<div class="flex flex-col justify-between py-0.5 flex-1">
-<div>
-<div class="flex justify-between items-start">
-<h3 class="font-bold text-base leading-tight text-slate-400">Jaqueta Térmica</h3>
-<span class="bg-slate-200 dark:bg-slate-700 text-slate-500 dark:text-slate-400 text-[10px] font-bold uppercase px-2 py-0.5 rounded-full">Doado</span>
-</div>
-<p class="text-xs text-slate-400 mt-1 uppercase font-medium">Vestuário</p>
-</div>
-<div class="flex items-center text-[11px] text-slate-400">
-<span class="material-symbols-outlined text-xs mr-1">calendar_today</span>
-                    Cadastrado em 01/10/2023
-                </div>
-</div>
-</a>
-<!-- Item Card: Recusado -->
-<a href="#" class="bg-white dark:bg-slate-800/50 rounded-xl p-3 border border-primary/5 shadow-sm flex gap-4">
-<div class="w-24 h-24 rounded-lg bg-center bg-cover flex-shrink-0 grayscale" data-alt="Liquidificador quebrado" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCvyAfBM2PFBdI7LXCVU6Bz1p8vUm9okzK2Ha8C6NBXvJK0bOUfOO1WLZZ2E4hBgO5Z9LdOo0fRcwjXVfDj5lz0LW20qzailxm4F1dCl96vCtnexWt5ekMSTMdJxh9vSmqavzD28Cfxq7ldrJtbLEj11AZQkL_9-s_KLPdDIob5_ctzS_-V1jBYJiAIHB4l6Xa3EW_mEPO7AbTUSMOehQ3EQSDmMLEghR6oa7DV3IlkzraoFTz4qy8E-lm9LkGimZ7J5TyMcAokeEv3')"></div>
-<div class="flex flex-col justify-between py-0.5 flex-1">
-<div>
-<div class="flex justify-between items-start">
-<h3 class="font-bold text-base leading-tight">Liquidificador Antigo</h3>
-<span class="bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400 text-[10px] font-bold uppercase px-2 py-0.5 rounded-full">Recusado</span>
-</div>
-<p class="text-xs text-slate-500 dark:text-slate-400 mt-1 uppercase font-medium">Eletrodomésticos</p>
-</div>
-<div class="flex items-center text-[11px] text-slate-400">
-<span class="material-symbols-outlined text-xs mr-1">calendar_today</span>
-                    Cadastrado em 25/09/2023
-                </div>
-</div>
-</a>
+{% endfor %}
 </main>
 <!-- FAB -->
 <a href="{{ url_for('itens.publicar') }}" class="fixed bottom-24 right-6 size-14 bg-primary text-white rounded-full shadow-lg shadow-primary/40 flex items-center justify-center hover:scale-105 transition-transform active:scale-95 z-20">

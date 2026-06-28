@@ -15,7 +15,7 @@
 <div class="bg-primary/10 dark:bg-primary/20 border border-primary/20 rounded-xl p-6 flex items-center justify-between">
 <div>
 <p class="text-sm font-medium text-primary dark:text-primary/80 uppercase tracking-wider">Itens Pendentes</p>
-<p class="text-4xl font-extrabold text-slate-900 dark:text-white">24</p>
+<p class="text-4xl font-extrabold text-slate-900 dark:text-white">{{ itens|length }}</p>
 </div>
 <div class="bg-primary text-white p-3 rounded-lg">
 <span class="material-symbols-outlined text-3xl">inventory_2</span>
@@ -26,58 +26,36 @@
 <div class="px-4 py-2">
 <h2 class="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-4">Aguardando Revisão</h2>
 <div class="space-y-4">
-{# Item Card 1 #}
-<div class="bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 rounded-xl p-3 flex gap-4 items-center">
-<div class="size-20 rounded-lg bg-slate-200 dark:bg-slate-700 flex-shrink-0 bg-cover bg-center" data-alt="Blue school backpack on solid background" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA7IZWWxNf6lMl4Qvu-Q-XpITMAqQArkp82K2XrD42rW65t1vuq30pS9Zyl29GY1i02IO8siS_Qzft3JRwsLi3u0OeF2Y8hj3EOc6KTd_mAGi28NCC3DzlKsQFHsK5Icw2YLG4Bdf31APHx1hfMe5bh_7vBiTJVn1Y_ZY_sNn0I14JN00Gt8bRM4mgs3AFno6HTQh7EwLMcPRPGfz43ApqTqxOh-_cJll5ot-d13zn-39HXJCF8QFdhLxtNvMp6VeBKxuAf2T3vIdn4')"></div>
-<div class="flex-1 min-w-0">
-<h3 class="font-bold text-slate-900 dark:text-white truncate">Mochila Escolar Azul</h3>
-<p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Doador: João Silva</p>
-<p class="text-xs text-slate-500 dark:text-slate-400">Data: 24/10/2023</p>
-<span class="inline-block mt-2 px-2 py-0.5 bg-slate-200 dark:bg-slate-700 text-[10px] font-bold rounded uppercase tracking-tighter text-slate-600 dark:text-slate-300">Material Escolar</span>
+{% for item in itens %}
+<div class="bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 rounded-xl p-3">
+<div class="flex gap-4 items-center">
+<div class="size-20 rounded-lg bg-slate-200 dark:bg-slate-700 flex-shrink-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-400">image</span>
 </div>
-<a href="#" class="bg-primary hover:bg-primary/90 text-white text-xs font-bold py-2 px-4 rounded-lg transition-colors shrink-0">
+<div class="flex-1 min-w-0">
+<h3 class="font-bold text-slate-900 dark:text-white truncate">{{ item.titulo }}</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Doador: {{ item.doador_nome }}</p>
+<span class="inline-block mt-2 px-2 py-0.5 bg-slate-200 dark:bg-slate-700 text-[10px] font-bold rounded uppercase tracking-tighter text-slate-600 dark:text-slate-300">{{ item.categoria }}</span>
+</div>
+<a href="{{ url_for('moderacao.revisar', id_item=item.id_item) }}" class="bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 text-slate-700 dark:text-slate-200 text-xs font-bold py-2 px-4 rounded-lg transition-colors shrink-0">
                             Revisar
                         </a>
 </div>
-{# Item Card 2 #}
-<div class="bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 rounded-xl p-3 flex gap-4 items-center">
-<div class="size-20 rounded-lg bg-slate-200 dark:bg-slate-700 flex-shrink-0 bg-cover bg-center" data-alt="Set of colored pencils in a box" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBPueHGBXwRsYR08xD9eBvFkjDVPcZVIKu2hDSBOYVNWuA_tHNIuO8sXjNP-mIRhBhBYOwHc_OgGB_7H12F07LRtTs2zvPqOY7RthNllIGIqXQz8rYn8Os4sJVMuCX901AgdPmCf2AvKaNa69Y-yWKUSMNt3vQ5FJmCQ-ju0DAOFnvaxbRmeivDEuXAoMJjqiu5bEC0Dl04ZQWfg3QTgnzgwHhAlmWyVdIL4s9Duuqvn3FSt4jOoFQOdgaEaGKhECuPOSFy-mTkvUpQ')"></div>
-<div class="flex-1 min-w-0">
-<h3 class="font-bold text-slate-900 dark:text-white truncate">Lápis de Cor (24 cores)</h3>
-<p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Doadora: Maria Santos</p>
-<p class="text-xs text-slate-500 dark:text-slate-400">Data: 23/10/2023</p>
-<span class="inline-block mt-2 px-2 py-0.5 bg-slate-200 dark:bg-slate-700 text-[10px] font-bold rounded uppercase tracking-tighter text-slate-600 dark:text-slate-300">Papelaria</span>
+<div class="flex gap-2 mt-3">
+<form method="POST" action="{{ url_for('moderacao.aprovar', id_item=item.id_item) }}" class="flex-1">
+<button type="submit" class="w-full bg-success text-white text-xs font-bold py-2 rounded-lg hover:opacity-90 transition-opacity">Aprovar</button>
+</form>
+<form method="POST" action="{{ url_for('moderacao.recusar', id_item=item.id_item) }}" class="flex-1">
+<button type="submit" class="w-full bg-danger text-white text-xs font-bold py-2 rounded-lg hover:opacity-90 transition-opacity">Recusar</button>
+</form>
 </div>
-<a href="#" class="bg-primary hover:bg-primary/90 text-white text-xs font-bold py-2 px-4 rounded-lg transition-colors shrink-0">
-                            Revisar
-                        </a>
 </div>
-{# Item Card 3 #}
-<div class="bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 rounded-xl p-3 flex gap-4 items-center">
-<div class="size-20 rounded-lg bg-slate-200 dark:bg-slate-700 flex-shrink-0 bg-cover bg-center" data-alt="Hardcover notebook with abstract design" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA03VOe2XbephcxpW4iNMC7rVJlm4J02_ClWK2tMpI1ni3ECORiR54X4DPZMWHFooVgWbXwdHy5tv5grlnC98Mp6-Po8qXErRHxN7KEVsRwv9KArkxkk19tUeDAtSbfldhFUiEuUwEs0RZHL5hBuP_Zot2bOE2errX8_v2gTi4jf9rc9ezW-0Q8sgpiLMHO5BP9heailNfHou2eHezR0UZ4vUfUjdkzfuZGsdwytlYTiFgr5vlLrQO_zfeY6AheAFlxtKBMPDR-M3K0')"></div>
-<div class="flex-1 min-w-0">
-<h3 class="font-bold text-slate-900 dark:text-white truncate">Caderno Universitário</h3>
-<p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Doador: Carlos Lima</p>
-<p class="text-xs text-slate-500 dark:text-slate-400">Data: 22/10/2023</p>
-<span class="inline-block mt-2 px-2 py-0.5 bg-slate-200 dark:bg-slate-700 text-[10px] font-bold rounded uppercase tracking-tighter text-slate-600 dark:text-slate-300">Cadernos</span>
+{% else %}
+<div class="text-center text-slate-500 py-16">
+<span class="material-symbols-outlined text-5xl mb-2">task_alt</span>
+<p>Nenhum item pendente. Fila zerada! 🎉</p>
 </div>
-<a href="#" class="bg-primary hover:bg-primary/90 text-white text-xs font-bold py-2 px-4 rounded-lg transition-colors shrink-0">
-                            Revisar
-                        </a>
-</div>
-{# Item Card 4 #}
-<div class="bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 rounded-xl p-3 flex gap-4 items-center opacity-75">
-<div class="size-20 rounded-lg bg-slate-200 dark:bg-slate-700 flex-shrink-0 bg-cover bg-center" data-alt="Plastic ruler and geometry set" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCJleNVeY71bImleJhd58J76g_YqBv9QJfiVeFZLq6frVHcBkv1dlwfwcDtstAF0lL-NMyECp2LiimdtMq9XtLYHALNBAzpXie8XR2ZTsiG08DzSXTSxkakmvk9Wu-wC77hM__vZaOkcuNU9mbSRS0DdF3BOCFd7-E6_2PFWguv567cljsLUeL5Q-D1arW6b-XMtun2dUDYvU5fksHR664ZJD4yP-gNvns8tQnrapwgbCN35VYrHIZHxturcObUrChuOS6Xj08vycB6')"></div>
-<div class="flex-1 min-w-0">
-<h3 class="font-bold text-slate-900 dark:text-white truncate">Kit Geometria</h3>
-<p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Doador: Ana Paula</p>
-<p class="text-xs text-slate-500 dark:text-slate-400">Data: 21/10/2023</p>
-<span class="inline-block mt-2 px-2 py-0.5 bg-slate-200 dark:bg-slate-700 text-[10px] font-bold rounded uppercase tracking-tighter text-slate-600 dark:text-slate-300">Outros</span>
-</div>
-<a href="#" class="bg-primary hover:bg-primary/90 text-white text-xs font-bold py-2 px-4 rounded-lg transition-colors shrink-0">
-                            Revisar
-                        </a>
-</div>
+{% endfor %}
 </div>
 </div>
 </main>

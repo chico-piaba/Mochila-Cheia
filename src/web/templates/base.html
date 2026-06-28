@@ -22,6 +22,7 @@
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&amp;display=swap" rel="stylesheet"/>
+<link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet"/>
 <script id="tailwind-config">
   tailwind.config = {
     darkMode: "class",
@@ -47,6 +48,20 @@
 </style>
 </head>
 <body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen flex flex-col {% if not sem_nav %}pb-24{% endif %}">
+
+{# Mensagens de feedback (flash) — login, cadastro, publicação, moderação #}
+{% with mensagens = get_flashed_messages(with_categories=true) %}
+{% if mensagens %}
+<div class="fixed top-4 left-1/2 -translate-x-1/2 z-[60] w-[92%] max-w-md space-y-2">
+  {% for categoria, texto in mensagens %}
+  <div class="px-4 py-3 rounded-xl shadow-lg text-sm font-semibold text-white
+    {% if categoria == 'erro' %}bg-danger{% elif categoria == 'aviso' %}bg-amber-500{% else %}bg-success{% endif %}">
+    {{ texto }}
+  </div>
+  {% endfor %}
+</div>
+{% endif %}
+{% endwith %}
 
 {% block conteudo %}{% endblock %}
 
