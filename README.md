@@ -16,6 +16,9 @@ O **Mochila Cheia** é uma plataforma digital (aplicativo web) que visa conectar
 - [Tecnologias Utilizadas](#-tecnologias-utilizadas)
 - [Estrutura do Projeto](#-estrutura-do-projeto)
 - [Como Executar](#-como-executar)
+- [Demonstração do MVP](#-demonstração-do-mvp)
+- [Processo de Desenvolvimento](#-processo-de-desenvolvimento)
+- [Como Utilizar a Aplicação](#-componente-extensionista-como-utilizar-a-aplicação)
 - [Classes do Sistema](#-classes-do-sistema)
 - [Banco de Dados](#-banco-de-dados)
 - [Wireframe e Sitemap](#-wireframe-e-sitemap-do-mvp)
@@ -87,16 +90,23 @@ Durante o design, priorizamos a acessibilidade (contraste 4.5:1 da WCAG 2.1) e a
 
 ## 🔧 Tecnologias Utilizadas
 
-| Tecnologia | Uso |
-|------------|-----|
-| **Python 3.10+** | Linguagem principal de programação |
-| **SQLite** | Banco de dados para desenvolvimento |
-| **PostgreSQL** | Banco de dados para produção (opcional) |
-| **Git/GitHub** | Controle de versão e repositório |
+| Tecnologia | Uso | Por que escolhemos |
+|------------|-----|--------------------|
+| **Python 3.10+** | Linguagem principal | Sintaxe clara, ideal para a equipe evoluir junta e para o contexto acadêmico |
+| **Flask 3** | Framework web (rotas, sessões, templates) | Leve e explícito: cada camada do MVC fica visível, sem "mágica" de frameworks maiores |
+| **Jinja2** | Motor de templates das telas | Integrado ao Flask, permite reutilizar layout base e componentes entre as páginas |
+| **Tailwind CSS** | Estilização da interface | Agilizou a tradução dos protótipos do Figma para telas responsivas mobile-first |
+| **SQLite** | Banco de dados do MVP | Zero configuração: o banco é criado por script e roda em qualquer máquina |
+| **PostgreSQL** | Banco para produção (futuro) | Caminho natural de evolução mantendo o mesmo SQL |
+| **bcrypt** | Hash de senhas | Padrão de mercado para armazenar credenciais com segurança |
+| **pytest** | Testes unitários dos modelos | Rápido de escrever e de rodar a cada mudança |
+| **Playwright** | Teste end-to-end no navegador | Valida o fluxo real (publicar → moderar → solicitar) e gera os prints de evidência |
+| **Git/GitHub** | Controle de versão e repositório | Trabalho em paralelo da equipe com histórico rastreável |
 
 ### Dependências Python
 
 ```
+Flask>=3.0.0
 dataclasses-json>=0.6.0
 python-dateutil>=2.8.2
 bcrypt>=4.0.0
@@ -164,20 +174,143 @@ venv\Scripts\activate     # Windows
 pip install -r requirements.txt
 ```
 
-### 4. Execute a demonstração
+### 4. Crie o banco de dados com dados de exemplo
 
 ```bash
-cd src
-python main.py
+flask --app run init-db
 ```
 
-### 5. (Opcional) Configure o banco de dados
+### 5. Execute a aplicação web
 
 ```bash
-cd database
-sqlite3 mochila_cheia.db < schema.sql
-sqlite3 mochila_cheia.db < seed.sql
+flask --app run run --debug
 ```
+
+Acesse **http://127.0.0.1:5000** no navegador (recomendamos o modo
+responsivo/celular do DevTools — o design é mobile-first).
+
+### 6. Acesse com os usuários de exemplo
+
+A senha de todos é `senha123`:
+
+| Perfil | E-mail |
+|--------|--------|
+| Doadora | `maria.silva@email.com` |
+| Receptor | `joao.pedro@email.com` |
+| Moderador | `admin@mochilacheia.com` |
+
+### (Opcional) Demonstração de console dos modelos
+
+A fase anterior do projeto incluiu uma demonstração das classes via terminal:
+
+```bash
+cd src && python main.py
+```
+
+### (Opcional) Rodar os testes
+
+```bash
+python -m pytest tests --ignore=tests/e2e   # 18 testes unitários
+python tests/e2e/teste_playwright.py        # e2e (requer app rodando na porta 5001)
+```
+
+---
+
+## 📸 Demonstração do MVP
+
+O fluxo completo — doadora publica → moderador aprova → receptor
+solicita → chat → aceite — está gravado em vídeo em
+[`docs/evidencias/demo-mochila-cheia.mp4`](docs/evidencias/demo-mochila-cheia.mp4).
+Os prints abaixo são gerados automaticamente pelo teste end-to-end
+(Playwright) navegando a aplicação real:
+
+| Vitrine (Home) | Publicar Item | Fila de Moderação |
+|---|---|---|
+| ![Vitrine com itens disponíveis](docs/evidencias/playwright/03-home-busca.png) | ![Formulário de publicação](docs/evidencias/playwright/05-publicar-form.png) | ![Fila do moderador](docs/evidencias/playwright/07-fila-moderacao.png) |
+
+| Minhas Solicitações | Chat | Pontos de Coleta |
+|---|---|---|
+| ![Solicitações do receptor](docs/evidencias/playwright/11-minhas-solicitacoes.png) | ![Conversa entre doador e receptor](docs/evidencias/playwright/15-mensagens-chat.png) | ![Detalhe do ponto de coleta](docs/evidencias/playwright/20-pontos-detalhe.png) |
+
+As 20 telas capturadas estão em [`docs/evidencias/playwright/`](docs/evidencias/playwright/).
+
+---
+
+## 🧑‍💻 Processo de Desenvolvimento
+
+**Divisão de tarefas.** A equipe se organizou em duas frentes que
+trabalharam em paralelo: *Arquitetura/Backend* (Rodrigo, Júlio e
+Gabriela — modelagem do banco, blueprints, repositórios e regras de
+negócio) e *IHC/UX* (Robson, Maria e Lucas — protótipos no Figma,
+templates das telas e acessibilidade). A arquitetura em camadas foi
+decidida justamente para que as frentes não conflitassem: quem fazia
+telas não tocava em SQL, e quem fazia backend não tocava em layout.
+
+**Versionamento.** O desenvolvimento aconteceu na branch `main` com
+commits pequenos e descritivos por etapa (`feat:`, `test:`, `docs:`),
+representando a evolução real: protótipos → backend do fluxo de doação
+→ integração das telas → testes e evidências.
+
+**Dificuldades e soluções.**
+- *Integração frontend/backend:* os templates vindos do protótipo
+  usavam dados estáticos (imagens e textos de exemplo "hardcoded").
+  A solução foi criar a camada de repositórios e revisar tela por tela
+  ligando cada elemento ao banco — o teste e2e com Playwright foi criado
+  para provar que nenhuma tela ficou "de mentira".
+- *Fotos dos itens:* as URLs de exemplo do seed não existiam e as
+  imagens apareciam quebradas. Resolvemos com imagens locais versionadas
+  no repositório e upload real de fotos com validação de extensão.
+- *Segurança do fluxo:* para evitar conteúdo indevido, decidimos que
+  nenhum item publicado aparece na vitrine sem passar pela fila de
+  moderação — regra garantida no repositório de itens e coberta pelo
+  teste e2e.
+
+---
+
+## 🤝 [Componente Extensionista] Como Utilizar a Aplicação
+
+**Como acessar.** Qualquer pessoa pode abrir o endereço da aplicação no
+navegador do celular ou do computador — não é preciso instalar nada. A
+vitrine de itens é pública; para doar ou solicitar basta criar uma conta
+gratuita com nome e e-mail.
+
+**Como usar as principais funções.**
+- *Quero doar:* crie a conta, toque no botão **+**, preencha título,
+  categoria, estado de conservação, descrição e anexe uma foto. Seu item
+  passa por uma rápida moderação e entra na vitrine.
+- *Preciso de material:* navegue pela vitrine ou filtre por categoria,
+  abra o item e toque em **Solicitar Item**. Acompanhe o pedido em
+  "Minhas Solicitações".
+- *Combinar a entrega:* quando o doador aceita, vocês conversam pelo
+  chat interno — sem precisar trocar telefone — e podem combinar a
+  retirada em um ponto de coleta parceiro (escolas e bibliotecas
+  cadastradas no app, com endereço e horário).
+
+**Qual problema resolve.** O material escolar pesa no orçamento da
+maioria das famílias brasileiras, e ao mesmo tempo mochilas, livros e
+uniformes em bom estado são jogados fora. A aplicação faz essa ponte:
+transforma o que sobra na casa de uns no que falta na casa de outros.
+
+**Quem pode se beneficiar.**
+- Famílias de baixa renda que não conseguem comprar o material completo;
+- Doadores que querem dar destino útil a materiais parados;
+- Escolas públicas e bibliotecas, que ganham papel ativo como pontos de
+  coleta da comunidade;
+- ONGs e projetos sociais, que podem usar a plataforma para organizar
+  campanhas de arrecadação.
+
+**Cenários reais de uso.** No início do ano letivo, uma escola pública
+pode se cadastrar como ponto de coleta e concentrar doações da
+vizinhança para as famílias dos alunos. Uma família cujo filho trocou de
+etapa escolar pode doar o uniforme e os livros do ano anterior em vez de
+descartá-los. Em situações de emergência — como enchentes que destroem
+material escolar — a plataforma permite direcionar rapidamente doações
+para as famílias atingidas.
+
+**Impacto esperado.** Além do alívio direto no orçamento das famílias e
+da redução do desperdício, acreditamos que o principal impacto é na
+permanência escolar: uma criança com mochila, caderno e uniforme tem
+uma barreira a menos para continuar estudando.
 
 ---
 
