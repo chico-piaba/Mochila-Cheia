@@ -42,7 +42,10 @@ Logins da demonstração (senha de todos: `senha123`):
 >
 > Agora vamos mostrar o MVP funcionando de ponta a ponta.
 
-## BLOCO 2 — Vitrine e navegação (Robson, ~45s)
+## BLOCO 2 — Vitrine e navegação (Rodrigo, ~45s)
+
+> **Nota:** blocos 1 e 2 já gravados pelo Rodrigo (ver
+> `docs/gravacao-blocos-1-2.md`). Faltam os blocos 3 a 7.
 
 *[NA TELA: navegar pela home, rolar a lista, filtrar por categoria,
 abrir o detalhe de um item]*
@@ -141,7 +144,7 @@ README rolando pelas seções, pasta docs/evidencias com os prints]*
 > navegador e valida 20 verificações, gerando automaticamente os prints
 > de evidência que estão na pasta docs.
 
-## BLOCO 7 — Decisões técnicas e encerramento (Rodrigo, ~35s)
+## BLOCO 7 — Decisões técnicas e encerramento (Robson, ~35s)
 
 *[NA TELA: voltar para a vitrine da aplicação]*
 
