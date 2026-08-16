@@ -14,8 +14,11 @@ from flask import (
 from src.web.repositories import (
     EstatisticasRepository, ItemRepository, CategoriaRepository
 )
-from src.web.repositories.item_repository import ESTADO_FORM_PARA_BD
+from src.web.repositories.item_repository import (
+    ESTADO_FORM_PARA_BD, ESTADO_BD_PARA_ROTULO
+)
 from src.web.sessao import usuario_logado, login_obrigatorio
+from src.web.uploads import salvar_foto
 
 itens_bp = Blueprint("itens", __name__)
 
@@ -56,14 +59,18 @@ def publicar():
             return render_template("itens/publicar.html", nav_ativa="home")
 
         usuario = usuario_logado()
+        repo = ItemRepository()
         categoria_id = CategoriaRepository().id_por_nome(categoria_nome)
-        ItemRepository().criar(
+        id_item = repo.criar(
             titulo=titulo,
             descricao=descricao,
             categoria_id=categoria_id,
             estado_conservacao=estado_bd,
             doador_id=usuario["id"],
         )
+        foto_url = salvar_foto(request.files.get("foto"))
+        if foto_url:
+            repo.definir_foto(id_item, foto_url)
         flash("Item publicado! Aguardando aprovação da moderação.", "sucesso")
         return redirect(url_for("itens.meus"))
 
@@ -88,11 +95,44 @@ def detalhe_doador(id_item):
     return render_template("itens/detalhe_doador.html", item=item, nav_ativa="home")
 
 
-@itens_bp.route("/<int:id_item>/editar")
+@itens_bp.route("/<int:id_item>/editar", methods=["GET", "POST"])
 @login_obrigatorio
 def editar(id_item):
-    """Editar item (form do Figma). Atualização no POST prevista para a próxima iteração."""
-    item = ItemRepository().buscar_detalhe(id_item)
+    """Edita um item do próprio doador (dados e foto)."""
+    repo = ItemRepository()
+    usuario = usuario_logado()
+    if not repo.pertence_a(id_item, usuario["id"]):
+        abort(403)
+
+    if request.method == "POST":
+        titulo = request.form.get("titulo", "").strip()
+        descricao = request.form.get("descricao", "").strip()
+        categoria_nome = request.form.get("categoria", "")
+        estado_bd = ESTADO_FORM_PARA_BD.get(request.form.get("estado", ""))
+        if not titulo or not categoria_nome or not estado_bd:
+            flash("Preencha título, categoria e estado de conservação.", "erro")
+            return redirect(url_for("itens.editar", id_item=id_item))
+
+        repo.atualizar(
+            id_item=id_item,
+            titulo=titulo,
+            descricao=descricao,
+            categoria_id=CategoriaRepository().id_por_nome(categoria_nome),
+            estado_conservacao=estado_bd,
+            foto_url=salvar_foto(request.files.get("foto")),
+        )
+        flash("Item atualizado com sucesso.", "sucesso")
+        return redirect(url_for("itens.meus"))
+
+    item = repo.buscar_detalhe(id_item)
     if item is None:
         abort(404)
-    return render_template("itens/editar.html", item=item, nav_ativa="home")
+    categorias = CategoriaRepository().listar_ativas()
+    estados = list(ESTADO_BD_PARA_ROTULO.values())
+    return render_template(
+        "itens/editar.html",
+        item=item,
+        categorias=categorias,
+        estados=estados,
+        nav_ativa="home",
+    )

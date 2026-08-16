@@ -32,6 +32,11 @@ class Config:
     # Quantidade de itens por página na busca/listagem
     ITENS_POR_PAGINA = 12
 
+    # Upload de fotos dos itens (salvas em static/uploads e servidas pelo Flask)
+    UPLOAD_FOLDER = str(Path(__file__).resolve().parent / "static" / "uploads")
+    EXTENSOES_IMAGEM = {"png", "jpg", "jpeg", "gif", "webp"}
+    MAX_CONTENT_LENGTH = 5 * 1024 * 1024  # 5 MB por upload
+
 
 class DevelopmentConfig(Config):
     """Ambiente de desenvolvimento (padrão para o MVP acadêmico)."""

@@ -11,7 +11,7 @@ from flask import (
     Blueprint, render_template, redirect, url_for, flash, abort
 )
 
-from src.web.repositories import ItemRepository
+from src.web.repositories import ItemRepository, NotificacaoRepository
 from src.web.sessao import usuario_logado, login_obrigatorio
 
 moderacao_bp = Blueprint("moderacao", __name__)
@@ -58,7 +58,17 @@ def revisar(id_item):
 def aprovar(id_item):
     """Aprova o item, tornando-o disponível no catálogo."""
     _exige_moderador()
-    ItemRepository().aprovar(id_item, usuario_logado()["id"])
+    repo = ItemRepository()
+    item = repo.buscar_detalhe(id_item)
+    repo.aprovar(id_item, usuario_logado()["id"])
+    if item:
+        NotificacaoRepository().criar(
+            usuario_destino_id=item["doador_id"],
+            titulo="Item aprovado pela moderação",
+            mensagem=f'Seu item "{item["titulo"]}" foi aprovado e já está '
+                     f"disponível para doação!",
+            item_id=id_item,
+        )
     flash("Item aprovado e publicado no catálogo.", "sucesso")
     return redirect(url_for("moderacao.fila"))
 

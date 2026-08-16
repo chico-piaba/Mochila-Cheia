@@ -29,8 +29,12 @@
 {% for item in itens %}
 <div class="bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 rounded-xl p-3">
 <div class="flex gap-4 items-center">
-<div class="size-20 rounded-lg bg-slate-200 dark:bg-slate-700 flex-shrink-0 flex items-center justify-center">
+<div class="size-20 rounded-lg bg-slate-200 dark:bg-slate-700 flex-shrink-0 flex items-center justify-center overflow-hidden">
+{% if item.foto_url and item.foto_url.startswith('/static/') %}
+<img src="{{ item.foto_url }}" alt="Foto de {{ item.titulo }}" class="w-full h-full object-cover"/>
+{% else %}
 <span class="material-symbols-outlined text-slate-400">image</span>
+{% endif %}
 </div>
 <div class="flex-1 min-w-0">
 <h3 class="font-bold text-slate-900 dark:text-white truncate">{{ item.titulo }}</h3>

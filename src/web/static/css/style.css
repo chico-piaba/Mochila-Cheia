@@ -329,6 +329,14 @@
     margin-bottom: 20px;
 }
 
+.detalhe-img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 16px;
+    margin-bottom: 20px;
+}
+
 .badge-estado {
     display: inline-block;
     background: #DEF7EC;

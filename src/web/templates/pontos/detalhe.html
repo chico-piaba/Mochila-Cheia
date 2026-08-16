@@ -21,11 +21,11 @@
 {# Hero Section / Map #}
 <div class="px-4 pt-6 pb-4">
 <h1 class="text-slate-900 dark:text-slate-100 text-3xl font-extrabold leading-tight tracking-tight mb-4">
-                    Ponto Central <span class="text-primary">Mochila Cheia</span>
+                    {{ ponto.nome }}
 </h1>
 <div class="relative group">
 <div class="w-full aspect-video bg-primary/10 rounded-xl overflow-hidden border border-primary/20 relative">
-<img class="w-full h-full object-cover grayscale opacity-80" data-alt="Mapa mostrando a localização do ponto de coleta em São Paulo" data-location="São Paulo, Brazil" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgc6JyN0f_FmXY8hYUPcY5evaQFAckLI_q-H8PGQGSE_Y6-ZKs6MadW7CNh32bPAP6FAfdWjEE3IVFwlNum5pjq7nIznfBywSmfvv35ahymt_RBKw13B1df121r61Pm1I4JHCxPVWpqiZljGCCTrEgK05YYIWi2MgExv1XMGwhMqC-dH_4F9PMsdeDLro4GFBNhk9AEKAE_rbpPWSs-643cMrsNmQw1xu863fZhvxerVQa-M95ICxE-DGLDSGICED9w1CH3-6lIkiv"/>
+<div class="w-full h-full bg-primary/10" aria-label="Mapa do ponto de coleta"></div>
 <div class="absolute inset-0 flex items-center justify-center">
 <div class="bg-primary text-white p-2 rounded-full shadow-lg">
 <span class="material-symbols-outlined text-3xl">location_on</span>
@@ -44,7 +44,7 @@
 </div>
 <div>
 <p class="text-xs text-slate-500 dark:text-slate-400 font-medium">Endereço Completo</p>
-<p class="text-sm font-semibold">Rua das Flores, 123 - Centro, São Paulo - SP</p>
+<p class="text-sm font-semibold">{{ ponto.endereco_completo }}</p>
 </div>
 </div>
 <div class="flex gap-4 items-start">
@@ -53,7 +53,7 @@
 </div>
 <div>
 <p class="text-xs text-slate-500 dark:text-slate-400 font-medium">Horário de Funcionamento</p>
-<p class="text-sm font-semibold">Segunda a Sexta: 08:00 - 18:00<br/>Sábados: 09:00 - 13:00</p>
+<p class="text-sm font-semibold">{{ ponto.horario_funcionamento or 'Consultar o responsável' }}</p>
 </div>
 </div>
 <div class="grid grid-cols-2 gap-4">
@@ -63,16 +63,16 @@
 </div>
 <div>
 <p class="text-xs text-slate-500 dark:text-slate-400 font-medium">Responsável</p>
-<p class="text-sm font-semibold">Ana Silva</p>
+<p class="text-sm font-semibold">{{ ponto.responsavel or '—' }}</p>
 </div>
 </div>
-<a class="flex gap-4 items-start group" href="tel:+5511999999999">
+<a class="flex gap-4 items-start group" href="tel:{{ ponto.telefone }}">
 <div class="size-10 rounded-lg bg-primary/20 group-hover:bg-primary transition-colors flex items-center justify-center text-primary group-hover:text-white shrink-0">
 <span class="material-symbols-outlined">call</span>
 </div>
 <div>
 <p class="text-xs text-slate-500 dark:text-slate-400 font-medium">Telefone</p>
-<p class="text-sm font-semibold text-primary underline underline-offset-2">(11) 99999-9999</p>
+<p class="text-sm font-semibold text-primary underline underline-offset-2">{{ ponto.telefone or '—' }}</p>
 </div>
 </a>
 </div>
@@ -82,7 +82,7 @@
 </div>
 <div>
 <p class="text-xs text-slate-500 dark:text-slate-400 font-medium">E-mail</p>
-<p class="text-sm font-semibold">contato@mochilacheia.com.br</p>
+<p class="text-sm font-semibold">{{ ponto.email or '—' }}</p>
 </div>
 </div>
 </div>

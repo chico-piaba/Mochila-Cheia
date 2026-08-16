@@ -47,7 +47,7 @@
     {% for item in itens %}
     <a href="{{ url_for('itens.detalhe', id_item=item.id_item) }}" class="flex flex-col bg-white dark:bg-slate-800 rounded-xl overflow-hidden border border-slate-100 dark:border-slate-700 shadow-sm hover:shadow-md transition-shadow">
       <div class="aspect-square w-full bg-slate-200 dark:bg-slate-700 relative flex items-center justify-center">
-        {% if item.foto_url %}
+        {% if item.foto_url and item.foto_url.startswith('/static/') %}
         <img alt="{{ item.titulo }}" class="w-full h-full object-cover" src="{{ item.foto_url }}"/>
         {% else %}
         <span class="material-symbols-outlined text-5xl text-slate-400">image</span>

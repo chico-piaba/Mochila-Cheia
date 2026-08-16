@@ -24,13 +24,24 @@
                 Finalizadas
             </button>
 </div>
+{# Atalho para o lado do doador (solicitações recebidas nos seus itens) #}
+<div class="px-4 pb-2">
+<a href="{{ url_for('solicitacoes.recebidas') }}" class="flex items-center justify-between gap-2 bg-primary/10 text-primary px-4 py-3 rounded-xl font-semibold text-sm hover:bg-primary/20 transition-colors">
+<span class="flex items-center gap-2"><span class="material-symbols-outlined text-base">inbox</span> Solicitações recebidas nos meus itens</span>
+<span class="material-symbols-outlined text-base">chevron_right</span>
+</a>
+</div>
 {# Request List — dados reais do receptor logado #}
 <div class="px-4 space-y-4">
 {% for s in solicitacoes %}
 <div class="bg-white dark:bg-slate-800/50 p-4 rounded-xl border border-primary/5 shadow-sm">
 <div class="flex gap-4">
-<div class="size-20 rounded-lg bg-slate-200 dark:bg-slate-700 flex-shrink-0 bg-cover bg-center flex items-center justify-center">
-{% if not s.item_foto or 'exemplo.com' in s.item_foto %}<span class="material-symbols-outlined text-slate-400">image</span>{% endif %}
+<div class="size-20 rounded-lg bg-slate-200 dark:bg-slate-700 flex-shrink-0 flex items-center justify-center overflow-hidden">
+{% if s.item_foto and s.item_foto.startswith('/static/') %}
+<img src="{{ s.item_foto }}" alt="Foto de {{ s.item_titulo }}" class="w-full h-full object-cover"/>
+{% else %}
+<span class="material-symbols-outlined text-slate-400">image</span>
+{% endif %}
 </div>
 <div class="flex flex-col justify-between flex-1">
 <div>

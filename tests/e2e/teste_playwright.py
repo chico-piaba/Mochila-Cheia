@@ -145,6 +145,64 @@ with sync_playwright() as p:
     ok("login invalido mostra mensagem de erro",
        "incorret" in page.content().lower())
 
+    # ====================================================================
+    # Funcionalidades de Lucas (chat, notificações) e Júlio (editar item,
+    # solicitações recebidas, pontos de coleta)
+    # ====================================================================
+
+    # 14/15 - Chat: lista de conversas e envio de mensagem (receptor)
+    login(page, "joao.pedro@email.com", "senha123")
+    page.goto(f"{BASE}/mensagens/")
+    page.wait_for_load_state("networkidle")
+    shot(page, "14-mensagens-conversas")
+    ok("lista de conversas com dados reais",
+       "Mochila Escolar Azul" in page.content())
+
+    page.goto(f"{BASE}/mensagens/1")
+    page.fill("input[name=conteudo]", "Combinado! Posso retirar amanha as 15h.")
+    page.click("button[type=submit]")
+    page.wait_for_load_state("networkidle")
+    shot(page, "15-mensagens-chat")
+    ok("mensagem enviada aparece no chat",
+       "Posso retirar amanha" in page.content())
+
+    # 16 - Notificações reais (doadora Maria)
+    logout(page)
+    login(page, "maria.silva@email.com", "senha123")
+    page.goto(f"{BASE}/notificacoes/")
+    page.wait_for_load_state("networkidle")
+    shot(page, "16-notificacoes")
+    ok("notificacoes lista alertas reais", "solicit" in page.content().lower())
+
+    # 17 - Solicitações recebidas (lado doador) + aceitar
+    page.goto(f"{BASE}/solicitacoes/recebidas")
+    page.wait_for_load_state("networkidle")
+    shot(page, "17-solicitacoes-recebidas")
+    ok("doador ve solicitacao recebida com acoes",
+       "Aceitar" in page.content())
+    page.locator("button:has-text('Aceitar')").first.click()
+    page.wait_for_load_state("networkidle")
+    ok("apos aceitar, aparece status aceita",
+       "aceita" in page.content().lower())
+
+    # 18 - Editar item (formulário pré-preenchido)
+    page.goto(f"{BASE}/itens/1/editar")
+    page.wait_for_load_state("networkidle")
+    shot(page, "18-editar-item")
+    ok("editar carrega item real no formulario",
+       "Mochila Escolar Azul" in page.content())
+
+    # 19/20 - Pontos de coleta (lista e detalhe)
+    page.goto(f"{BASE}/pontos/")
+    page.wait_for_load_state("networkidle")
+    shot(page, "19-pontos-lista")
+    ok("lista de pontos de coleta reais", "Escola" in page.content())
+
+    page.goto(f"{BASE}/pontos/1")
+    page.wait_for_load_state("networkidle")
+    shot(page, "20-pontos-detalhe")
+    ok("detalhe do ponto de coleta", page.locator("h1").count() > 0)
+
     browser.close()
 
 # Resumo

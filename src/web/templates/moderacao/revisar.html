@@ -13,9 +13,12 @@
 </header>
 <main class="flex-1 overflow-y-auto pb-32">
 <div class="p-4">
-<div class="w-full aspect-square bg-slate-200 dark:bg-slate-800 rounded-xl overflow-hidden mb-6">
-<div class="w-full h-full bg-center bg-no-repeat bg-cover" data-alt="Mochila escolar azul usada em bom estado" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAsrL8zYbBC2LEKh4HixT7SGQGFjTeoi-e5O5yOegrlRos3LCYAHStAvWVdWTszyvRK2AJYKnhxjR6osXqQtq8OdKQVcrBJzplkqxYBHl8Gy5DXu-2zXLmvJbfrumiFtnWG8cM4lmmK62Yh1BMt2wG9iY4KK58KMgG1ecxGju_pQxntZ61sVGRc5eyDplQ0kOOMYVkFSu_KCDvzVRv-k71C6F_kfmjOdvZUvEgM9X0Es9AuCu8gUrVEiWuAa-Y_c3zuhqImyODfGTnN");'>
-</div>
+<div class="w-full aspect-square bg-slate-200 dark:bg-slate-800 rounded-xl overflow-hidden mb-6 flex items-center justify-center">
+{% if item.foto_url and item.foto_url.startswith('/static/') %}
+<img src="{{ item.foto_url }}" alt="Foto de {{ item.titulo }}" class="w-full h-full object-cover"/>
+{% else %}
+<span class="material-symbols-outlined text-slate-400 text-6xl">image</span>
+{% endif %}
 </div>
 <div class="space-y-4">
 <section>
@@ -43,7 +46,7 @@
 <div class="flex items-center justify-between p-3 bg-primary/5 rounded-lg">
 <div class="flex items-center gap-3">
 <div class="size-10 rounded-full bg-primary/20 flex items-center justify-center overflow-hidden">
-<div class="w-full h-full bg-center bg-cover" data-alt="Avatar do usuário doador" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAwIA1GVFNoZcZHb4ya0iZxaTnlxKQ1VgPu1J1SYiNkMW3X8pTtOYicvO6xqiImvN46zI3W4wySIkCbfdKh5TLE0Uy93QU37hzemKVIro4iD0Ky4jHgWMPkDq-wIQrYDz_v4uXpd0GzU6Q1uDTsV0nZWdUuhGITiBqkXaR_QjruTtrVTWldTA6ncd9666FwOv0zPP3sx6ThJLLOAkSXjDKNTSRE-HrLAhwrn5M-PMsvqk_ORewdLcxMWnqFuRM9FXrdP985O60VvMYA");'></div>
+<span class="text-primary font-bold text-sm" aria-label="Avatar do doador">{{ item.doador_nome[:1] }}</span>
 </div>
 <div>
 <p class="text-[10px] uppercase font-bold text-slate-400 leading-none mb-1">Doador</p>

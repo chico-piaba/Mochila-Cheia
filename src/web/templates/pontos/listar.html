@@ -32,93 +32,50 @@
 <h3 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-[-0.015em]">Próximos a você</h3>
 <button class="text-primary text-sm font-semibold">Ver todos</button>
 </div>
-{# Collection Points List #}
+{# Collection Points List — dados reais #}
 <div class="flex flex-col gap-4 p-4 pb-24">
-{# Card 1 #}
+{% for p in pontos %}
 <div class="flex flex-col gap-3 rounded-xl bg-white dark:bg-slate-800 p-4 shadow-sm border border-slate-100 dark:border-slate-700">
 <div class="flex justify-between items-start">
 <div class="flex flex-col gap-1">
 <div class="flex items-center gap-2">
-<span class="bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full">Aberto agora</span>
+<span class="bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full">Ativo</span>
 </div>
-<p class="text-slate-900 dark:text-slate-100 text-base font-bold leading-tight mt-1">Escola Municipal Central</p>
+<p class="text-slate-900 dark:text-slate-100 text-base font-bold leading-tight mt-1">{{ p.nome }}</p>
 </div>
-<div class="w-16 h-16 rounded-lg bg-slate-100 dark:bg-slate-700 flex-shrink-0 bg-cover bg-center" data-alt="School building exterior for collection point" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBRR9Is38XmI7aD95LvENX1htXpcq8c_V6BQubx1wFc2pnIOYqpWZ_NKI6uRk9uaFP7xQyHqaXOzOyGfbgEyR1n2zubXiiU1GJgWFWazBcAHha8qm52dum9jDH4E94BVYxDsfE-0wdFobOjJi6qeHyeHub356DkiuGYeE4uUkp0E-4yTEgFBVfgfGjjinFh3PopvoqoIqM4CAf_kBt_OxW0p7_r3JuVLhBiICTqZJyXCYhfToirPSXNCeQ52IH99fwFvuMD3yvzrJFE')"></div>
+<div class="w-16 h-16 rounded-lg bg-slate-100 dark:bg-slate-700 flex-shrink-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">storefront</span>
+</div>
 </div>
 <div class="grid grid-cols-1 gap-2">
 <div class="flex items-center gap-2 text-slate-600 dark:text-slate-400">
 <span class="material-symbols-outlined text-sm">location_on</span>
-<p class="text-xs">Rua das Flores, 123 - Centro</p>
+<p class="text-xs">{{ p.endereco_completo }}</p>
 </div>
+{% if p.horario_funcionamento %}
 <div class="flex items-center gap-2 text-slate-600 dark:text-slate-400">
 <span class="material-symbols-outlined text-sm">schedule</span>
-<p class="text-xs">08:00 - 18:00</p>
+<p class="text-xs">{{ p.horario_funcionamento }}</p>
 </div>
+{% endif %}
+{% if p.responsavel %}
 <div class="flex items-center gap-2 text-slate-600 dark:text-slate-400">
 <span class="material-symbols-outlined text-sm">person</span>
-<p class="text-xs">Resp: Prof. Maria Silva</p>
+<p class="text-xs">Resp: {{ p.responsavel }}</p>
 </div>
+{% endif %}
 </div>
-<a href="#" class="flex items-center justify-center w-full bg-primary text-white py-2 rounded-lg text-sm font-medium mt-1">
+<a href="{{ url_for('pontos.detalhe', id_ponto=p.id_ponto) }}" class="flex items-center justify-center w-full bg-primary text-white py-2 rounded-lg text-sm font-medium mt-1">
                     Ver detalhes
                     <span class="material-symbols-outlined ml-1 text-sm">chevron_right</span>
 </a>
 </div>
-{# Card 2 #}
-<div class="flex flex-col gap-3 rounded-xl bg-white dark:bg-slate-800 p-4 shadow-sm border border-slate-100 dark:border-slate-700">
-<div class="flex justify-between items-start">
-<div class="flex flex-col gap-1">
-<div class="flex items-center gap-2">
-<span class="bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full">Aberto agora</span>
+{% else %}
+<div class="text-center text-slate-500 py-16">
+<span class="material-symbols-outlined text-5xl mb-2">location_off</span>
+<p>Nenhum ponto de coleta cadastrado.</p>
 </div>
-<p class="text-slate-900 dark:text-slate-100 text-base font-bold leading-tight mt-1">Biblioteca Comunitária</p>
-</div>
-<div class="w-16 h-16 rounded-lg bg-slate-100 dark:bg-slate-700 flex-shrink-0 bg-cover bg-center" data-alt="Library building entrance collection spot" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC6-CBM8izBTocEY36QHbq19HP13bRvza-mHEHt1se3PAQgj4lB-py8CkefRp09yyeKChN--3uGrCALY2EdsjM4qiEmP1keYNbU9yb326fYy0GgszIdST3td5dldOIQBxrfpJBsc5syfbncoxWncbR6Wqd1Xn2FsiahcOYnylpI1zA9koNaMyy4uX3MatBS9ueRGwA0kH7fCyWps8occrsBQOoA4-msZLoXKdDnM8BBnWfupYGUyyL7B9zHv-4JZI7huGKR1hi6ZED_')"></div>
-</div>
-<div class="grid grid-cols-1 gap-2">
-<div class="flex items-center gap-2 text-slate-600 dark:text-slate-400">
-<span class="material-symbols-outlined text-sm">location_on</span>
-<p class="text-xs">Av. Paulista, 1500 - Bela Vista</p>
-</div>
-<div class="flex items-center gap-2 text-slate-600 dark:text-slate-400">
-<span class="material-symbols-outlined text-sm">schedule</span>
-<p class="text-xs">09:00 - 20:00</p>
-</div>
-<div class="flex items-center gap-2 text-slate-600 dark:text-slate-400">
-<span class="material-symbols-outlined text-sm">person</span>
-<p class="text-xs">Resp: João Oliveira</p>
-</div>
-</div>
-<a href="#" class="flex items-center justify-center w-full bg-primary/10 text-primary py-2 rounded-lg text-sm font-medium mt-1">
-                    Ver detalhes
-                    <span class="material-symbols-outlined ml-1 text-sm">chevron_right</span>
-</a>
-</div>
-{# Card 3 (Closed Example for variety) #}
-<div class="flex flex-col gap-3 rounded-xl bg-white dark:bg-slate-800 p-4 shadow-sm border border-slate-100 dark:border-slate-700 opacity-80">
-<div class="flex justify-between items-start">
-<div class="flex flex-col gap-1">
-<div class="flex items-center gap-2">
-<span class="bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-400 text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full">Fechado</span>
-</div>
-<p class="text-slate-900 dark:text-slate-100 text-base font-bold leading-tight mt-1">Centro Recreativo</p>
-</div>
-<div class="w-16 h-16 rounded-lg bg-slate-100 dark:bg-slate-700 flex-shrink-0 bg-cover bg-center" data-alt="Recreational center facade" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAoNGWOJCXIg2F7SNkothv8Pw2Hh7HWrvk53w2rmpx_O9jLKMwtUukXOr21-2kbja53N-sAvm27idwYOm7D4E9AbQGYiFarTrNuPkARXJmRFRb5ICtK4o_5PnJGJp0W3_yEUNrOOvHSqumrU1YDHfWshFVn-fO821jIiNx14VzwkXi_ienqIHSlSqi9uBgfs0MlAIaEVLUsTW1v_h6OQYdBowLGqfUz_90s2_FaWODrjI7_xFMwgogTiPyepjj-mbkXmt3loDbP4-bo')"></div>
-</div>
-<div class="grid grid-cols-1 gap-2">
-<div class="flex items-center gap-2 text-slate-600 dark:text-slate-400">
-<span class="material-symbols-outlined text-sm">location_on</span>
-<p class="text-xs">Rua XV de Novembro, 45</p>
-</div>
-<div class="flex items-center gap-2 text-slate-600 dark:text-slate-400">
-<span class="material-symbols-outlined text-sm">schedule</span>
-<p class="text-xs">Abre às 13:00</p>
-</div>
-</div>
-<button class="flex items-center justify-center w-full bg-slate-100 dark:bg-slate-700 text-slate-400 py-2 rounded-lg text-sm font-medium mt-1">
-                    Indisponível agora
-                </button>
-</div>
+{% endfor %}
 </div>
 </div>
 {% endblock %}

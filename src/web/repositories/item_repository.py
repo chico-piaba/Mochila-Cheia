@@ -120,6 +120,34 @@ class ItemRepository(BaseRepository):
         conn.commit()
         return cur.lastrowid
 
+    def atualizar(self, id_item, titulo, descricao, categoria_id,
+                  estado_conservacao, foto_url=None) -> None:
+        """
+        Atualiza os dados de um item. Se foto_url for None, mantém a foto atual
+        (COALESCE), permitindo editar sem reenviar a imagem.
+        """
+        conn = self._conn()
+        conn.execute(
+            """UPDATE ITEM
+               SET titulo = ?, descricao = ?, fk_id_categoria = ?,
+                   estado_conservacao = ?, foto_url = COALESCE(?, foto_url)
+               WHERE id_item = ?""",
+            (titulo.strip(), descricao.strip(), categoria_id,
+             estado_conservacao, foto_url, id_item),
+        )
+        conn.commit()
+
+    def definir_foto(self, id_item: int, foto_url: str) -> None:
+        """Grava a URL/caminho da foto de um item."""
+        conn = self._conn()
+        conn.execute("UPDATE ITEM SET foto_url = ? WHERE id_item = ?", (foto_url, id_item))
+        conn.commit()
+
+    def pertence_a(self, id_item: int, doador_id: int) -> bool:
+        """Indica se o item pertence ao doador (controle de acesso na edição)."""
+        sql = "SELECT 1 FROM ITEM WHERE id_item = ? AND fk_id_doador = ?"
+        return self._conn().execute(sql, (id_item, doador_id)).fetchone() is not None
+
     def aprovar(self, id_item: int, moderador_id: int) -> None:
         """Aprova um item: passa para 'disponivel' e registra o moderador."""
         conn = self._conn()

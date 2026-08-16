@@ -96,31 +96,31 @@ INSERT INTO ITEM (titulo, descricao, estado_conservacao, status, localizacao, fo
 ('Mochila Escolar Azul',
  'Mochila em ótimo estado, pouco usada. Ideal para ensino fundamental. Tem compartimentos para garrafa e estojo.',
  'pouco_usado', 'disponivel', 'Fortaleza, CE - Aldeota',
- 'https://exemplo.com/fotos/mochila_azul.jpg',
+ '/static/img/seed/mochila_azul.svg',
  1, 1, 7, CURRENT_TIMESTAMP),
 
 ('Kit Livros 5º Ano - Matemática e Português',
  'Livros didáticos do 5º ano em bom estado. Algumas anotações a lápis que podem ser apagadas.',
  'usado', 'disponivel', 'Fortaleza, CE - Aldeota',
- 'https://exemplo.com/fotos/livros_5ano.jpg',
+ '/static/img/seed/livros_5ano.svg',
  1, 2, 7, CURRENT_TIMESTAMP),
 
 ('Estojo Completo com Material',
  'Estojo novo contendo: 12 lápis de cor, 2 lápis preto, 1 borracha, 1 apontador, 2 canetas azuis.',
  'novo', 'disponivel', 'Fortaleza, CE - Meireles',
- 'https://exemplo.com/fotos/estojo_completo.jpg',
+ '/static/img/seed/estojo_completo.svg',
  2, 4, 7, CURRENT_TIMESTAMP),
 
 ('Cadernos Universitários 10 Matérias (3 unidades)',
  'Três cadernos de 200 folhas cada, capa dura. Perfeitos para ensino médio.',
  'novo', 'disponivel', 'Fortaleza, CE - Meireles',
- 'https://exemplo.com/fotos/cadernos.jpg',
+ '/static/img/seed/cadernos.svg',
  2, 3, 8, CURRENT_TIMESTAMP),
 
 ('Uniforme Escolar Tamanho M',
  'Uniforme da Escola Municipal Centro: 2 camisas e 1 calça. Tamanho M (10-12 anos).',
  'pouco_usado', 'disponivel', 'Fortaleza, CE - Papicu',
- 'https://exemplo.com/fotos/uniforme.jpg',
+ '/static/img/seed/uniforme.svg',
  3, 7, 8, CURRENT_TIMESTAMP);
 
 -- Item reservado
@@ -129,7 +129,7 @@ INSERT INTO ITEM (titulo, descricao, estado_conservacao, status, localizacao, fo
 ('Calculadora Científica Casio',
  'Calculadora científica em perfeito funcionamento. Ideal para ensino médio e vestibular.',
  'usado', 'reservado', 'Fortaleza, CE - Aldeota',
- 'https://exemplo.com/fotos/calculadora.jpg',
+ '/static/img/seed/calculadora.svg',
  1, 8, 7, CURRENT_TIMESTAMP);
 
 -- Item já doado
@@ -138,7 +138,7 @@ INSERT INTO ITEM (titulo, descricao, estado_conservacao, status, localizacao, fo
 ('Mochila Rosa Infantil',
  'Mochila pequena para crianças de 4-6 anos. Estampa de personagens.',
  'pouco_usado', 'doado', 'Fortaleza, CE - Meireles',
- 'https://exemplo.com/fotos/mochila_rosa.jpg',
+ '/static/img/seed/mochila_rosa.svg',
  2, 1, 7, CURRENT_TIMESTAMP);
 
 -- Item pendente de moderação
@@ -147,7 +147,7 @@ INSERT INTO ITEM (titulo, descricao, estado_conservacao, status, localizacao, fo
 ('Dicionário de Inglês-Português',
  'Dicionário escolar em bom estado. Edição 2023.',
  'usado', 'pendente_moderacao', 'Fortaleza, CE - Papicu',
- 'https://exemplo.com/fotos/dicionario.jpg',
+ '/static/img/seed/dicionario.svg',
  3, 2);
 
 -- ============================================================

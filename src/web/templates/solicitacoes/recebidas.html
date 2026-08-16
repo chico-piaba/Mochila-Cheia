@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block titulo %}Solicitações recebidas — Mochila Cheia{% endblock %}
+{% block conteudo %}
+{# Header #}
+<header class="sticky top-0 z-10 bg-background-light dark:bg-background-dark border-b border-primary/10 px-4 py-4">
+<div class="flex items-center justify-between max-w-md mx-auto">
+<a href="{{ url_for('solicitacoes.minhas') }}" class="p-2 hover:bg-primary/10 rounded-full transition-colors">
+<span class="material-symbols-outlined">arrow_back</span>
+</a>
+<h1 class="text-xl font-bold">Solicitações recebidas</h1>
+<div class="w-10"></div>
+</div>
+</header>
+<main class="max-w-md mx-auto pb-24 px-4 pt-4 space-y-4">
+{% set cor = {'pendente':'bg-amber-100 text-amber-700','aceita':'bg-green-100 text-green-700','recusada':'bg-red-100 text-red-700','finalizada':'bg-primary/10 text-primary','cancelada':'bg-slate-200 text-slate-600'} %}
+{% for s in solicitacoes %}
+<div class="bg-white dark:bg-slate-800/50 p-4 rounded-xl border border-primary/5 shadow-sm">
+<div class="flex justify-between items-start gap-2">
+<div>
+<h3 class="font-bold text-base leading-tight">{{ s.item_titulo }}</h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm mt-1">
+<span class="material-symbols-outlined text-sm align-middle">person</span>
+Pedido de <strong>{{ s.receptor_nome }}</strong>
+</p>
+</div>
+<span class="{{ cor.get(s.status, 'bg-slate-200 text-slate-600') }} text-[10px] font-bold uppercase px-2 py-1 rounded-full shrink-0">{{ s.status }}</span>
+</div>
+{% if s.status == 'pendente' %}
+<div class="flex gap-2 mt-4">
+<form method="POST" action="{{ url_for('solicitacoes.aceitar', id_solicitacao=s.id_solicitacao) }}" class="flex-1">
+<button type="submit" class="w-full bg-success text-white text-sm font-bold py-2.5 rounded-lg hover:opacity-90 transition-opacity">Aceitar</button>
+</form>
+<form method="POST" action="{{ url_for('solicitacoes.recusar', id_solicitacao=s.id_solicitacao) }}" class="flex-1">
+<button type="submit" class="w-full bg-danger text-white text-sm font-bold py-2.5 rounded-lg hover:opacity-90 transition-opacity">Recusar</button>
+</form>
+</div>
+{% elif s.status == 'aceita' %}
+<a href="{{ url_for('mensagens.conversa', id_solicitacao=s.id_solicitacao) }}" class="mt-4 w-full flex items-center justify-center gap-2 bg-primary py-2.5 px-4 rounded-lg text-white text-sm font-semibold hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-sm">chat</span> Abrir chat com o receptor
+</a>
+{% endif %}
+</div>
+{% else %}
+<div class="text-center text-slate-500 py-16">
+<span class="material-symbols-outlined text-5xl mb-2">inbox</span>
+<p>Você ainda não recebeu solicitações nos seus itens.</p>
+<a href="{{ url_for('itens.publicar') }}" class="text-primary font-semibold">Publicar um item</a>
+</div>
+{% endfor %}
+</main>
+{% endblock %}

@@ -12,7 +12,12 @@
     </div>
 
     <form method="POST" action="/itens/publicar" class="form-publicar" enctype="multipart/form-data">
-        
+
+        <div class="input-group">
+            <label for="foto">Foto do item (opcional)</label>
+            <input type="file" id="foto" name="foto" accept="image/*">
+        </div>
+
         <div class="input-group">
             <label for="titulo">O que você está doando?</label>
             <input type="text" id="titulo" name="titulo" placeholder="Ex: Mochila escolar azul reforçada" required aria-required="true">

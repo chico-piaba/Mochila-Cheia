@@ -6,7 +6,11 @@
 <div class="detalhe-container">
     <a href="/" class="link-voltar" aria-label="Voltar para a vitrine">← Voltar</a>
 
-    <div class="detalhe-img-placeholder" aria-label="Imagem principal do item"></div>
+    {% if item.foto_url and item.foto_url.startswith('/static/') %}
+    <img src="{{ item.foto_url }}" alt="Foto de {{ item.titulo }}" class="detalhe-img"/>
+    {% else %}
+    <div class="detalhe-img-placeholder" aria-label="Item sem foto"></div>
+    {% endif %}
 
     <div class="detalhe-info">
         <span class="badge-estado">{{ item.estado }}</span>

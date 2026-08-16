@@ -51,3 +51,7 @@ notcommit/
 
 # Not committed files
 notcommit/
+
+# Fotos enviadas pelos usuários (geradas em runtime)
+src/web/static/uploads/*
+!src/web/static/uploads/.gitkeep

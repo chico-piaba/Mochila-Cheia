@@ -18,7 +18,12 @@
 <!-- Item Image & Status Badge -->
 <div class="px-4 py-2">
 <div class="relative w-full aspect-square rounded-xl overflow-hidden bg-primary/5 border border-primary/10">
-<div class="w-full h-full bg-slate-200 dark:bg-slate-800 flex items-center justify-center" data-alt="Mochila escolar azul marinho em ótimo estado" style="background-image: linear-gradient(to bottom, transparent, rgba(0,0,0,0.4)), url('https://lh3.googleusercontent.com/aida-public/AB6AXuD1o_DYHY57Oim5wbf_lNFuBkgJTGcr7H2Y-i7Kc_6RQJPZFIRBzwA0IqXhQo7y_GbL40l14w7lFn1LCdgq9Jt9RBJc-SY8RPqribauuHUgfHdGgbdE99jPyewY9-ganU37Teby5-25JRbM6PteWOi63tHBWtSnuoaXtOpmuBvSNStmEZyYa30VuCwnw76MHPkXwRwQPDWjd6O_jHROSkUTlvThLR_t2a9AbtT0qmiU1v8_VzQAIwdgjC8m0o2WQpxNgxJamIrlygBO'); background-size: cover; background-position: center;">
+<div class="w-full h-full bg-slate-200 dark:bg-slate-800 flex items-center justify-center overflow-hidden">
+{% if item.foto_url and item.foto_url.startswith('/static/') %}
+<img src="{{ item.foto_url }}" alt="Foto de {{ item.titulo }}" class="w-full h-full object-cover"/>
+{% else %}
+<span class="material-symbols-outlined text-slate-400 text-6xl">image</span>
+{% endif %}
 </div>
 <div class="absolute top-4 right-4">
 <span class="bg-primary text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg flex items-center gap-1">
