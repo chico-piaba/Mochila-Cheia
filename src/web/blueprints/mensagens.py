@@ -9,7 +9,7 @@ Responsável: Lucas (IHC/UX) + Júlio (Backend)
 """
 
 from flask import (
-    Blueprint, render_template, request, redirect, url_for, flash, abort
+    Blueprint, render_template, request, redirect, url_for, abort
 )
 
 from src.web.repositories import MensagemRepository, NotificacaoRepository
