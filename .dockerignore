@@ -1,0 +1,17 @@
+# Fica fora da imagem: ambiente local, banco local, documentação e material da equipe
+.git
+.github
+.venv
+venv
+__pycache__
+*.py[cod]
+.pytest_cache
+.pi
+.DS_Store
+notcommit
+docs
+tests
+*.zip
+database/*.db
+src/web/static/uploads/*
+!src/web/static/uploads/.gitkeep

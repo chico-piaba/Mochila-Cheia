@@ -1,5 +1,7 @@
 # 🎒 Projeto Mochila Cheia
 
+[![Esteira de CI/CD](https://github.com/chico-piaba/Mochila-Cheia/actions/workflows/ci-pipeline.yml/badge.svg)](https://github.com/chico-piaba/Mochila-Cheia/actions/workflows/ci-pipeline.yml)
+
 O **Mochila Cheia** é uma plataforma digital (aplicativo web) que visa conectar doadores de materiais escolares a estudantes que necessitam desses itens. A solução busca combater o desperdício, promover a sustentabilidade e gerar impacto social positivo, facilitando o acesso a recursos educacionais para famílias de baixa renda.
 
 > **Projeto Integrado III** - Análise e Desenvolvimento de Sistemas (ADS)  
@@ -16,6 +18,7 @@ O **Mochila Cheia** é uma plataforma digital (aplicativo web) que visa conectar
 - [Tecnologias Utilizadas](#-tecnologias-utilizadas)
 - [Estrutura do Projeto](#-estrutura-do-projeto)
 - [Como Executar](#-como-executar)
+- [Integração Contínua (CI/CD)](#-integração-contínua-cicd)
 - [Demonstração do MVP](#-demonstração-do-mvp)
 - [Processo de Desenvolvimento](#-processo-de-desenvolvimento)
 - [Como Utilizar a Aplicação](#-componente-extensionista-como-utilizar-a-aplicação)
@@ -213,6 +216,42 @@ cd src && python main.py
 python -m pytest tests --ignore=tests/e2e   # 18 testes unitários
 python tests/e2e/teste_playwright.py        # e2e (requer app rodando na porta 5001)
 ```
+
+---
+
+## 🔁 Integração Contínua (CI/CD)
+
+> Feito na disciplina **ADS0024 — Integração de Sistemas** (Estudo Guiado 01),
+> aplicando a esteira ao projeto da equipe em vez da API de exemplo.
+
+A cada `push` ou pull request na `main`, o GitHub Actions
+(`.github/workflows/ci-pipeline.yml`) executa, num Runner `ubuntu-latest`:
+
+| # | Etapa | Se falhar… |
+|---|---|---|
+| 1–3 | Checkout, Python 3.12, `pip install -r requirements-dev.txt` | — |
+| 4 | **Lint** com `flake8` (regras em `.flake8`) | os testes nem rodam |
+| 5 | **Testes** com `pytest` (`tests/test_models.py` + `tests/test_web.py`) | a imagem nem é construída |
+| 6 | **Build** da imagem Docker | — |
+| 7 | **Teste de fumaça**: sobe o contêiner e chama `/api/saude` | — |
+| CD | Só em push na `main` e com o CI verde: publica a imagem no **GHCR** (`ghcr.io/chico-piaba/mochila-cheia`, tags `latest` e sha) | — |
+
+As rotas `/api/saude` e `/api/resumo` (`src/web/blueprints/api.py`) são o
+equivalente, no Mochila Cheia, da rota `/api/soma` do roteiro.
+
+**Rodar a esteira na sua máquina:**
+
+```bash
+pip install -r requirements-dev.txt
+flake8 . && pytest -v
+docker build -t mochila-cheia .
+docker run -d -p 5000:5000 --name mochila mochila-cheia
+curl http://localhost:5000/api/saude     # {"servico":"mochila-cheia","status":"ok"}
+```
+
+Na primeira subida o contêiner cria o banco a partir de `schema.sql` +
+`seed.sql` (`docker/entrypoint.sh`); para manter os dados entre execuções,
+monte um volume em `/app/data`.
 
 ---
 

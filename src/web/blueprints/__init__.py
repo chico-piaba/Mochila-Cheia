@@ -14,6 +14,7 @@ Mapa dos módulos, telas (Figma) e responsáveis:
     pontos        -> Júlio    (listar, detalhe)
     mensagens     -> Lucas    (conversas, conversa/chat)
     notificacoes  -> Lucas    (listar)
+    api           -> Rodrigo  (JSON: saude, resumo — usadas pela esteira de CI)
 
 As telas (templates) vêm do protótipo de alta fidelidade (Figma/Stitch) e já
 estão integradas. O que falta em cada módulo é ligar os formulários/ações ao
@@ -28,6 +29,7 @@ from src.web.blueprints.moderacao import moderacao_bp
 from src.web.blueprints.pontos import pontos_bp
 from src.web.blueprints.mensagens import mensagens_bp
 from src.web.blueprints.notificacoes import notificacoes_bp
+from src.web.blueprints.api import api_bp
 
 
 def registrar_blueprints(app) -> None:
@@ -40,3 +42,4 @@ def registrar_blueprints(app) -> None:
     app.register_blueprint(pontos_bp, url_prefix="/pontos")
     app.register_blueprint(mensagens_bp, url_prefix="/mensagens")
     app.register_blueprint(notificacoes_bp, url_prefix="/notificacoes")
+    app.register_blueprint(api_bp, url_prefix="/api")

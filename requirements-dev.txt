@@ -1,0 +1,4 @@
+# Dependências da esteira de CI (lint + testes). A imagem Docker NÃO instala
+# este arquivo: só o requirements.txt vai para produção.
+-r requirements.txt
+flake8>=7.0.0
