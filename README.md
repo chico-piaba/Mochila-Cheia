@@ -578,11 +578,11 @@ A Integração Contínua é uma prática de desenvolvimento em que as alteraçõ
 
 No projeto Mochila Cheia, utilizamos o GitHub Actions para automatizar esse processo. Quando alguém envia alterações (push) ou abre uma solicitação de integração (pull request) direcionada à branch main, o pipeline executa uma sequência de verificações: analisa a qualidade e a sintaxe do código com o Flake8, executa testes automatizados com o Pytest, constrói uma imagem Docker e verifica se o serviço consegue responder a uma requisição de saúde. Se essas etapas forem concluídas com sucesso, alterações enviadas diretamente à main também podem acionar a publicação da imagem no GitHub Container Registry (GHCR).
 
-**Por que isso é importante para quem está aprendendo a programar?**
-**Encontrar erros mais cedo:** o pipeline ajuda a identificar problemas antes que eles se tornem mais difíceis de corrigir.
-**Aprender com o feedback:** mensagens de erro e resultados dos testes ajudam a entender o que precisa ser ajustado no código.
-**Desenvolver com mais confiança:** as verificações automatizadas reduzem o risco de uma alteração prejudicar funcionalidades existentes.
-**Facilitar o trabalho em equipe:** todos podem contribuir para o projeto sabendo que as alterações passam por verificações padronizadas.
+**Por que isso é importante para quem está aprendendo a programar?**  
+**Encontrar erros mais cedo:** o pipeline ajuda a identificar problemas antes que eles se tornem mais difíceis de corrigir.  
+**Aprender com o feedback:** mensagens de erro e resultados dos testes ajudam a entender o que precisa ser ajustado no código.  
+**Desenvolver com mais confiança:** as verificações automatizadas reduzem o risco de uma alteração prejudicar funcionalidades existentes.  
+**Facilitar o trabalho em equipe:** todos podem contribuir para o projeto sabendo que as alterações passam por verificações padronizadas.  
 **Adotar boas práticas desde o início:** testes, revisão de código e automação são práticas utilizadas também em projetos profissionais.
 
 A Integração Contínua funciona como uma sequência de verificações automáticas que ajuda a manter o projeto saudável enquanto ele evolui. Para estudantes da UFCA e outras pessoas que estão começando na programação, aprender CI é uma oportunidade de ir além de escrever código: é aprender a verificar, integrar e entregar software com mais qualidade e responsabilidade.
