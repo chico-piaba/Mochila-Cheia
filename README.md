@@ -570,6 +570,28 @@ No caso do nosso projeto, o **Mochila Cheia**, optamos por uma arquitetura divid
 2. **Trabalho em Equipe:** Com o sistema modularizado, pude focar em traduzir os protótipos do Figma para código e aplicar as "heurísticas" de acessibilidade sem o risco de quebrar a lógica de banco de dados ou as rotas que os outros desenvolvedores da equipe estavam estruturando.
 3. **Manutenção:** Se amanhã precisarmos trocar o layout do site inteiro, mexemos apenas na camada visual, sem afetar o "motor" do sistema.
 
+## 🔄 [Componente Extensionista] O que é Integração Contínua (CI)?
+
+Imagine que você está desenvolvendo um projeto com colegas e alguém altera uma parte do código sem perceber que isso pode prejudicar outra funcionalidade. Como descobrir o problema antes que ele chegue até os usuários? É para ajudar a resolver esse tipo de situação que existe a Integração Contínua (CI, do inglês Continuous Integration).
+
+A Integração Contínua é uma prática de desenvolvimento em que as alterações feitas no código são verificadas automaticamente, com frequência. Em vez de depender apenas de testes manuais, podemos configurar ferramentas para analisar o código, executar testes e verificar se a aplicação continua funcionando após cada mudança.
+
+No projeto Mochila Cheia, utilizamos o GitHub Actions para automatizar esse processo. Quando alguém envia alterações (push) ou abre uma solicitação de integração (pull request) direcionada à branch main, o pipeline executa uma sequência de verificações: analisa a qualidade e a sintaxe do código com o Flake8, executa testes automatizados com o Pytest, constrói uma imagem Docker e verifica se o serviço consegue responder a uma requisição de saúde. Se essas etapas forem concluídas com sucesso, alterações enviadas diretamente à main também podem acionar a publicação da imagem no GitHub Container Registry (GHCR).
+
+Por que isso é importante para quem está aprendendo a programar?
+
+Encontrar erros mais cedo: o pipeline ajuda a identificar problemas antes que eles se tornem mais difíceis de corrigir.
+
+Aprender com o feedback: mensagens de erro e resultados dos testes ajudam a entender o que precisa ser ajustado no código.
+
+Desenvolver com mais confiança: as verificações automatizadas reduzem o risco de uma alteração prejudicar funcionalidades existentes.
+
+Facilitar o trabalho em equipe: todos podem contribuir para o projeto sabendo que as alterações passam por verificações padronizadas.
+
+Adotar boas práticas desde o início: testes, revisão de código e automação são práticas utilizadas também em projetos profissionais.
+
+Em resumo, a Integração Contínua funciona como uma sequência de verificações automáticas que ajuda a manter o projeto saudável enquanto ele evolui. Para estudantes da UFCA e outras pessoas que estão começando na programação, aprender CI é uma oportunidade de ir além de escrever código: é aprender a verificar, integrar e entregar software com mais qualidade e responsabilidade.
+
 Em resumo, uma boa arquitetura garante que o sistema não apenas funcione no primeiro dia, mas que consiga crescer e receber novas funcionalidades de forma organizada, segura e sustentável no longo prazo.
 ---
 
